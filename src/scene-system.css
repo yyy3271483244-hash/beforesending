@@ -1,0 +1,37 @@
+/* Scenes own real document space; only their individual objects animate. */
+html, body { scroll-snap-type: none !important; scroll-behavior: auto; }
+.restored-journey .journey-section { scroll-snap-align: none; scroll-snap-stop: normal; }
+.restored-journey .journey-track { position: relative; }
+.restored-journey .journey-section { position: relative; width: 100%; height: auto; min-height: 100svh; overflow: clip; isolation: isolate; }
+.journey-scene-frame { position: relative; inset: auto; width: 100%; min-height: 100svh; height: auto; background: #faf6ef; }
+.restored-journey .journey-section-content { position: relative; inset: auto; width: 100%; height: auto; min-height: 100svh; display: flow-root; }
+.restored-journey .restored-home { height: 100svh; }
+.restored-journey .postal-header { z-index: 60; }
+.restored-journey:has(.journey-section[data-active='true'] .restored-keeper) .postal-wordmark { visibility: visible; }
+.restored-journey .postal-about, .restored-journey .postal-notice { z-index: 65; }
+body:has(.restored-journey) .language-switch { z-index: 70; }
+.restored-home-illustration { inset: 0; translate: none; width: 100%; height: 100%; aspect-ratio: auto; }
+.home-art-scroll { inset: 0; width: 100%; height: 100%; translate: none; transform: none; }
+.home-brand-scroll { z-index: 3; }
+.restored-home-enter { z-index: 3; bottom: 8px; }
+.restored-keeper .home-selection-heading { top: 12%; }
+.restored-keeper .home-animal-lineup { bottom: 0; }
+.keeper-idle { display: block; width: 100%; height: 100%; }
+.restored-keeper .administrator-choice:is(:hover,:focus-visible):not(:disabled) .keeper-idle { scale: 1.015; }
+.keeper-idle { transition: scale .45s ease; transform-origin: center bottom; }
+.restored-journey .journey-prerequisite { z-index: 15; }
+.restored-journey .section-write .journey-section-content { height: auto; min-height: 100svh; }
+@media (max-width: 700px), (min-aspect-ratio: 2/1) {
+  /* Keep every head and foot intact when a viewport cannot share the painting's ratio. */
+  .home-art-scroll { width: 100%; }
+}
+@media (max-width: 700px) {
+  .restored-page-heading { top: 82px; }
+  .restored-keeper .home-selection-heading { top: 13%; }
+  .restored-keeper .home-animal-lineup { bottom: 10%; }
+  .restored-home-enter { bottom: 9svh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .journey-scene-frame { filter: none !important; }
+  .keeper-idle { transition: none; }
+}

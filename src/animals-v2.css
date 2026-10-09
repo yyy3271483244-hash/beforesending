@@ -1,0 +1,26 @@
+.administrator.animal-v2 { background: transparent; }
+.animal-media { position: relative; display: block; width: 100%; height: 100%; }
+.animal-media > img, .animal-media > video {
+  display: block; width: 100%; height: 100%; object-fit: contain; background: transparent;
+  object-position: center bottom; filter: none; transform: none; transition: opacity 300ms ease;
+}
+.animal-media > video, .animal-media > .animal-action-image { position: absolute; inset: 0; }
+.administrator.animal-v2 > img {
+  display: block; width: 100%; height: 100%; object-fit: contain;
+  background: transparent; filter: none; transform: none;
+  animation: animal-material-in 200ms ease-out both;
+}
+.administrator-choice:hover .animal-v2,
+.administrator-choice:focus-visible .animal-v2 { transform: none; }
+.bs-thread-animal__viewport > .animal-v2 { width: 100%; height: 100%; }
+.packaging-administrator { position: absolute; right: 2%; top: 23%; width: 150px; height: 210px; z-index: 6; }
+.archive-companion { display: flex; align-items: center; justify-content: center; min-width: 0; font-size: var(--type-caption); }
+.archive-companion > .animal-v2 { width: 88px; height: 84px; flex-shrink: 0; }
+@media (max-width: 700px) {
+  .packaging-administrator { top: 11%; right: 2%; width: 78px; height: 104px; }
+  .archive-companion > .animal-v2 { width: 58px; height: 72px; }
+}
+@keyframes animal-material-in { from { opacity: .35; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .administrator.animal-v2 > img { animation: none; }
+}

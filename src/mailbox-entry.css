@@ -1,0 +1,7 @@
+/* Coordinates are tied to the unchanged 1456 x 816 illustration. */
+.restored-home .home-mail-slot {
+  position: absolute; left: 46.7%; top: 45.5%; width: 6.6%; height: 8.5%;
+  z-index: 8; border: 0; padding: 0; background: transparent; box-shadow: none;
+  border-radius: 0; cursor: pointer;
+}
+.home-mail-slot:focus-visible { outline: 1px dotted #887267; outline-offset: 3px; }

@@ -1,0 +1,184 @@
+/* Only the opening spread uses the isolated building. Later scenes stay intact. */
+.post-exterior {
+  --hero-ink: #49473c;
+  --hero-fine-ink: #746f61;
+  --hero-accent: #815c58;
+  --building-height: 96svh;
+  top: 0;
+  background: #f4f0e7;
+  color: var(--hero-ink);
+}
+
+.post-exterior::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/assets/art/paper-texture.png') center / 960px;
+  opacity: .18;
+  pointer-events: none;
+}
+
+.horizontal-journey[data-chapter='opening'] .postal-header {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+.post-exterior .post-hero-copy {
+  position: absolute;
+  z-index: 2;
+  left: 7%;
+  top: 48%;
+  transform: translateY(-42%);
+  width: 38%;
+  max-width: 560px;
+  text-align: left;
+}
+
+.post-exterior .post-hero-heading h1 {
+  margin: 0;
+  font: var(--type-h1)/1.04 var(--font-display-en);
+  letter-spacing: 0;
+  overflow-wrap: normal;
+}
+
+.post-exterior .post-hero-heading h1 span,
+.post-exterior .post-hero-subtitle span { display: block; }
+
+.post-exterior .post-hero-subtitle {
+  margin: 32px 0 0;
+  color: var(--hero-fine-ink);
+  font: var(--type-h3)/1.6 var(--font-body-en, var(--font-body-family);
+}
+
+.post-exterior .post-hero-enter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 100%;
+  min-height: 48px;
+  margin: 40px 0 0;
+  padding: 12px 24px;
+  border: 1px solid #8f8170;
+  border-radius: 2px;
+  color: var(--hero-ink);
+  background: transparent;
+  font: var(--type-caption)/1.5 var(--font-ui);
+  text-align: left;
+  box-shadow: 0 2px 0 #70665014;
+  transition: border-color .35s, box-shadow .35s;
+}
+
+.post-exterior .post-hero-enter svg { flex-shrink: 0; transition: transform .4s ease; }
+.post-exterior .post-hero-enter:hover,
+.post-exterior .post-hero-enter:focus-visible {
+  border-color: var(--hero-accent);
+  box-shadow: 0 3px 0 #70665020;
+}
+.post-exterior .post-hero-enter:hover svg,
+.post-exterior .post-hero-enter:focus-visible svg { transform: translateX(6px); }
+
+/* Compensate for the PNG's transparent margins without editing or stretching it.
+   Visible bounds: x 111..1092, y 12..1218 on the original 1199 x 1312 canvas. */
+.post-exterior .post-hero-artwork {
+  position: absolute;
+  right: calc(var(--building-height) * -.085);
+  bottom: calc(var(--building-height) * -.0716);
+  width: auto;
+  height: var(--building-height);
+  aspect-ratio: 1199 / 1312;
+  background: transparent;
+}
+
+.post-exterior .post-hero-artwork img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  background: transparent;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* The hotspot follows the door inside the image, not the whole art rectangle. */
+.post-exterior .post-hero-door {
+  position: absolute;
+  left: 54.35%;
+  top: 61%;
+  width: 10.7%;
+  min-width: 44px;
+  height: 27.5%;
+  transform: translateX(-50%);
+  padding: 0;
+  border: 0;
+  border-radius: 1px;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color .4s;
+}
+
+.post-exterior .post-hero-door:hover { background: #fff3d60a; }
+.post-exterior .post-hero-door:focus-visible {
+  outline: 2px solid var(--hero-accent);
+  outline-offset: 4px;
+  background: #fff3d60a;
+}
+
+@media (min-width: 1680px) {
+  .post-exterior .post-hero-heading h1 { font-size: var(--type-h1); }
+}
+
+@media (max-width: 1200px) {
+  .post-exterior .post-hero-heading h1 { font-size: var(--type-h1); }
+  .post-exterior .post-hero-copy { left: 6%; }
+  .post-exterior .post-hero-enter { gap: 16px; padding: 12px 16px; }
+}
+
+@media (max-width: 900px) {
+  .post-exterior .post-hero-heading h1 { font-size: var(--type-h1); }
+  .post-exterior .post-hero-subtitle { font-size: var(--type-body); }
+}
+
+/* Preserve the left/right relationship in portrait windows with a smaller,
+   complete silhouette. The door remains on-screen rather than cropping it. */
+@media (max-aspect-ratio: 6/5) {
+  .post-exterior { --building-height: min(88svh, 78vw); }
+  .post-exterior .post-hero-copy { top: 42%; width: 39%; }
+}
+
+@media (max-width: 700px) {
+  .post-exterior .post-hero-heading h1 { font-size: var(--type-h1); }
+  .post-exterior .post-hero-subtitle { font-size: var(--type-body); margin-top: 24px; }
+  .post-exterior .post-hero-enter { gap: 8px; padding: 8px 12px; margin-top: 24px; }
+}
+
+@media (max-width: 480px) {
+  .post-exterior .post-hero-heading h1 { font-size: var(--type-h2); }
+  .post-exterior .post-hero-subtitle { font-size: var(--type-caption); }
+  .post-exterior .post-hero-enter { padding: 8px; }
+  .post-exterior .post-hero-enter svg { width: 16px; }
+}
+
+@media (max-width: 700px) and (orientation: portrait) {
+  .post-exterior .post-hero-copy { top: 68%; }
+}
+
+@media (max-width: 350px) {
+  .post-exterior .post-hero-heading h1 { font-size: var(--type-h3); }
+}
+
+@media (max-height: 560px) {
+  .post-exterior .post-hero-copy { top: 52%; }
+  .post-exterior .post-hero-heading h1 { font-size: var(--type-h1); }
+  .post-exterior .post-hero-subtitle { margin-top: 16px; }
+  .post-exterior .post-hero-enter { margin-top: 16px; min-height: 40px; padding-top: 8px; padding-bottom: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-exterior .post-hero-enter,
+  .post-exterior .post-hero-enter svg,
+  .post-exterior .post-hero-door { transition: none; }
+  .post-exterior .post-hero-enter:hover svg,
+  .post-exterior .post-hero-enter:focus-visible svg { transform: none; }
+}

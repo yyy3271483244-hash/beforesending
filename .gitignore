@@ -1,0 +1,16 @@
+# Installed dependencies and Vite's local build output.
+node_modules/
+dist/
+
+# Local browser profiles, screenshots, and generated QA artifacts.
+edge-*/
+ui-preview/
+qa/
+qa-*/
+qa-evidence/
+tmp/
+
+# Local editor and operating-system files.
+.DS_Store
+Thumbs.db
+*.log

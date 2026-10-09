@@ -1,0 +1,207 @@
+/* Shared interface grid. Artwork and measured image hotspots are intentionally independent. */
+.restored-journey { --journey-gutter: var(--grid-gutter); font-size: var(--type-body); }
+:root[data-language='zh'] .restored-journey { font-weight: var(--weight-cn-body); }
+.restored-journey :is(h1,h2,h3,p,button,input,textarea,small,span,dt,dd,time) { letter-spacing: 0; }
+.restored-journey h1 { font-size: var(--type-h1); }
+.restored-journey h2 { font-size: var(--type-h2); }
+.restored-journey h3 { font-size: var(--type-h3); }
+.restored-journey :is(h1,h2,h3) { line-height: var(--leading-heading); }
+:root[data-language='zh'] .restored-journey :is(h1,h2,h3):not(.home-brand) { font-weight: var(--weight-cn-heading) !important; }
+.restored-journey :is(p,input,textarea) { font-size: var(--type-body); line-height: var(--leading-body); }
+.restored-journey :is(small,time) { font-size: var(--type-caption); line-height: var(--leading-small); }
+.restored-journey :is(.journey-link,.postal-button) { font-size: var(--type-nav); line-height: var(--leading-small); padding-block: var(--space-1); gap: var(--space-1); }
+.restored-journey :is(.journey-link,.postal-button):active:not(:disabled) { color: var(--thread-dark); translate: 0 1px; }
+.restored-journey .journey-grid { width: var(--grid-width); grid-template-columns: repeat(var(--grid-columns),minmax(0,1fr)); column-gap: var(--grid-gap); }
+
+/* One masthead, one language control, the same outer axis on every scene. */
+.restored-journey .postal-header,
+.restored-journey[data-chapter='opening'] .postal-header {
+  inset: 0 auto auto; left: var(--grid-edge); width: var(--grid-width); height: var(--space-7);
+  padding: 0; display: grid; grid-template-columns: repeat(12,minmax(0,1fr));
+  align-items: center; gap: var(--grid-gap);
+}
+.restored-journey .postal-wordmark { grid-column: 1 / 5; grid-row: 1; justify-self: start; font: italic var(--type-h3)/var(--leading-heading) var(--font-display-en) !important; }
+.restored-journey .restored-page-heading { position: static; translate: none; grid-column: 5 / 9; grid-row: 1; text-align: center; white-space: normal; font: var(--type-h2)/var(--leading-heading) var(--font-display); margin: 0; }
+.restored-journey .postal-header nav { grid-column: 9 / 12; grid-row: 1; display: flex; justify-content: flex-end; flex-wrap: wrap; gap: var(--space-1) var(--space-3); }
+.restored-journey .postal-header nav button { padding: var(--space-1) 0; font: var(--type-nav)/var(--leading-small) var(--font-body-family); white-space: nowrap; }
+@media (min-width: 1000px) {
+  .restored-journey .postal-header nav { width: max-content; justify-self: end; flex-wrap: nowrap; }
+}
+body:has(.restored-journey) .language-switch,
+body:has(.restored-journey[data-chapter='opening']) .language-switch { top: var(--space-4); right: var(--grid-edge); gap: var(--space-1); height: var(--space-4); }
+body:has(.restored-journey) .language-switch button { font-size: var(--type-caption); padding: 0; }
+.restored-journey .home-brand-scroll { top: 29svh; left: 50%; width: min(76vw,1460px); margin-inline: auto; translate: -50% 0; pointer-events: none; }
+.restored-journey .home-brand { display: grid; grid-template-columns: repeat(12,minmax(0,1fr)); column-gap: var(--grid-gap); font: 400 var(--type-display)/.88 var(--font-display-en); letter-spacing: .01em; }
+.home-title-before { grid-column: 3 / 6; justify-self: end; white-space: nowrap; }
+.home-title-sending { grid-column: 8 / 12; justify-self: start; padding-top: var(--space-2); white-space: nowrap; }
+.restored-journey[data-chapter='opening'] .postal-header nav { grid-column: 8 / 12; opacity: .8; }
+.restored-journey .postal-about { top: var(--space-7); right: var(--grid-edge); padding: var(--space-4); max-width: min(100% - var(--space-5), 480px); }
+.restored-journey .postal-about h2 { font-size: var(--type-h3); margin-bottom: var(--space-2); }
+.restored-journey .postal-about p { margin-bottom: var(--space-2); }
+.restored-journey .postal-notice { font-size: var(--type-caption); }
+
+/* Four equal three-column bays; portrait feet, names and roles share baselines. */
+.restored-keeper .home-selection-heading { top: var(--space-8); left: var(--grid-edge); width: var(--grid-width); padding: 0; transform: none; translate: none; }
+.restored-keeper .home-selection-heading h2 { font-size: var(--type-h2); line-height: var(--leading-heading); }
+.restored-keeper .home-animal-lineup { left: var(--grid-edge); right: auto; width: var(--grid-width); bottom: var(--space-2); display: grid; grid-template-columns: repeat(12,minmax(0,1fr)); gap: var(--grid-gap); align-items: end; }
+.restored-keeper .home-animal-choice { grid-column: span 3; min-width: 0; }
+.restored-keeper .administrator-choice { width: 100%; max-width: none; cursor: pointer; }
+.restored-keeper .administrator-choice > span:not(.keeper-portrait) { padding-top: var(--space-2); font-size: var(--type-h3); line-height: var(--leading-heading); }
+.restored-keeper .administrator-choice small { margin-top: var(--space-1); font-size: var(--type-caption); line-height: var(--leading-small); }
+.restored-keeper .administrator-choice:is(:hover,:focus-visible):not(:disabled) .keeper-idle { scale: 1.01; }
+.restored-keeper .restored-envelope-choices { width: var(--grid-width); display: grid; grid-template-columns: repeat(12,minmax(0,1fr)); gap: var(--grid-gap); bottom: var(--space-4); }
+.restored-envelope-choices button { width: 100%; font-size: var(--type-body); line-height: var(--leading-small); }
+.restored-envelope-choices button:nth-child(1) { grid-column: 4 / 6; }
+.restored-envelope-choices button:nth-child(2) { grid-column: 8 / 10; }
+.restored-envelope-choices span { margin-top: var(--space-1); }
+.restored-envelope-choices button:active img { translate: 0 -2px; }
+.restored-keeper .keeper-reselect { left: var(--grid-edge); bottom: var(--space-4); padding-block: var(--space-1); font-size: var(--type-caption); }
+.home-mail-slot .mail-slot-label { position: absolute; top: 100%; left: 50%; translate: -50% var(--space-1); white-space: nowrap; color: var(--thread-dark); font: var(--type-caption)/var(--leading-small) var(--font-body-family); opacity: 0; transition: opacity .65s ease; pointer-events: none; }
+.home-mail-slot:is(:hover,:focus-visible) .mail-slot-label { opacity: 1; }
+
+/* The letter occupies columns 3–10. Annotations and actions share its edges. */
+.restored-journey .journey-writing { width: var(--grid-width); margin: 0 auto; padding: var(--space-8) 0 var(--space-5); }
+.restored-journey .journey-sheet-scroll { width: calc((100% - var(--grid-gap) * 11) / 12 * 8 + var(--grid-gap) * 7); }
+.restored-journey .journey-paper-content { padding: var(--space-5) var(--space-5) calc(var(--space-8) + var(--space-6)); }
+.restored-journey .journey-to { font-size: var(--type-body); margin-bottom: var(--space-4); gap: var(--space-2); }
+.restored-journey .journey-to input::placeholder { font-size: var(--type-body); }
+.restored-journey .letter-editing-area textarea { font: var(--type-body)/var(--leading-body) var(--font-body-family); padding-right: var(--space-5); }
+.restored-journey .letter-editing-area textarea::placeholder { font-size: var(--type-body); }
+.restored-journey .journey-desk-paper-trigger span { font-size: var(--type-caption); padding: var(--space-1); }
+.restored-journey .paper-bottom-details { left: var(--space-5); right: var(--space-5); bottom: var(--space-4); }
+.restored-journey .restored-paper-colophon { font-size: var(--type-caption); }
+.restored-journey .writing-notes { width: 100%; padding: 0; margin-top: var(--space-3); }
+.restored-journey .writing-observations { gap: var(--space-1) var(--space-3); }
+.restored-journey .writing-observations :is(dt,dd) { font: var(--type-caption)/var(--leading-small) var(--font-body-family); }
+.restored-journey .journey-writing-actions { margin-top: var(--space-2); gap: var(--space-4); }
+.restored-journey .journey-writing-actions > button { font-size: var(--type-nav); }
+
+/* All remaining scene UI uses the same 12-column container, independent of the art. */
+.restored-journey :is(.journey-ritual,.waiting-grid) { margin: var(--space-8) auto var(--space-6); height: calc(100svh - var(--space-8) - var(--space-6)); align-items: center; }
+.restored-journey :is(.ritual-copy h2,.waiting-copy h1) { font-size: var(--type-h2); line-height: var(--leading-heading); }
+.restored-journey .ritual-copy { max-width: none; }
+.restored-journey :is(.ritual-copy > .journey-link,.journey-address) { margin-top: var(--space-4); }
+.restored-journey .ritual-copy .ritual-caption { font-size: var(--type-caption) !important; margin-top: var(--space-3); }
+.restored-journey :is(.journey-address label,.journey-recipient-modes,.envelope-carousel,.journey-stamp-rail,.sent-memory-controls) { gap: var(--space-2); }
+.restored-journey .journey-recipient-modes button { font-size: var(--type-nav); padding-block: var(--space-1); }
+.restored-journey .envelope-carousel { margin: var(--space-3) 0; font-size: var(--type-caption); }
+.restored-journey .journey-address label { margin-top: var(--space-2); }
+.restored-journey .journey-envelope-address { font-size: var(--type-body); }
+.restored-journey .pack-letter { padding: var(--space-3); }
+.restored-journey .pack-letter p { font-size: var(--type-caption); margin-top: var(--space-3); }
+.restored-journey .waiting-copy :is(p,li) { font-size: var(--type-body); }
+.restored-journey .waiting-copy small { font-size: var(--type-caption); }
+.restored-journey .waiting-copy :is(ol,p,.journey-link,small) { margin-top: var(--space-3); }
+.restored-journey .journey-prerequisite { font-size: var(--type-caption); bottom: var(--space-3); padding: var(--space-1); }
+
+.restored-journey .restored-bureau { inset: var(--space-8) 0 0; }
+.restored-bureau .post-scene-canvas { width: min(var(--grid-width),calc((100svh - var(--space-8) - var(--space-7)) * 1456 / 816)); }
+.restored-journey .restored-bureau-footer { left: var(--grid-edge); right: var(--grid-edge); bottom: var(--space-3); gap: var(--space-3); font-size: var(--type-caption); min-height: var(--space-5); }
+.restored-journey .restored-bureau .bureau-filters { gap: var(--space-1) var(--space-3); }
+.restored-journey .restored-bureau .bureau-filters button { padding: var(--space-1) 0; font-size: var(--type-caption); }
+.restored-journey .restored-bureau .postal-drawer-front > span { font-size: var(--type-caption); }
+.restored-journey .restored-bureau .postal-drawer-letter > span { font-size: var(--type-caption); }
+.restored-journey .restored-bureau .bureau-reading-paper { left: var(--grid-edge); right: var(--grid-edge); margin-inline: auto; max-width: calc((min(100vw - var(--grid-gutter) * 2, var(--grid-max)) - var(--grid-gap) * 11) / 12 * 8 + var(--grid-gap) * 7); padding: var(--space-5); }
+.restored-journey .bureau-reading-paper h2 { font-size: var(--type-h3); margin: var(--space-3) 0; }
+.restored-journey .bureau-reading-paper > div { font-size: var(--type-body); line-height: var(--leading-body); }
+.restored-journey .sent-memory-paper { inset: 0 var(--grid-edge); padding: var(--space-4); }
+.restored-journey .sent-memory-paper h2 { font-size: var(--type-h3); }
+.restored-journey .sent-memory-scroll { padding-block: var(--space-3); }
+.restored-journey .sent-letter-memory > .journey-link { right: var(--grid-edge); bottom: var(--space-7); font-size: var(--type-caption); }
+
+@media (max-width: 1100px) {
+  .restored-journey .postal-header nav { grid-column: 8 / 12; gap: var(--space-2); }
+  .restored-journey .restored-page-heading { grid-column: 4 / 8; }
+  .restored-journey .journey-sheet-scroll { width: calc((100% - var(--grid-gap) * 11) / 12 * 10 + var(--grid-gap) * 9); }
+}
+@media (max-width: 700px) {
+  .restored-journey .postal-header,
+  .restored-journey[data-chapter='opening'] .postal-header { height: var(--space-7); grid-template-rows: var(--space-5) var(--space-5); gap: 0 var(--grid-gap); }
+  .restored-journey .postal-wordmark { display: block; grid-column: 1 / 10; }
+  .restored-journey .postal-header nav,
+  .restored-journey[data-chapter='opening'] .postal-header nav { grid-column: 1 / 13; grid-row: 2; width: 100%; justify-content: flex-start; flex-wrap: wrap; gap: var(--space-2); }
+  .restored-journey .postal-header nav button { font-size: var(--type-nav); padding: 0; }
+  body:has(.restored-journey) .language-switch,
+  body:has(.restored-journey[data-chapter='opening']) .language-switch { top: var(--space-2); height: var(--space-4); }
+  .restored-journey .home-brand-scroll { top: var(--space-8); max-width: var(--grid-width); }
+  .restored-journey .home-brand { display: block; text-align: center; overflow-wrap: normal; }
+  .home-title-before, .home-title-sending { display: block; width: 100%; justify-self: auto; text-align: center; padding: 0; }
+  .restored-journey[data-chapter='opening'] .postal-header nav { grid-row: 2; align-self: center; }
+  .restored-journey[data-chapter='opening'] .postal-wordmark { display: none; }
+  .restored-journey .restored-page-heading { position: absolute; top: var(--space-7); left: 0; width: 100%; text-align: left; }
+  .restored-keeper .home-selection-heading { top: var(--space-8); }
+  .restored-keeper .home-animal-lineup { bottom: var(--space-2); gap: var(--space-2) var(--grid-gap); }
+  .restored-keeper .home-animal-choice { grid-column: span 6; }
+  .restored-keeper .administrator-choice > .keeper-portrait { height: min(18svh,160px); }
+  .restored-keeper .administrator-choice > span:not(.keeper-portrait) { padding-top: var(--space-1); }
+  .restored-keeper .administrator-choice small { margin-top: 0; }
+  .restored-keeper .restored-envelope-choices { bottom: var(--space-6); }
+  .restored-envelope-choices button:nth-child(1) { grid-column: 1 / 6; }
+  .restored-envelope-choices button:nth-child(2) { grid-column: 8 / 13; }
+  .restored-keeper .keeper-reselect { left: var(--grid-edge); bottom: var(--space-2); translate: none; }
+  .restored-journey .journey-writing { padding-top: calc(var(--space-8) + var(--space-4)); }
+  .restored-journey .journey-sheet-scroll { width: 100%; }
+  .restored-journey .journey-paper-content { padding: var(--space-3) var(--space-3) calc(var(--space-8) + var(--space-6)); }
+  .restored-journey .paper-bottom-details { left: var(--space-3); right: var(--space-3); bottom: var(--space-3); }
+  .restored-journey .letter-editing-area textarea { padding-right: var(--space-3); }
+  .restored-journey :is(.journey-ritual,.waiting-grid) { margin-top: var(--space-8); height: calc(100svh - var(--space-8) - var(--space-4)); row-gap: var(--space-2); }
+  .restored-journey :is(.ritual-copy > .journey-link,.journey-address) { margin-top: var(--space-2); }
+  .restored-journey .envelope-carousel { margin-block: var(--space-1); }
+  .restored-journey .ritual-copy .ritual-caption { margin-top: var(--space-1); }
+  .restored-journey .restored-bureau { inset: calc(var(--space-8) + var(--space-4)) 0 0; }
+  .restored-bureau .post-scene-canvas { width: var(--grid-width); top: var(--space-3); }
+  .restored-journey .restored-bureau-footer { bottom: var(--space-3); gap: var(--space-2); }
+  .restored-journey .restored-bureau .bureau-reading-paper { inset: 0 var(--grid-edge) var(--space-7); max-width: none; padding: var(--space-3); }
+  .restored-journey .sent-memory-paper { padding: var(--space-3); }
+}
+@media (min-width: 701px) and (max-height: 700px) { .restored-journey .home-brand-scroll { top: 23svh; } }
+
+/* Keep the postbox as the title's central divider; size steps preserve legibility. */
+.restored-journey .home-brand-scroll { left: 50%; width: min(76vw,1460px); max-width: none; --home-title-size: 88px; }
+.restored-journey .home-brand {
+  position: relative; display: block; height: .88em;
+  font-size: clamp(88px,var(--home-title-size),150px);
+  font-weight: 400 !important; font-style: normal; line-height: .92; letter-spacing: 0;
+}
+.restored-journey .home-title-before,
+.restored-journey .home-title-sending { position: absolute; bottom: 0; width: 41%; padding: 0; }
+.restored-journey .home-title-before img,
+.restored-journey .home-title-sending img { display: block; width: 100%; height: auto; }
+.restored-journey .home-title-before { left: clamp(16px,1.25vw,24px); }
+.restored-journey .home-title-sending { right: clamp(16px,1.25vw,24px); }
+@media (max-width: 1000px) {
+  .restored-journey .home-brand-scroll { width: min(88vw, 900px); }
+}
+@media (min-width: 1001px) and (max-width: 1600px) {
+  .restored-journey .home-brand-scroll { width: 76vw; }
+}
+@media (min-width: 1250px) { .restored-journey .home-brand-scroll { --home-title-size: 100px; } }
+@media (min-width: 1400px) { .restored-journey .home-brand-scroll { --home-title-size: 108px; } }
+@media (min-width: 1750px) { .restored-journey .home-brand-scroll { --home-title-size: 132px; } }
+@media (max-width: 700px) {
+  .restored-journey .home-brand { display: grid; height: auto; grid-template-columns: 1fr; row-gap: 12px; }
+  .restored-journey .home-title-before, .restored-journey .home-title-sending { position: static; grid-column: 1; justify-self: center; width: min(72vw, 360px); }
+}
+
+/* The intact scene is one image; only its title and real mailbox control overlay it. */
+.restored-home .home-brand-scroll { z-index: 3; }
+.restored-home .home-mail-slot { z-index: 4; }
+.home-brand-sr-only { position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.restored-journey .home-title-before { left: auto; right: 59%; }
+.restored-journey .home-title-sending { right: auto; left: 59%; }
+@media (min-width: 1001px) and (max-width: 1399px) {
+  .restored-journey .home-title-before { right: 56%; }
+  .restored-journey .home-title-sending { left: 56%; }
+}
+/* The archive art and measured hotspots share one cover-sized coordinate plane. */
+.restored-journey .restored-bureau { inset: 0; overflow: hidden; }
+.restored-journey .restored-bureau .post-scene-canvas {
+  position: absolute; left: 50%; top: 50%;
+  width: max(103%, calc(103svh * 1456 / 816));
+  height: max(103svh, calc(103vw * 816 / 1456));
+  max-width: none; aspect-ratio: 1456 / 816;
+  transform: translate(-50%, -50%);
+}
+.restored-journey[data-chapter='bureau'] .postal-header { background: transparent; }
+.restored-journey .restored-bureau-footer { pointer-events: none; }
+.restored-journey .restored-bureau-footer button { pointer-events: auto; }

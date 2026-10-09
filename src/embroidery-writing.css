@@ -1,0 +1,100 @@
+.embroidery-toolbar { display:flex; align-items:center; gap:12px; margin:0 0 20px; padding:7px 10px; border-block:1px solid #9c8b7b24; color:#746b62; }
+.embroidery-toolbar button { border:0; background:transparent; color:inherit; cursor:pointer; }
+.embroidery-colors,.embroidery-segments,.embroidery-sizes { display:flex; align-items:center; gap:5px; }
+.embroidery-colors button { width:18px; height:18px; border-radius:50%; background:var(--thread-color); box-shadow:inset 0 0 0 1px #574d4430; transition:transform .18s ease; }
+.embroidery-colors button:hover { transform:scale(1.12); }
+.embroidery-colors button.is-selected { outline:1px solid #776d63; outline-offset:2px; }
+.embroidery-segments { padding-inline:10px; border-inline:1px solid #9c8b7b2e; }
+.embroidery-segments button { padding:4px 7px; font:400 13px/1 var(--font-cn); }
+.embroidery-segments button.is-selected,.embroidery-sizes button.is-selected { color:#8f5968; border-bottom:1px solid currentColor; }
+.embroidery-sizes button { width:26px; height:24px; display:grid; place-items:center; }
+.embroidery-undo { width:28px; height:28px; display:grid; place-items:center; }
+.embroidery-undo svg { width:16px; }
+.journey-writing-paper textarea { color:var(--active-thread,#8f5968); text-shadow:.25px .2px 0 color-mix(in srgb,var(--active-thread) 65%,white); }
+.journey-writing-paper textarea[data-stitch-size='small'] { font-size:15px; }
+.journey-writing-paper textarea[data-stitch-size='medium'] { font-size:18px; }
+.journey-writing-paper textarea[data-stitch-size='large'] { font-size:22px; }
+.journey-writing-paper textarea[data-stitch-family='vintage'] { font-family:var(--font-cn); letter-spacing:.04em; }
+.journey-writing-paper textarea[data-stitch-family='ornate'] { font-family:var(--font-body-family); font-style:italic; }
+.restored-journey .letter-editing-area { position:relative; }
+.restored-journey .letter-editing-area .embroidered-text-layer {
+  position:absolute; z-index:2; inset:0; width:100%; min-height:120px; box-sizing:border-box;
+  padding:0 48px 0 0; white-space:pre-wrap; overflow-wrap:anywhere; pointer-events:none;
+  font:var(--type-h3)/1.9 var(--font-body-family); color:var(--active-thread,#8f5968);
+}
+.restored-journey .letter-editing-area .embroidered-text-layer[data-stitch-size='small'] { font-size:15px; }
+.restored-journey .letter-editing-area .embroidered-text-layer[data-stitch-size='medium'] { font-size:18px; }
+.restored-journey .letter-editing-area .embroidered-text-layer[data-stitch-size='large'] { font-size:22px; }
+.restored-journey .letter-editing-area .embroidered-text-layer[data-stitch-family='vintage'] { font-family:var(--font-cn); letter-spacing:.04em; }
+.restored-journey .letter-editing-area .embroidered-text-layer[data-stitch-family='ornate'] { font-family:var(--font-body-family); font-style:italic; }
+.embroidered-character {
+  color:transparent;
+  background-image:repeating-linear-gradient(118deg,
+    color-mix(in srgb,var(--active-thread,#8f5968) 84%,white) 0 1px,
+    color-mix(in srgb,var(--active-thread,#8f5968) 68%,#51484a) 1.2px 1.8px,
+    color-mix(in srgb,var(--active-thread,#8f5968) 88%,white) 2px 2.7px);
+  background-size:3px 3px; background-clip:text; -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 .35px 0 color-mix(in srgb,var(--active-thread,#8f5968) 58%,white);
+  filter:drop-shadow(0 .45px .35px color-mix(in srgb,var(--active-thread,#8f5968) 24%,transparent));
+}
+.embroidered-character.is-forming { clip-path:inset(0 100% 0 0); animation:stitch-form var(--fresh-stitch-duration,240ms) cubic-bezier(.18,.68,.22,1) forwards; }
+.receiver-replay-text { position:relative; color:transparent!important; }
+.receiver-replay-embroidery { position:absolute!important; z-index:1; inset:0; width:100%; height:100%; box-sizing:border-box; padding:inherit; white-space:pre-wrap; overflow-wrap:anywhere; font:inherit; color:var(--active-thread,#8f5968); }
+.receiver-replay-embroidery[data-stitch-family='vintage'] { font-family:var(--font-cn); letter-spacing:.04em; }
+.receiver-replay-embroidery[data-stitch-family='ornate'] { font-family:var(--font-body-family); font-style:italic; }
+.receiver-replay-embroidery[data-stitch-size='small'] { font-size:15px; }
+.receiver-replay-embroidery[data-stitch-size='medium'] { font-size:18px; }
+.receiver-replay-embroidery[data-stitch-size='large'] { font-size:22px; }
+.restored-journey .letter-editing-area textarea.is-embroidered {
+  position:relative; z-index:3; background:transparent; color:transparent;
+  -webkit-text-fill-color:transparent; caret-color:var(--active-thread,#8f5968);
+  /* The textarea stays only for selection and caret mechanics. Its inherited
+     text-shadow was still painting a second, offset glyph below EmbroideryText. */
+  text-shadow:none;
+}
+.restored-journey .letter-editing-area textarea.is-composing { color:var(--active-thread,#8f5968); -webkit-text-fill-color:var(--active-thread,#8f5968); }
+.journey-writing-paper { position:relative; }
+.stitching-thread-overlay { position:absolute; z-index:0; left:0; top:0; overflow:visible; pointer-events:none; }
+.stitching-thread-path { fill:none; stroke:var(--active-thread,#8f5968); stroke-width:1.25; stroke-linecap:round; opacity:.82; filter:drop-shadow(0 .4px .35px #fff9); }
+.stitching-spool { fill:#efe7d6; fill-opacity:.8; stroke:var(--active-thread,#8f5968); stroke-width:1; opacity:.9; }
+.stitching-spool-core { fill:none; stroke:var(--active-thread,#8f5968); stroke-width:.8; stroke-linecap:round; opacity:.8; }
+.stitching-spool-wind { fill:none; stroke:var(--active-thread,#8f5968); stroke-width:.7; stroke-linecap:round; opacity:.75; }
+.stitching-thread-overlay.is-paused .stitching-thread-path,
+.stitching-thread-overlay.is-weaving .stitching-thread-path { animation:thread-slack 2.4s ease-in-out infinite; }
+.active-embroidery-needle { position:absolute; z-index:10; width:72px; height:36px; pointer-events:none; filter:drop-shadow(0 1px 1px #fff9); }
+.active-embroidery-needle svg { display:block; width:72px; height:36px; overflow:visible; }
+.needle-body { fill:#b7b7ae; stroke:#3f4140; stroke-width:2.6; stroke-linejoin:round; filter:drop-shadow(0 1px 1px #584b485c); }
+.needle-highlight { fill:none; stroke:#fffdf4; stroke-width:1.15; stroke-linecap:round; opacity:.95; }
+.needle-eye { fill:#f5f1e7; stroke:#3f4140; stroke-width:2; }
+.active-embroidery-needle.is-paused svg,
+.active-embroidery-needle.is-weaving svg { animation:needle-rest 2.2s ease-in-out infinite; }
+.embroidered-character.is-forming { clip-path:inset(0 100% 0 0); animation:stitch-form var(--fresh-stitch-duration,240ms) cubic-bezier(.18,.68,.22,1) forwards; }
+@keyframes stitch-form { to { clip-path:inset(0 0 0 0); } }
+@keyframes thread-slack { 50% { opacity:.58; } }
+@keyframes needle-rest { 50% { opacity:.92; } }
+.writing-deletion-visual { position:absolute; z-index:8; width:min(240px,65vw); min-height:34px; pointer-events:none; transform-origin:left top; }
+.writing-deletion-words { display:block; max-width:100%; color:var(--active-thread,#8f5968); font:var(--type-body)/1.9 var(--font-body-family); white-space:pre-wrap; overflow-wrap:anywhere; text-shadow:0 .4px 0 #fff8; }
+.writing-deletion-visual[data-stitch-size='small'] .writing-deletion-words { font-size:15px; }
+.writing-deletion-visual[data-stitch-size='medium'] .writing-deletion-words { font-size:18px; }
+.writing-deletion-visual[data-stitch-size='large'] .writing-deletion-words { font-size:22px; }
+.writing-deletion-visual[data-stitch-family='vintage'] .writing-deletion-words { font-family:var(--font-cn); letter-spacing:.04em; }
+.writing-deletion-visual[data-stitch-family='ornate'] .writing-deletion-words { font-family:var(--font-body-family); font-style:italic; }
+.writing-deletion-visual.is-unpicking .writing-deletion-words { transform-origin:right center; animation:unpick-short var(--deletion-duration,240ms) ease-out both; }
+.writing-deletion-visual.is-concealing .writing-deletion-words { transform-origin:left center; animation:hide-behind-paper var(--deletion-duration,1250ms) cubic-bezier(.22,1,.36,1) both; }
+.writing-deletion-needlework { position:absolute; left:-8px; top:calc(100% - 16px); width:calc(100% + 18px); height:64px; overflow:visible; }
+.paper-puncture { fill:none; stroke:#777064; stroke-width:.8; stroke-dasharray:1 2; opacity:0; animation:paper-puncture-in 180ms ease-out 210ms forwards; }
+.conceal-thread-path { fill:none; stroke:var(--active-thread,#8f5968); stroke-width:1.35; stroke-linecap:round; stroke-dasharray:100; stroke-dashoffset:100; animation:thread-through-paper var(--deletion-duration,1250ms) cubic-bezier(.22,1,.36,1) forwards; }
+.needle-entry-hole,.needle-exit-hole { fill:#777064; opacity:0; animation:needle-hole-in 140ms ease-out 160ms forwards; }
+.conceal-needle { fill:none; stroke:#64635e; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; animation:needle-through var(--deletion-duration,1250ms) cubic-bezier(.22,1,.36,1) both; }
+.conceal-needle .needle-shaft { fill:#c6c0b3; stroke:#64635e; stroke-width:1.1; }
+.conceal-needle ellipse { fill:none; stroke:#64635e; stroke-width:1.1; }
+.conceal-needle .needle-point { fill:none; stroke:#64635e; stroke-width:1.8; }
+@keyframes unpick-short { 22% { transform:scaleX(.96); } 100% { transform:translateX(-2px) scaleX(.88); opacity:0; clip-path:inset(0 0 0 16%); } }
+@keyframes hide-behind-paper { 0%,14% { transform:translate(0,0) rotate(0) scaleY(1); clip-path:inset(0); opacity:1; } 34% { transform:translate(9px,3px) rotate(-2deg) scaleY(.92); clip-path:inset(0 0 0 2%); opacity:1; } 51% { transform:translate(23px,16px) rotate(5deg) scaleY(.64); clip-path:inset(0 0 10% 12%); opacity:.92; } 68% { transform:translate(42px,31px) rotate(9deg) scaleY(.28); clip-path:inset(12% 0 22% 42%); opacity:.58; } 82% { transform:translate(55px,40px) rotate(7deg) scaleY(.16); clip-path:inset(0 0 0 72%); opacity:.3; } 100% { transform:translate(64px,49px) rotate(4deg) scale(.62,.08); clip-path:inset(0 0 0 100%); opacity:0; } }
+@keyframes thread-through-paper { 16% { stroke-dashoffset:100; } 54% { stroke-dashoffset:58; } 88%,100% { stroke-dashoffset:0; } }
+@keyframes needle-through { 0% { transform:translate(0,0) rotate(-12deg); opacity:0; } 12% { opacity:1; } 42% { transform:translate(68px,17px) rotate(10deg); opacity:1; } 57% { transform:translate(94px,8px) rotate(-18deg); opacity:.35; } 73% { transform:translate(136px,-17px) rotate(-27deg); opacity:1; } 100% { transform:translate(184px,-25px) rotate(-27deg); opacity:0; } }
+@keyframes paper-puncture-in { to { opacity:.55; } }
+@media(max-width:700px){.embroidery-toolbar{flex-wrap:wrap}.embroidery-segments{order:3;border:0;padding:0;width:100%}}
+@media(max-width:700px){.restored-journey .letter-editing-area .embroidered-text-layer{padding-right:48px;font-size:var(--type-body);line-height:1.9}}
+@media(prefers-reduced-motion:reduce){.active-embroidery-needle,.embroidered-character.is-forming,.writing-deletion-visual,.writing-deletion-needlework *,.stitching-thread-overlay *{animation:none!important}.embroidered-character.is-forming{clip-path:none}.embroidery-colors button{transition:none}}

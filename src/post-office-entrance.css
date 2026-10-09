@@ -1,0 +1,100 @@
+.post-entrance {
+  --entry-ink: #514b40; --entry-thread: #79504e;
+  color: var(--entry-ink); background: #eee7d7; position: relative;
+  font-family: var(--font-body-family);
+}
+.post-entrance.act-outside { height: 185svh; }
+.entrance-fixed-stage { position: sticky; top: 0; width: 100%; height: 100svh; min-height: 480px; overflow: hidden; isolation: isolate; }
+.post-entrance button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; letter-spacing: 0; }
+.post-entrance button:focus-visible, .welcome-letter-scroll:focus-visible { outline: 2px solid #796450; outline-offset: 7px; }
+.post-entrance h1:focus { outline: none; }
+.entrance-masthead { position: absolute; inset: 0; z-index: 8; pointer-events: none; }
+.entrance-masthead > span { position: absolute; top: 26px; left: 32px; font-size: var(--type-body); line-height: 1.3; }
+.entrance-masthead small { display: block; font-size: var(--type-caption); margin-top: 5px; }
+.act-outside .entrance-masthead > span { left: 50%; top: 8svh; transform: translateX(-50%); text-align: center; }
+.entrance-masthead .entrance-skip { position: absolute; right: 30px; top: 25px; padding: 9px 3px; font-size: var(--type-caption); pointer-events: auto; border-bottom: 1px solid #786e5955; }
+.entrance-exterior { position: absolute; width: max(100vw, 177.6833svh); height: max(100svh, 56.2799vw); left: calc((100% - max(100vw, 177.6833svh)) / 2); top: calc((100% - max(100svh, 56.2799vw)) / 2); transform-origin: 50% 54%; will-change: transform; }
+.entrance-exterior > img { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; }
+.entrance-sign { position: absolute; left: 50%; top: 8.5%; transform: translateX(-50%); text-align: center; font-size: var(--type-body); line-height: 1.4; }
+.entrance-sign small { display: block; font-size: var(--type-caption); }
+.entrance-door { position: absolute; left: 39.8%; top: 20%; width: 19.2%; height: 55%; border-radius: 45% 45% 0 0; }
+.entrance-door:disabled { cursor: default; }
+.entrance-approach { position: absolute; bottom: 5svh; left: 50%; transform: translateX(-50%); text-align: center; }
+.entrance-approach button { padding: 12px 25px; background: #f4eedfde; box-shadow: 0 1px 0 #8d795744; white-space: nowrap; font-size: var(--type-body); }
+.entrance-approach span { margin-left: 16px; font-family: var(--font-body-family); }
+.entrance-room { position: absolute; inset: 0; transition: opacity .7s; }
+.entrance-room-art { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+.entrance-room .animal-v2 { position: absolute; width: 17%; max-width: 225px; height: 32%; max-height: 320px; }
+.entrance-room .welcome-cat { left: 12%; bottom: 26%; height: 29%; }
+.entrance-room .welcome-mouse { right: 5%; bottom: 49%; height: 25%; }
+.entrance-room .welcome-rabbit { right: 5%; bottom: 12%; height: 35%; }
+.entrance-room .welcome-dog { left: 8%; bottom: 9%; height: 28%; }
+.entrance-room-postbox { position: absolute; height: 30%; width: 12%; object-fit: contain; right: 27%; bottom: 28%; opacity: .84; }
+.entrance-welcome { position: absolute; left: 50%; top: 22%; transform: translateX(-50%); text-align: center; width: min(46%, 560px); }
+.entrance-welcome h1, .entrance-companions h1 { font-size: var(--type-h3); font-weight: 400; line-height: 1.8; margin: 0 0 26px; }
+.welcome-envelope { display: block; position: relative; width: min(100%, 340px); aspect-ratio: 600 / 440; margin: 0 auto; padding: 0; }
+.welcome-envelope > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.welcome-addressee { position: absolute; top: 65%; left: 10%; width: 80%; font-size: var(--type-body); }
+.welcome-knot { position: absolute; left: 49%; top: 0; height: 99%; border-left: 1px solid var(--entry-thread); }
+.welcome-knot::before { content: ''; position: absolute; width: 338px; max-width: 86vw; border-top: 1px solid var(--entry-thread); left: -166px; top: 47%; transform: rotate(-2deg); }
+.welcome-knot i { position: absolute; border: 1px solid var(--entry-thread); width: 38px; height: 16px; top: 40%; left: -33px; border-radius: 60% 50%; transform: rotate(28deg); }
+.welcome-knot i + i { left: -3px; transform: rotate(-30deg); }
+.welcome-invitation { margin: 18px 0 0; font-size: var(--type-caption); }
+.welcome-reading { position: absolute; inset: 0; padding: 90px 20px 24px; background: #292c2b80; display: flex; justify-content: center; }
+.act-letter .entrance-masthead { color: var(--entry-ink); }
+.welcome-letter-scroll { width: min(680px, 100%); height: 100%; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #a29479 #ece4d3; background: #f4efdf url('/assets/home-stage/paper-field.jpg') center / cover; box-shadow: 0 8px 30px #1b201d20; }
+.welcome-letter { padding: 48px 64px 55px; font-size: var(--type-body); line-height: 2.15; animation: welcome-paper-unfold .65s ease-out both; }
+.welcome-letter h1 { font-size: var(--type-h3); font-weight: 400; margin: 0 0 38px; }
+.welcome-letter p { margin: 0 0 24px; }
+.welcome-signature { text-align: right; margin-top: 40px !important; }
+.welcome-signature span { font-size: var(--type-caption); }
+.post-entrance .entrance-continue { display: block; margin: 45px auto 0; padding: 12px 0; border-bottom: 1px solid #8e7359; font-size: var(--type-body); }
+.entrance-continue span { margin-left: 14px; }
+.act-companions .entrance-room .animal-v2, .act-companions .entrance-room-postbox { visibility: hidden; }
+.entrance-companions { position: absolute; inset: 15% 6% 5%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.entrance-companion-lineup { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: min(950px, 100%); gap: 20px; }
+.entrance-companion { padding: 10px 6px; }
+.entrance-companion .animal-v2 { height: min(35svh, 300px); width: 100%; }
+.entrance-companion > span { display: inline-block; margin-top: 12px; border-bottom: 1px solid transparent; padding-bottom: 5px; }
+.entrance-companion:hover > span { border-color: #8e7359; }
+.post-entrance .entrance-alone { margin: 30px 0 0; font-size: var(--type-caption); padding: 10px; border-bottom: 1px solid #8e735955; }
+@keyframes welcome-paper-unfold { from { opacity: .2; clip-path: inset(4% 0 4%); } to { opacity: 1; clip-path: inset(0); } }
+@media (max-width: 700px) {
+  .entrance-fixed-stage { min-height: 440px; }
+  .entrance-masthead > span { left: 20px; top: 20px; font-size: var(--type-body); }
+  .act-outside .entrance-masthead > span { top: 8svh; }
+  .entrance-masthead .entrance-skip { top: 15px; right: 17px; font-size: var(--type-caption); }
+  .entrance-approach { bottom: 7svh; }
+  .entrance-welcome { top: 18%; width: 72%; }
+  .entrance-welcome h1, .entrance-companions h1 { font-size: var(--type-h3); margin-bottom: 20px; }
+  .welcome-envelope { width: min(100%, 290px); }
+  .welcome-addressee { font-size: var(--type-caption); }
+  .welcome-knot::before { width: 250px; left: -124px; }
+  .entrance-room-art { object-fit: fill; }
+  .entrance-room .animal-v2 { width: 30%; }
+  .entrance-room .welcome-cat { left: 4%; bottom: 24%; height: 20%; }
+  .entrance-room .welcome-mouse { right: 3%; bottom: 25%; height: 19%; }
+  .entrance-room .welcome-dog { left: 12%; bottom: 3%; height: 22%; }
+  .entrance-room .welcome-rabbit { right: 8%; bottom: 3%; height: 25%; }
+  .entrance-room-postbox { display: none; }
+  .welcome-reading { padding: 79px 14px 18px; }
+  .welcome-letter { padding: 32px 27px 40px; font-size: var(--type-body); line-height: 2.1; }
+  .welcome-letter h1 { font-size: var(--type-body); margin-bottom: 28px; }
+  .entrance-companions { inset: 12% 6% 3%; }
+  .entrance-companion-lineup { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 26px; max-width: 420px; }
+  .entrance-companion .animal-v2 { height: min(22svh, 205px); }
+  .entrance-companion > span { margin-top: 4px; font-size: var(--type-nav); }
+  .post-entrance .entrance-alone { margin-top: 10px; }
+}
+@media (max-height: 560px) and (min-width: 701px) {
+  .entrance-welcome { top: 17%; }
+  .entrance-welcome h1 { font-size: var(--type-h3); margin-bottom: 8px; }
+  .welcome-envelope { width: 235px; }
+  .welcome-knot::before { width: 232px; left: -114px; }
+  .welcome-letter { padding-top: 26px; }
+  .entrance-companions { inset: 18% 8% 1%; }
+  .entrance-companions h1 { margin-bottom: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .post-entrance *, .post-entrance *::before { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

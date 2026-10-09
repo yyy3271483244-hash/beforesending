@@ -1,0 +1,136 @@
+@font-face {
+  font-family: 'Comico';
+  src: url('/fonts/comico/Comico-Regular.woff2') format('woff2'), url('/fonts/comico/Comico-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PFanHuTuTi';
+  src: url('/fonts/PFanHuTuTi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  /* Keep Latin letters and digits in the existing English/UI fonts. */
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3100-312F, U+31A0-31BF, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF01-FF0F, U+FF1A-FF20, U+FF3B-FF40, U+FF5B-FF65, U+20000-2FA1F;
+}
+:root {
+  --font-cn: 'PFanHuTuTi', var(--font-legacy-zh), sans-serif;
+  --font-en: 'Comico', var(--font-cn);
+  --font-legacy-zh: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'SimSun', serif;
+  --font-display-zh: var(--font-cn);
+  --font-body-zh: var(--font-display-zh);
+  --font-ui-zh: var(--font-cn);
+  --font-display-en: var(--font-en);
+  --font-body-en: var(--font-en);
+  --font-ui-en: var(--font-en);
+  --leading-body-zh: 1.8; --leading-body-en: 1.8;
+  --leading-heading: 1.3; --leading-small: 1.5;
+  --tracking-body: 0; --tracking-heading: 0; --tracking-label: 0;
+  --grid-max: 1312px; --grid-gutter: 64px; --grid-gap: 24px; --grid-columns: 12;
+  --grid-width: min(calc(100% - var(--grid-gutter) * 2), var(--grid-max));
+  --grid-edge: max(var(--grid-gutter), calc((100% - var(--grid-max)) / 2));
+  --space-half: 4px; --space-1: 8px; --space-2: 16px; --space-3: 24px;
+  --space-4: 32px; --space-5: 48px; --space-6: 64px; --space-7: 96px; --space-8: 128px;
+  --type-display: clamp(150px, 10vw, 205px);
+  --type-h1: clamp(56px, 3.34vw, 64px);
+  --type-h2: clamp(38px, 2.3vw, 44px);
+  --type-h3: clamp(28px, 1.57vw, 30px);
+  --type-nav: clamp(22px, 1.2vw, 24px);
+  --type-body: clamp(17px, 1vw, 20px);
+  --type-caption: clamp(14px, .82vw, 16px);
+  --weight-cn-body: 400; --weight-cn-heading: 400; --weight-cn-nav: 400;
+  --font-functional: var(--font-cn);
+}
+/* typography.zh and typography.en intentionally have separate density and scale. */
+:root, :root[data-language='zh'] {
+  --font-display: var(--font-display-zh); --font-body-family: var(--font-body-zh); --font-ui: var(--font-ui-zh);
+  --text-display: var(--type-display); --text-h1: var(--type-h1); --text-h2: var(--type-h2);
+  --text-body-lg: var(--type-body); --text-body: var(--type-body); --text-small: var(--type-nav); --text-micro: var(--type-caption);
+  --leading-body: var(--leading-body-zh);
+}
+:root[data-language='en'] {
+  --font-functional: 'Comico', sans-serif;
+  --font-display: var(--font-display-en); --font-body-family: var(--font-body-en); --font-ui: var(--font-ui-en);
+  --text-display: var(--type-display); --text-h1: var(--type-h1); --text-h2: var(--type-h2);
+  --text-body-lg: var(--type-body); --text-body: var(--type-body); --text-small: var(--type-nav); --text-micro: var(--type-caption);
+  --leading-body: var(--leading-body-en);
+}
+:root {
+  --font-display-xl: var(--text-display); --font-display-lg: var(--text-display);
+  --font-h1: var(--text-h1); --font-h2: var(--text-h2); --font-h3: var(--text-h2);
+  --font-body-lg: var(--text-body-lg); --font-body: var(--text-body); --font-body-sm: var(--text-small);
+  --font-caption: var(--text-micro); --font-micro: var(--text-micro);
+  --line-display: var(--leading-heading); --line-heading: var(--leading-heading); --line-body: var(--leading-body);
+}
+html, body { font-family:var(--font-body-family); font-size: var(--text-body); line-height: var(--leading-body); letter-spacing: 0; color: #62675e; }
+* { font-synthesis: none; }
+button, input, select, textarea { font: inherit; letter-spacing: 0; }
+h1, h2, h3 { font-family:var(--font-body-family); line-height: var(--leading-heading); letter-spacing: 0; }
+h1 { font-size: var(--text-h1); } h2,h3 { font-size: var(--text-h2); }
+small, time { font-size: var(--text-micro); line-height: var(--leading-small); }
+:root[data-language='zh'] body { font-weight: var(--weight-cn-body); }
+:root[data-language='zh'] :is(h1,h2,h3) { font-weight: var(--weight-cn-heading); }
+:root[data-language='zh'] :is(button,nav,.language-switch) { font-weight: var(--weight-cn-nav); }
+.post-entrance, .living-writing, .living-reading, .living-replay, .table-room, .archive-page, .postal-waiting { font-family:var(--font-body-family); }
+.welcome-letter, .living-letter-text, .letter-editing-area textarea, .reading-text-area { font-family:var(--font-body-family); font-size: var(--text-body); line-height: var(--leading-body); text-align: left; }
+.welcome-letter p { margin-bottom: var(--space-3); }
+.welcome-letter h1 { font-size: var(--text-h2); line-height: var(--leading-heading); }
+.room-header nav, .language-switch, .flow-replay-controls, .replay-margin-controls, .preparation-details, .recipient-modes, .cabinet-footer, .table-footer { font-family:var(--font-body-family); font-size: var(--text-small); line-height: var(--leading-small); }
+.room-header { padding-right: calc(var(--grid-gutter) + 80px); padding-left: var(--grid-gutter); }
+.room-header h1 { font-size: var(--text-h2); }
+.room-header .room-brand { font-family:var(--font-body-family); font-size: var(--text-h2); }
+.room-header nav button, .writing-margin-actions button { font-size: var(--text-small); }
+.language-switch { position: fixed; z-index: 220; top: 28px; right: 24px; display: flex; gap: 8px; align-items: center; color: #575346; }
+.language-switch button { padding: 4px 0; border: 0; background: none; font-family:var(--font-body-family); font-size: var(--text-micro); line-height: 1.5; color: inherit; opacity: .48; cursor: pointer; }
+.language-switch button[aria-pressed='true'] { opacity: 1; }
+.language-switch button:focus-visible { outline: 1px solid currentColor; outline-offset: 4px; }
+.language-switch > span { opacity: .35; }
+body:has(.writing-flow[data-phase='write']) .language-switch,
+body:has(.writing-flow[data-phase='replay']) .language-switch { color: #eeeadd; }
+.entrance-masthead .entrance-skip { right: 112px; font-size: var(--text-micro); }
+.entrance-sign { font-family:var(--font-body-family); font-size: var(--text-body-lg); }
+.entrance-sign small { font-family:var(--font-body-family); font-size: var(--text-micro); }
+.entrance-approach button { font-size: var(--text-body); }
+.welcome-ritual .welcome-greeting { font-size: var(--text-h2); }
+.entrance-companions { max-width: var(--grid-max); margin-inline: auto; }
+.entrance-companion-lineup { display: grid; grid-template-columns: repeat(12,minmax(0,1fr)); gap: var(--grid-gap); }
+.entrance-companion { grid-column: span 3; }
+.entrance-companion:nth-child(2) .animal-v2 { padding-top: 8px; }
+.entrance-companion:nth-child(4) .animal-v2 { padding-top: 16px; }
+.entrance-companions h1 { max-width: 860px; min-height: calc(var(--text-h1) * 1.4); font-size: var(--text-h1); }
+.companion-introduction { font-size: var(--text-micro); line-height: var(--leading-small); }
+.decision-heading { font-size: var(--text-body-lg); }
+.welcome-floating-paper { max-width: 720px; }
+.welcome-letter { padding: var(--space-5) var(--space-6); }
+.welcome-letter .welcome-signature { text-align: right; }
+.welcome-letter .entrance-continue { font-size: var(--text-body); }
+.flow-replay-note, .replay-time-note, .pause-duration, .archive-caption { font-size: var(--text-micro); line-height: var(--leading-small); }
+.preparation-details { gap: var(--space-3); }
+.preparation-details small { font-size: var(--text-micro); }
+.postal-thought { font-size: var(--text-body-lg); line-height: var(--leading-body); }
+[data-language='en'] .companion-introduction { height: 64px; }
+[data-language='en'] .preparation-details { max-width: 900px; }
+[data-language='en'] .writing-margin-actions { gap: var(--space-3); }
+@media (max-width: 1100px) { :root { --grid-gutter: 32px; } .room-header h1 { display: none; } .room-header { grid-template-columns: 1fr auto; } }
+@media (max-width: 700px) {
+  :root { --grid-gutter: 24px; --grid-gap: 16px; --type-display: clamp(58px, 18vw, 96px); --type-h1: clamp(40px, 10vw, 52px); --type-h2: clamp(30px, 7vw, 38px); --type-h3: 24px; --type-body: 17px; --type-caption: 14px; --type-nav: 17px; }
+  .room-header, .reading-flow-header .room-header, .desk-viewport > .room-header { padding: 20px 92px 20px 20px; gap: 8px; grid-template-columns: minmax(0,1fr) auto; }
+  .room-header .room-brand, .reading-flow-header .room-brand { font-size: var(--text-body); white-space: normal; }
+  .room-header nav, .reading-flow-header .room-header nav { gap: 12px; }
+  .room-header nav button { font-size: var(--text-micro); }
+  .language-switch { top: 23px; right: 18px; gap: 6px; }
+  .entrance-masthead .entrance-skip { top: 22px; right: 92px; max-width: 130px; line-height: 1.4; }
+  .entrance-masthead > span { max-width: 112px; font-size: var(--text-body); }
+  .entrance-sign { font-size: var(--text-body-lg); }
+  .welcome-letter { padding: var(--space-4) var(--space-3); }
+  .entrance-companions h1 { min-height: 68px; font-size: var(--text-h2); max-width: 380px; }
+  .entrance-companion-lineup { grid-template-columns: repeat(12,minmax(0,1fr)); }
+  .companion-introduction, [data-language='en'] .companion-introduction { height: 110px; }
+  .entrance-companion > span { font-size: var(--text-small); }
+  .decision-heading { font-size: var(--text-body-lg); }
+  .decision-paper-label { font-size: var(--text-small); }
+  .entrance-companions { gap: var(--space-2); }
+  .preparation-details { gap: 12px; font-size: var(--text-micro); }
+  .postal-actions { padding-inline: var(--space-3); flex-wrap: wrap; }
+}

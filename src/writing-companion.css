@@ -1,0 +1,56 @@
+.restored-journey .journey-writing .desk-writing-companion {
+  position: fixed;
+  left: var(--companion-left, 12px);
+  top: var(--companion-top, 65%);
+  height: clamp(245px, 32svh, 350px);
+  width: auto;
+  aspect-ratio: 0.72;
+  z-index: 20;
+  padding: 0;
+  pointer-events: auto;
+}
+.restored-journey .desk-writing-companion[data-visible='false'] {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.restored-journey .journey-writing-stage[data-desk-state='write'] .desk-writing-companion[data-visible='true'] {
+  visibility: visible;
+  opacity: 1;
+}
+.restored-journey .desk-writing-companion .animal-v2 { width: 100%; height: 100%; opacity: 1; }
+.restored-journey .desk-writing-companion .animal-media > img {
+  object-position: center bottom;
+  transition: opacity 100ms steps(2, end);
+}
+/* The supplied character frames include a warm paper canvas. In the writing
+   scene it is composited into the desk rather than displayed as a rectangle. */
+.restored-journey .desk-writing-companion .writing-companion-cutout .animal-media > img,
+.restored-journey .desk-writing-companion .writing-companion-cutout .animal-media > video {
+  mix-blend-mode: multiply;
+  isolation: isolate;
+}
+.restored-journey .desk-writing-companion .writing-companion-cutout.activity-sewing .animal-action-image {
+  transform-origin: 50% 78%;
+  animation: companion-sewing-stitch .42s cubic-bezier(.22,1,.36,1) 3 alternate;
+}
+@keyframes companion-sewing-stitch {
+  from { transform: translate3d(0, 0, 0) rotate(-1deg); }
+  to { transform: translate3d(2px, -5px, 0) rotate(1.25deg); }
+}
+/* Narrow screens reserve their own ground area, never the paper or controls. */
+.restored-journey .journey-writing .desk-writing-companion[data-placement='below'] {
+  position: relative;
+  left: auto;
+  top: auto;
+  align-self: flex-start;
+  margin: 16px 0 8px 16px;
+}
+.restored-journey .journey-writing .desk-writing-companion[data-placement='below'][data-visible='false'] {
+  height: 0;
+  margin-block: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .restored-journey .desk-writing-companion .animal-media > img,
+  .restored-journey .desk-writing-companion .writing-companion-cutout.activity-sewing .animal-action-image { transition: none; animation: none; }
+}

@@ -1,0 +1,120 @@
+.mint-journey { --mint-ink: #454c40; --mint-sage: #87937c; --mint-rose: #a36d62; --mint-paper: #f5eedc; height: 100svh; touch-action: pan-y; }
+.postal-header { position: absolute; inset: 0 0 auto; height: 76px; z-index: 40; display: flex; align-items: center; gap: 48px; padding: 8px 112px 8px 48px; border-bottom: 1px solid #8e917d55; background: #f4edde url('/assets/art/paper-texture.png') center / 800px; }
+.postal-wordmark { padding: 0; flex-shrink: 0; font: italic var(--type-h2)/1.15 var(--font-body-family) !important; color: #46473c; text-align: left; }
+.postal-wordmark small { display: block; margin-top: 4px; font: var(--type-caption)/1.3 var(--font-ui); }
+.postal-header nav { display: flex; align-items: center; justify-content: center; gap: 32px; margin-left: auto; }
+.postal-header nav button { font-size: var(--type-nav); padding: 8px 0; color: #474a3e; border-bottom: 1px solid transparent; white-space: nowrap; }
+.postal-header nav button[aria-current='page'], .postal-header nav button:hover { border-color: #a06a5a; }
+.post-scene { position: absolute; inset: 76px 0 0; overflow: hidden; background: #dbe2d2; }
+.post-scene-canvas { position: absolute; width: max(100%,calc((100svh - 76px) * 1672 / 941)); height: max(100%,calc(100vw * 941 / 1672)); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.post-scene-background { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; user-select: none; }
+.postal-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; border: 1px solid #8c907b; border-radius: 6px; padding: 12px 24px; background: #f3ecdc url('/assets/art/paper-texture.png') center / 720px; color: #4d5143; font: var(--type-body)/1.4 var(--font-body-family); box-shadow: 0 3px 0 #71695420,0 5px 12px #423f3215; transition: transform .3s,box-shadow .3s,background-position .4s; }
+.postal-button:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 4px 0 #71695420,0 8px 16px #423f3226; background-position: 2px 1px; }
+.postal-button:active:not(:disabled) { transform: translateY(1px); }
+.postal-button.is-rose { background-color: #ad776b; background-blend-mode: multiply; color: #fff8e9; border-color: #936252; }
+.post-office-sign { position: absolute; top: 7.6%; left: 35%; width: 30%; height: 11%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #54523c; }
+.post-office-sign h1 { font: italic var(--type-h1)/1.15 var(--font-body-family); white-space: nowrap; }
+.post-office-sign p { font-size: var(--type-caption); line-height: 1.4; margin-top: 8px; text-align: center; }
+.post-exterior-invitation { position: absolute; bottom: 16px; left: 16%; right: 16%; text-align: center; color: #464637; }
+.post-exterior-invitation > p { font-size: var(--type-body); line-height: 1.5; margin-bottom: 12px; text-shadow: 0 1px 4px #fff5dd; }
+.post-exterior-invitation small { display: block; font-size: var(--type-caption); margin-top: 8px; }
+.cat-dialogue { position: absolute; top: 12%; left: 29%; width: 350px; min-height: 144px; padding: 24px 32px; color: #484b3d; border-radius: 7px 5px 8px 4px; background: #f5ecd8 url('/assets/art/paper-texture.png') center / 700px; border: 1px solid #b7ad9140; box-shadow: 0 6px 12px #483b2220; text-align: left; }
+.cat-dialogue > span { display: block; font-size: var(--type-h3); line-height: 1.6; }
+.cat-dialogue > svg { display: block; margin: 12px 0 0 auto; }
+.counter-cat-hotspot { position: absolute; left: 27%; top: 40%; width: 21%; height: 20%; background: transparent; padding: 0; border: 0; }
+.counter-cat-hotspot:hover { background: #fff8df08; }
+.counter-choices { position: absolute; left: 29%; right: 18%; bottom: 13%; display: flex; justify-content: center; flex-wrap: wrap; gap: 16px 24px; }
+.counter-looking { flex-basis: 100%; width: fit-content; padding: 0; margin-top: 4px; color: #434b3d; font-size: var(--type-caption); text-decoration: underline; text-underline-offset: 6px; }
+.counter-companions { position: absolute; inset: 8% 10% 10%; background: #f4efdfef url('/assets/art/paper-texture.png') center / 900px; padding: 32px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; box-shadow: 0 8px 24px #34423826; }
+.counter-companions h2 { font-size: var(--type-h2); text-align: center; }
+.counter-companion-row { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 24px; width: 100%; max-width: 1056px; min-height: 0; }
+.counter-companion { display: flex; flex-direction: column; align-items: center; color: #515647; padding: 0; min-width: 0; }
+.counter-companion .animal-v2 { width: 100%; height: min(32svh,260px); }
+.counter-companion > span { font-size: var(--type-h3); margin-top: 8px; }
+.counter-companion > small { font: var(--type-caption)/1.5 var(--font-ui); margin-top: 8px; }
+.counter-companion[aria-pressed='true'] > span { color: #9b605b; text-decoration: underline; text-underline-offset: 6px; }
+.bureau-heading { position: absolute; left: 24%; right: 20%; top: 7%; text-align: center; color: #343e35; }
+.bureau-heading h1 { font-size: var(--type-h1); line-height: 1.2; }
+.bureau-heading p { margin-top: 12px; font-size: var(--type-body); line-height: 1.5; }
+.bureau-filters { position: absolute; top: 24%; left: 20%; right: 13%; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; z-index: 3; }
+.bureau-filters button { min-height: 36px; padding: 6px 12px; border: 1px solid #92998270; background: #f6eedcd9; border-radius: 4px; font-size: var(--type-caption); color: #4d5649; display: inline-flex; gap: 8px; align-items: center; }
+.bureau-filters button[aria-pressed='true'] { background: #b0baa1; border-color: #7e8c70; color: #303d2c; }
+.bureau-filters button:hover { border-color: #687659; }
+.drawer-grid { position: absolute; inset: 0; pointer-events: none; }
+.postal-drawer { position: absolute; z-index: 2; pointer-events: auto; }
+.postal-drawer.is-open { z-index: 5; }
+.postal-drawer-front { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background-repeat: no-repeat; transition: transform .5s,box-shadow .5s; }
+.postal-drawer-front:hover, .postal-drawer-front:focus-visible { transform: translateY(3px); box-shadow: 0 5px 8px #332a2340; }
+.postal-drawer-front > span { position: absolute; top: 30%; left: 28%; width: 44%; height: 25%; font-size: var(--type-caption); line-height: 1.3; display: flex; align-items: center; justify-content: center; color: #464333; white-space: nowrap; }
+.postal-drawer.is-open .postal-drawer-front { transform: translateY(24%); box-shadow: 0 8px 8px #352a2545; }
+.postal-drawer.is-dimmed { opacity: .2; pointer-events: none; }
+.postal-drawer-letter { position: absolute; width: 58%; height: 90%; top: -24%; left: 21%; padding: 0; border: 0; background: transparent; }
+.postal-drawer-letter img { width: 100%; height: 100%; object-fit: contain; }
+.letter-preview-paper { position: absolute; top: 36%; right: 3%; width: 26%; max-width: 360px; max-height: 59%; padding: 24px; background: #f8efdc url('/assets/art/paper-texture.png') center / 720px; box-shadow: 0 5px 16px #394a3229; color: #424937; overflow-y: auto; z-index: 10; }
+.preview-meta { display: flex; justify-content: space-between; align-items: center; font-size: var(--type-caption); }
+.letter-preview-paper h2 { margin: 8px 0 16px; font-size: var(--type-h3); }
+.letter-preview-paper p { font-size: var(--type-body); line-height: 1.7; }
+.letter-preview-paper .postal-button { margin-top: 24px; width: 100%; font-size: var(--type-body); }
+.letter-preview-paper small { display: block; padding-top: 16px; margin-top: 16px; border-top: 1px solid #9b9c8644; font-size: var(--type-caption); }
+.bureau-reading-paper { position: absolute; inset: 8% 18% 6%; padding: 48px 64px; background: #fbf3e5 url('/assets/writing-desk/reading-paper.png') center / 100% 100%; color: #464e40; overflow-y: auto; overscroll-behavior: contain; z-index: 15; box-shadow: 0 12px 32px #35473330; }
+.bureau-reading-paper h2 { font-size: var(--type-h2); margin: 24px 0; }
+.bureau-reading-paper > div { white-space: pre-wrap; font-size: var(--type-body); line-height: var(--leading-body); }
+.bureau-reading-paper > .journey-link { margin-top: 24px; }
+.bureau-close { position: absolute; right: 16px; top: 16px; }
+.postal-notice { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 8px 16px; z-index: 50; background: #f6f0e1; color: #706252; font-size: var(--type-caption); text-align: center; }
+.postal-about { position: absolute; z-index: 50; right: 32px; top: 88px; width: min(480px,90%); padding: 32px; background: #f5efdf url('/assets/art/paper-texture.png') center / 720px; box-shadow: 0 8px 24px #283d2a35; }
+.postal-about > button { float: right; }
+.postal-about h2 { font-size: var(--type-h2); margin-bottom: 24px; }
+.postal-about p { font-size: var(--type-body); line-height: 1.8; }
+.postal-about small { display: block; margin-top: 24px; font-size: var(--type-caption); line-height: 1.6; }
+.mint-journey .journey-grid { height: calc(100svh - 132px); margin: 100px auto 32px; }
+.mint-journey .journey-writing-actions { background: transparent; box-shadow: none; }
+.mint-journey .journey-address label { white-space: nowrap; }
+.mint-journey .journey-desk-paper-trigger span { white-space: nowrap; }
+@media (max-width: 1100px) {
+  .postal-header { padding-left: 24px; gap: 24px; }
+  .postal-header nav { gap: 16px; }
+  .postal-header nav button { font-size: var(--type-caption); }
+  .postal-wordmark { font-size: var(--type-h3) !important; }
+  .post-office-sign h1, .bureau-heading h1 { font-size: var(--type-h2); }
+  .bureau-filters button { font-size: var(--type-caption); padding: 6px 8px; }
+  .cat-dialogue { width: 320px; padding: 24px; }
+  .counter-choices { left: 25%; right: 12%; }
+  .postal-button { font-size: var(--type-body); }
+  .letter-preview-paper { padding: 16px; }
+}
+/* Small screens keep a landscape scene, never a simulated portrait device. */
+@media (max-width: 700px) {
+  .postal-header { height: 104px; padding: 12px 24px; flex-wrap: wrap; gap: 8px; }
+  .postal-wordmark { font-size: var(--type-h3) !important; }
+  .postal-wordmark small { display: none; }
+  .postal-header nav { width: 100%; margin: 0; justify-content: space-between; gap: 12px; overflow-x: auto; }
+  .postal-header nav button { font-size: var(--type-caption); }
+  .post-scene { top: 104px; }
+  .post-scene-canvas { width: max(100%,calc((100svh - 104px) * 1672 / 941)); }
+  .post-office-sign h1 { font-size: var(--type-h2); }
+  .post-exterior-invitation { left: 8%; right: 8%; bottom: 24px; padding: 16px; background: #f7efdcdb; }
+  .post-exterior-invitation p { font-size: var(--type-body); }
+  .cat-dialogue { left: 8%; width: 84%; top: 12%; }
+  .counter-choices { left: 8%; right: 8%; bottom: 8%; gap: 12px; }
+  .counter-choices .postal-button { width: 100%; }
+  .counter-companions { inset: 3% 5%; padding: 16px; }
+  .counter-companions h2 { font-size: var(--type-h3); }
+  .counter-companion-row { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+  .counter-companion .animal-v2 { height: 140px; }
+  .counter-companion small { font-size: var(--type-caption); }
+  .post-bureau .post-scene-canvas { width: 920px; height: 518px; top: 46%; }
+  .bureau-heading { top: 4%; left: 30%; right: 30%; }
+  .bureau-heading h1 { font-size: var(--type-h3); }
+  .bureau-heading p { font-size: var(--type-caption); }
+  .bureau-filters { left: 28%; right: 28%; top: 20%; gap: 4px; }
+  .bureau-filters button { font-size: var(--type-caption); padding: 4px 6px; min-height: 28px; }
+  .letter-preview-paper { top: auto; bottom: 16px; right: 6%; width: 88%; max-width: none; max-height: 48%; padding: 16px; }
+  .letter-preview-paper p { font-size: var(--type-body); }
+  .letter-preview-paper h2 { font-size: var(--type-h3); }
+  .letter-preview-paper small { margin-top: 8px; padding-top: 8px; }
+  .bureau-reading-paper { inset: 4% 5%; padding: 40px 24px; }
+  .mint-journey .journey-grid { height: calc(100svh - 140px); margin-top: 112px; }
+  .mint-journey .journey-desk-paper-trigger span { font-size: var(--type-caption); gap: 4px; padding: 4px; }
+}
+@media (prefers-reduced-motion: reduce) { .postal-button, .postal-drawer-front { transition: none; } }

@@ -1,0 +1,20 @@
+:root { --global-header-height:106px; --global-header-inset:clamp(48px,6vw,120px); }
+.global-header { position:fixed; inset:0 0 auto; width:100%; height:var(--global-header-height); z-index:1000; padding-inline:var(--global-header-inset); box-sizing:border-box; display:flex; align-items:center; pointer-events:none; background:transparent; }
+body > .global-header { transform: none; translate: none; margin: 0; flex-shrink: 0; }
+.global-header-inner { display:flex; align-items:baseline; justify-content:space-between; gap:32px; width:100%; }
+.global-header button { pointer-events:auto; border:0; border-radius:0; padding:0; background:none; color:#74796f; white-space:nowrap; cursor:pointer; font-family:var(--font-body-family); font-weight:var(--weight-cn-nav); letter-spacing:0; }
+.global-header .global-brand { color:#7f5f6c; font:400 clamp(26px,1.55vw,30px)/1 var(--font-en); }
+.global-brand-art { display:flex; align-items:center; gap:8px; transform:translateY(3px); }
+.global-brand-art img { display:block; width:auto; height:30px; object-fit:contain; }
+.global-header-right, .global-navigation, .global-language { display:flex; align-items:baseline; flex-wrap:nowrap; white-space:nowrap; }
+.global-header-right { gap:42px; }
+.global-navigation { gap:38px; }
+.global-navigation button { font-size:var(--type-nav); line-height:var(--leading-small); }
+.global-language { gap:8px; color:#96978b; }
+.global-language button, .global-language span { font-size:var(--type-nav); line-height:var(--leading-small); }
+.global-language button[aria-pressed='false'] { opacity:.5; }
+.global-navigation button[aria-current='page'] { color:#967780; text-decoration:underline; text-underline-offset:10px; text-decoration-thickness:1px; }
+.global-header button:focus-visible { outline:1px solid #967780; outline-offset:6px; }
+.global-header button:disabled { cursor:default; }
+@media(max-width:900px) { :root { --global-header-inset:24px; }.global-header-right{gap:20px;}.global-navigation{gap:16px;} }
+@media(max-width:620px) { :root { --global-header-inset:12px; }.global-header-inner{gap:20px;overflow-x:auto;scrollbar-width:none;pointer-events:auto;}.global-header-right{gap:16px;}.global-navigation{gap:12px;} }

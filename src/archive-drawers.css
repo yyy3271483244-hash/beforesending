@@ -1,0 +1,47 @@
+/* Cabinet interaction only. Every face is a crop of the unchanged painted wall. */
+.restored-journey .restored-bureau .postal-drawer {
+  --drawer-open: 0; --interior-open: 0; --handle-pull: 0; --hover-lift: 0;
+  opacity: 1; pointer-events: auto; isolation: isolate; z-index: 2;
+}
+.restored-journey .restored-bureau .postal-drawer[data-state='hover'] { --hover-lift: 1; z-index: 3; }
+.restored-journey .restored-bureau .postal-drawer:is([data-state='opening'],[data-state='open'],[data-state='closing']) { z-index: 12; }
+.restored-journey .restored-bureau .postal-drawer[data-cell] .postal-drawer-front {
+  z-index: 3; cursor: pointer; transform-origin: center top;
+  transform: translateY(calc(var(--drawer-open) * 57% + var(--hover-lift) * 2px)) scale(calc(1 + var(--drawer-open) * .025 + var(--hover-lift) * .008));
+  box-shadow: 0 calc(var(--drawer-open) * 12px + var(--hover-lift) * 3px) calc(var(--drawer-open) * 17px + var(--hover-lift) * 6px) #3b443b25;
+  transition: box-shadow .25s ease; outline: none;
+}
+.restored-journey .restored-bureau .postal-drawer-front::after {
+  content: ''; position: absolute; left: 8%; top: 24%; width: 79%; height: 3%;
+  background: #4d514624; opacity: calc(var(--handle-pull) * .5 + var(--hover-lift) * .5);
+  transform: translateY(calc(var(--handle-pull) * 2px)); transition: opacity .2s;
+}
+.restored-journey .restored-bureau .postal-drawer-front:focus-visible::after { opacity: 1; }
+.restored-journey .restored-bureau .postal-drawer.is-dimmed:not(.is-open) .postal-drawer-front > span { opacity: .3; }
+.restored-journey .restored-bureau .restored-drawer-cavity {
+  inset: 1% 1% 0; opacity: var(--interior-open); background: #aeb5a6 url('/assets/art/paper-texture.png') center / cover;
+  background-blend-mode: multiply; box-shadow: inset 0 8px 12px #3b443b38;
+}
+.restored-journey .restored-bureau .archive-drawer-tray {
+  position: absolute; z-index: 2; top: 3%; left: 1%; right: 1%; height: 57%;
+  opacity: var(--interior-open); overflow: hidden;
+  clip-path: polygon(2% 0,98% 0,100% 100%,0 100%);
+  background: #cbd0bc url('/assets/art/paper-texture.png') center / cover; background-blend-mode: multiply;
+  box-shadow: inset 3px 5px 8px #45513e30, inset -3px 0 4px #45513e20;
+  transform-origin: center bottom; transform: scaleY(calc(.85 + var(--drawer-open) * .15));
+}
+.restored-journey .restored-bureau .archive-drawer-contents { position: absolute; inset: 0; opacity: 0; visibility: hidden; transform: translateY(-4px); }
+.restored-journey .restored-bureau .postal-drawer .postal-drawer-front:disabled { cursor: default; opacity: 1; }
+.restored-journey .restored-bureau .postal-drawer-letter {
+  top: calc(7% + var(--slot) * 5%); left: calc(10% + var(--slot) * 17%); width: 74%; height: 83%;
+  z-index: calc(2 + var(--slot)); transform: rotate(calc(-3deg + var(--slot) * 4deg));
+  cursor: pointer; filter: drop-shadow(0 2px 2px #41483b22); transition: translate .4s ease;
+}
+.restored-journey .restored-bureau .postal-drawer-letter:is(:hover,:focus-visible) { translate: 0 -2px; outline: 1px dashed #8e697480; outline-offset: -3px; }
+.restored-journey .restored-bureau .postal-drawer-letter > span { font-size: var(--type-caption); padding: 2px; top: 40%; white-space: normal; }
+.restored-journey .restored-bureau .archive-drawer-thread { position: absolute; left: 24%; top: 48%; width: 39%; height: 15%; border-bottom: 1px solid #947e7855; border-radius: 50%; transform: rotate(-14deg); }
+.restored-journey .restored-bureau .postal-drawer[data-kind='special'] .archive-drawer-tray { background-color: #d2c7b8; }
+@media (prefers-reduced-motion: reduce) {
+  .restored-journey .restored-bureau .postal-drawer-front,
+  .restored-journey .restored-bureau .postal-drawer-letter { transition: none; }
+}

@@ -1,0 +1,16 @@
+.thread-tail-anchor { position: absolute; width: 44px; height: 44px; pointer-events: none; }
+.thread-tail-anchor.is-pulling, .thread-tail-anchor.is-revealed { z-index: 12; }
+.thread-tail-anchor > .anchored-trace { inset: 0; width: 44px; height: 44px; border: 0; padding: 0; background: none; cursor: grab; }
+.thread-tail-anchor.is-pulling > .anchored-trace { cursor: grabbing; }
+.thread-tail-anchor > .anchored-trace:focus-visible { outline: 1px dashed #b5989b; outline-offset: 2px; border-radius: 50%; }
+.thread-tail-anchor > .anchored-trace svg { display: block; width: 44px; height: 44px; overflow: visible; }
+.thread-tail-anchor .anchored-trace:hover svg { translate: none; }
+.tail-filament { fill: none; stroke: #9e4545; stroke-width: 1.15; stroke-linecap: round; }
+.thread-tail-anchor.is-sealed { opacity: .65; }
+.thread-tail-anchor .red-thread-control { opacity: 1; }
+.living-writing .thread-reveal-strip { max-height: 192px; overflow-y: auto; pointer-events: auto; }
+.thread-reveal-strip { position: absolute; padding: 8px 0; background: none; color: #827d74; font-family:var(--font-body-family); font-size: var(--text-body); line-height: var(--leading-body); white-space: pre-wrap; overflow-wrap: anywhere; box-shadow: none; border: 0; transform-origin: top left; pointer-events: none; }
+.reading-revealed-strips { position: relative; display: flex; flex-direction: column; gap: 12px; padding: 14px 0 20px 12px; }
+.reading-revealed-strips:empty { display: none; }
+.thread-reveal-strip.is-docked { position: relative; width: min(275px,100%); }
+@media(max-width:700px) { .thread-reveal-strip { font-size: var(--text-small); } }

@@ -1,0 +1,10 @@
+.selection-animal-media { position: relative; display: block; width: 100%; height: 100%; }
+.selection-animal-media > video,
+.selection-animal-media > canvas {
+  position: absolute; inset: 0; display: block; width: 100%; height: 100%;
+  object-fit: contain; object-position: center bottom; background: transparent;
+  opacity: 0; pointer-events: none;
+}
+.selection-animal-media > canvas { z-index: 1; }
+.restored-keeper .home-animal-choice .administrator-choice:is(:hover,:focus-visible):not(:disabled) .keeper-idle { scale: 1; }
+.restored-keeper .home-animal-choice .administrator-choice:is(:hover,:focus-visible):not(:disabled) .administrator { translate: 0 var(--foot-gap,0px); }

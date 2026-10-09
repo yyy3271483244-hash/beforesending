@@ -1,0 +1,20 @@
+/* Scene navigation and the growing writing surface have separate scroll owners. */
+html:has(.restored-journey), body:has(.restored-journey) {
+  height: 100%; overflow: hidden; overscroll-behavior: none;
+}
+.restored-journey { position: fixed; inset: 0; height: 100dvh; overflow: hidden; }
+.restored-journey .journey-track { position: relative; width: 100%; height: 100%; overflow: hidden; }
+.restored-journey .journey-section {
+  position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0;
+  overflow: hidden; transform: translateY(100%); visibility: hidden;
+  overscroll-behavior: contain;
+}
+.restored-journey .journey-section[data-stage-visible='true'] { visibility: visible; }
+.restored-journey .journey-section[hidden] { display: none; }
+.restored-journey .journey-scene-frame,
+.restored-journey .journey-section-content { min-height: 100dvh; }
+.restored-journey .section-write,
+.restored-journey .section-bureau { overflow-y: auto; overflow-x: hidden; }
+.restored-journey .journey-track[data-transitioning='true'] > .journey-section {
+  overflow: hidden; pointer-events: none;
+}

@@ -1,0 +1,13 @@
+const pages = await fetch("http://127.0.0.1:9333/json/list").then((response) => response.json());
+const page = pages.find((item) => item.type === "page");
+const socket = new WebSocket(page.webSocketDebuggerUrl);
+const pending = new Map(); let id = 0;
+await new Promise((resolve, reject) => { socket.onopen = resolve; socket.onerror = reject; });
+socket.onmessage = (event) => { const message = JSON.parse(event.data); if (message.id && pending.has(message.id)) { const job = pending.get(message.id); pending.delete(message.id); message.error ? job.reject(message.error) : job.resolve(message.result); } };
+const send = (method, params = {}) => new Promise((resolve, reject) => { const next = ++id; pending.set(next, { resolve, reject }); socket.send(JSON.stringify({ id: next, method, params })); });
+await send("Emulation.setDeviceMetricsOverride", { width: 1536, height: 864, deviceScaleFactor: 1, mobile: false });
+await send("Page.navigate", { url: `http://127.0.0.1:5173/?capture=${Date.now()}#packaging` });
+await new Promise((resolve) => setTimeout(resolve, 2200));
+const shot = await send("Page.captureScreenshot", { format: "png", fromSurface: true });
+await import("node:fs").then(({ writeFileSync }) => writeFileSync("packaging-reference-check.png", Buffer.from(shot.data, "base64")));
+socket.close();

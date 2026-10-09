@@ -1,0 +1,16 @@
+/* Font-only overrides: do not alter scene geometry or English type scales. */
+.global-header [lang='zh-CN'] { font-family: var(--font-cn); }
+.global-header [lang='en'] { font-family: 'Comico', sans-serif; }
+
+.restored-journey .writing-observations dd,
+.restored-journey .writing-replay-controls,
+.restored-journey .writing-replay-controls :is(button, select, input, output),
+.flow-replay-controls,
+.replay-margin-controls {
+  font-family: var(--font-functional);
+  font-variant-numeric: tabular-nums;
+}
+
+:root[data-language='zh'] .restored-journey .letter-editing-area :is(textarea, .writing-replay-surface) {
+  line-height: 1.9;
+}

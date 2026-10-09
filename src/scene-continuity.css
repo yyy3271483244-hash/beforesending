@@ -1,0 +1,12 @@
+:root { --page-bg:#faf6ef; --scene-edge:96px; }
+html,body { scroll-snap-type:none !important; scroll-behavior:auto; }
+body,.restored-journey,.restored-journey .journey-scene-frame,.restored-journey .restored-keeper { background-color:var(--page-bg); }
+.restored-journey .journey-track,.restored-journey .journey-section,.restored-journey .journey-scene-frame,.restored-journey .journey-section-content {
+  position:relative; height:auto; opacity:1; transform:none; filter:none; scroll-snap-align:none; scroll-snap-stop:normal;
+}
+.restored-journey .journey-section { width:100%; min-height:100svh; margin-block:0; padding-block:0; }
+.restored-journey .scene-local-heading { position:absolute; top:calc(var(--global-header-height) + 8px); left:50%; translate:-50% 0; z-index:8; margin:0; font:400 var(--type-h2)/var(--leading-heading) var(--font-display); pointer-events:none; text-align:center; }
+/* Static alpha on painted edges, never scroll-driven opacity on a whole scene. */
+.restored-home-illustration { mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - var(--scene-edge)),transparent 100%); }
+.restored-keeper .home-post-background { mask-image:linear-gradient(to bottom,transparent 0,#000 var(--scene-edge),#000 calc(100% - var(--scene-edge)),transparent 100%); }
+.journey-writing-stage .journey-desk-art, .journey-writing-stage .journey-desk-shade { mask-image:linear-gradient(to bottom,transparent 0,#000 var(--scene-edge),#000 100%); }

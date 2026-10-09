@@ -1,0 +1,53 @@
+.reading-scroll-flow { position: relative; width: 100%; height: 220svh; background: #f3f1e8; }
+.reading-scroll-flow.has-selected-letter { height: 420svh; }
+.reading-flow-viewport { position: sticky; top: 0; height: 100svh; width: 100%; overflow: hidden; isolation: isolate; }
+.reading-action-scene,.reading-flow-cabinet,.reading-flow-letter { position: absolute; inset: 0; }
+.reading-action-scene { z-index: 1; background: #f5f0e8; }
+.reading-choice-backdrop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center bottom; opacity: .42; }
+.reading-flow-cabinet { z-index: 2; }
+.reading-flow-header { position: absolute; inset: 0 0 auto; z-index: 10; }
+.reading-flow-header[hidden] { display: none; }
+.reading-flow-header .room-header { width: 100%; }
+.reading-flow-cabinet .archive-page { position: absolute; inset: 0; width: 100%; max-width: none; margin: 0; padding: 0; min-height: 0; background: transparent; }
+.is-flow-cabinet .room-header { display: none; }
+.is-flow-cabinet .cabinet-viewport { position: absolute; inset: 0; padding: 0; width: 100%; height: 100%; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
+.is-flow-cabinet.is-taking-letter .cabinet-viewport { opacity: 1; transition: none; }
+.is-flow-cabinet .drawer-front { touch-action: pan-x pan-y; }
+.is-flow-cabinet .cabinet-world { position: relative; top: 50%; translate: 0 -50%; width: max(100%,calc(100svh * 1.78432)); min-width: 0; max-width: none; height: max(100svh,calc(100vw * .56044)); margin: 0; aspect-ratio: auto; }
+.is-flow-cabinet .cabinet-painting { display: block; width: 100%; height: 100%; object-fit: cover; }
+.is-flow-cabinet .cabinet-footer { position: absolute; inset: auto 0 0; z-index: 30; width: 100%; padding: 18px 38px; pointer-events: none; background: #f2f0e64d; }
+.is-flow-cabinet .cabinet-footer button { pointer-events: auto; }
+.reading-flow-envelope { position: absolute; top: 50%; left: 50%; width: 410px; aspect-ratio: 600/440; z-index: 4; perspective: 1200px; pointer-events: none; }
+.reading-flow-envelope-body,.reading-flow-flap { position: absolute; inset: 0; width: 100%; height: 100%; }
+.reading-flow-envelope-body { clip-path: polygon(0 0,50% 64%,100% 0,100% 100%,0 100%); }
+.reading-flow-flap { clip-path: polygon(0 0,100% 0,100% 6%,50% 64%,0 6%); transform-origin: center top; }
+.reading-envelope-lining { position: absolute; inset: 1%; background: #ece7d9 url('/assets/writing-desk/paper.png') center / 100% 100%; }
+.reading-flow-letter { z-index: 3; pointer-events: none; }
+.is-flow-reading.living-reading { min-height: 0; height: 100%; padding: 0; background: none; }
+.is-flow-reading > .reading-cabinet-backdrop { display: none; }
+.is-flow-reading .room-header { visibility: hidden; }
+.is-flow-reading .living-paper { position: absolute; top: 50%; left: 50%; margin: 0; width: min(650px,calc(100% - 34px),calc((100svh - 180px) * .78125)); height: min(832px,calc(100svh - 180px)); }
+.is-flow-reading .paper-turner,.is-flow-reading .letter-front,.is-flow-reading .letter-back { height: 100%; min-height: 0; }
+.is-flow-reading .reading-text-area { overflow-y: auto; flex: 1 1 auto; scrollbar-width: thin; }
+.is-flow-reading .reading-recipient { flex: 0 0 auto; }
+.is-flow-reading .letter-bottom { margin-top: 22px; }
+.is-flow-reading .writing-margin-actions { position: absolute; bottom: 12px; left: 0; width: 100%; visibility: hidden; }
+.is-flow-reading .writing-margin-actions > button:first-child { font-size: var(--type-caption); opacity: .65; }
+.is-flow-reading .reading-administrator { visibility: hidden; }
+.reading-scroll-flow[data-phase="reading"] .is-flow-reading .living-paper,
+.reading-scroll-flow[data-phase="reading"] .is-flow-reading .writing-margin-actions { pointer-events: auto; }
+.reading-scroll-flow[data-phase="reading"] .is-flow-reading .writing-margin-actions,
+.reading-scroll-flow[data-phase="reading"] .is-flow-reading .reading-administrator { visibility: visible; }
+.reading-scroll-flow[data-phase="reading"] .is-flow-cabinet .cabinet-footer { visibility: hidden; }
+@media(max-width:700px) {
+  .reading-flow-header .room-header { padding: 18px; gap: 12px; }
+  .reading-flow-header .room-header h1 { display: none; }
+  .reading-flow-header .room-brand { font-size: var(--type-body); white-space: nowrap; }
+  .reading-flow-header .room-header nav { gap: 14px; }
+  .is-flow-cabinet .cabinet-footer { padding: 15px 18px; font-size: var(--type-caption); }
+  .is-flow-reading .living-paper { width: calc(100% - 30px); height: calc(100svh - 185px); }
+  .is-flow-reading .letter-front,.is-flow-reading .letter-back { padding: 30px 25px 22px; }
+  .is-flow-reading .reading-recipient { margin-bottom: 24px; }
+  .is-flow-reading .letter-bottom { font-size: var(--type-caption); margin-top: 18px; }
+  .is-flow-reading .reading-administrator { display: none; }
+}

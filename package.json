@@ -1,0 +1,37 @@
+{
+  "name": "before-sending-demo",
+  "version": "1.0.0",
+  "description": "Interactive emotional letter writing demo.",
+  "scripts": {
+    "start": "vite --host 127.0.0.1 --port 5173",
+    "check": "vite build",
+    "embed": "npm run check && node tools/make-embedded-html.mjs",
+    "preview": "vite --host 127.0.0.1 --port 5173"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@rive-app/react-canvas": "^4.33.0",
+    "@vitejs/plugin-react": "^6.0.5",
+    "diff-match-patch": "^1.0.5",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.26",
+    "lucide-react": "^1.47.0",
+    "p5": "^2.3.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "split-type": "^0.3.4",
+    "tone": "^15.1.22",
+    "vite": "^8.2.1"
+  },
+  "devDependencies": {
+    "@babel/generator": "^8.0.6",
+    "@babel/parser": "^8.0.6",
+    "@babel/traverse": "^8.0.6",
+    "@babel/types": "^8.0.6",
+    "postcss": "^8.5.28",
+    "postcss-value-parser": "^4.2.0"
+  }
+}

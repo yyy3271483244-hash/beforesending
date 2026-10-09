@@ -1,0 +1,60 @@
+// All coordinates are percentages of the unedited source artwork.
+export const keeperRooms = {
+  dog: {
+    background: '/assets/administrators/post-office-facade.png', ratio: 1376 / 880, number: '01',
+    room: ['入口前台', 'RECEPTION'], role: ['鼓励你开口的人', 'The Encourager'],
+    traits: ['直接 · 热情 · 鼓励表达', 'Direct · Warm · Expressive'],
+    quote: ['在你又犹豫之前，我陪你把话说出来。', 'I’ll help you say it before\nyou change your mind.'],
+    reply: ['我在呢。我们去坐下来。', 'I’m with you. Let’s find a place to write.'],
+    alt: ['小狗守着邮局前台，柜台上放着信件和黄铜铃。', 'Dog at the reception counter, among letters and a brass bell.'],
+    character: { x: 49, y: 18, w: 22, h: 40 },
+    details: [
+      { id: 'letters', x: 45, y: 59, w: 17, h: 9, dy: -3, label: ['轻轻碰一下柜台上的信', 'Touch the letters on the counter'] },
+    ],
+    idleDelay: [5, 8],
+  },
+  cat: {
+    background: '/assets/administrators/post-office-facade.png', ratio: 1376 / 880, number: '02',
+    room: ['窗边读信角', 'BY THE WINDOW'], role: ['安静的观察者', 'The Quiet Observer'],
+    traits: ['安静 · 克制 · 耐心', 'Calm · Reserved · Patient'],
+    quote: ['不用一次，就把所有话说完。', 'You don’t have to say\neverything at once.'],
+    reply: ['你可以慢慢来。', 'You can take your time.'],
+    alt: ['猫坐在窗边的木桌前，身边是信纸、花和柔和的灯光。', 'Cat at a quiet window desk, with letter paper, flowers and lamplight.'],
+    character: { x: 25.5, y: 29, w: 23.5, h: 54 },
+    details: [
+      { id: 'paper', x: 34, y: 76, w: 16, h: 12, dy: -1.5, label: ['轻触窗边的信纸', 'Touch the paper by the window'] },
+      { id: 'plant', x: 48, y: 48, w: 19, h: 30, dx: 1.5, decorative: true },
+    ],
+    light: { x: 14, y: 4, w: 39, h: 50 }, idleDelay: [8, 12],
+  },
+  rabbit: {
+    background: '/assets/administrators/post-office-facade.png', ratio: 1376 / 880, number: '03',
+    room: ['信件修补工作台', 'THE REPAIR DESK'], role: ['温柔的修补者', 'The Gentle Mender'],
+    traits: ['敏感 · 共情 · 细致', 'Sensitive · Empathetic · Careful'],
+    quote: ['有些句子，在寄出之前，需要先被轻轻缝好。', 'Some sentences need\nto be mended before they are sent.'],
+    reply: ['我们一针一线，慢慢来。', 'We can take it one stitch at a time.'],
+    alt: ['兔子坐在修补信件的工作台后，桌上有线轴、剪刀和信纸。', 'Rabbit behind a letter-repair table, with thread spools, scissors and paper.'],
+    character: { x: 40.5, y: 8, w: 25, h: 51 },
+    details: [
+      { id: 'thread', x: 29, y: 55, w: 17, h: 13, dx: 4, label: ['轻轻拉一下桌上的线', 'Gently tug the thread'] },
+      { id: 'spool', x: 31, y: 43, w: 6, h: 15, dx: 2, decorative: true },
+    ],
+    idleDelay: [6, 10],
+  },
+  mouse: {
+    background: '/assets/administrators/post-office-facade.png', ratio: 1376 / 880, number: '04',
+    room: ['信件档案室', 'THE ARCHIVE'], role: ['记忆的收藏者', 'The Archivist'],
+    traits: ['安静 · 细心 · 一丝不苟', 'Quiet · Careful · Meticulous'],
+    quote: ['你删掉的话，也可以不必彻底消失。', 'Nothing you erase\nhas to disappear completely.'],
+    reply: ['那些没说完的话，我会替你收好。', 'I’ll keep the words you leave behind.'],
+    alt: ['老鼠从信件档案墙的抽屉中探出身来，手里拿着一张小纸条。', 'Mouse peeks out of a drawer in the letter archive, holding a small note.'],
+    character: { x: 28.5, y: 37, w: 18, h: 27 },
+    details: [
+      { id: 'drawer-one', x: 52.5, y: 30, w: 11.3, h: 10.5, dy: 10, drawer: true, label: ['轻轻打开第一只抽屉', 'Ease open the first drawer'] },
+      { id: 'drawer-two', x: 66, y: 35, w: 11.5, h: 11, dy: 12, drawer: true, label: ['轻轻打开第二只抽屉', 'Ease open the second drawer'] },
+      { id: 'drawer-three', x: 74, y: 64, w: 9.6, h: 12.5, dy: 9, drawer: true, label: ['轻轻打开第三只抽屉', 'Ease open the third drawer'] },
+      { id: 'note', x: 42, y: 48.5, w: 4.5, h: 9, dy: -3, decorative: true },
+    ],
+    idleDelay: [8, 14],
+  },
+};

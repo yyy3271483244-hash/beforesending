@@ -1,0 +1,13 @@
+.restored-journey .journey-writing-stage:is([data-desk-state='desk'], [data-desk-state='landing']) .journey-paper { height: var(--paper-rest-height); }
+.restored-journey .journey-writing-stage .journey-paper { will-change: transform; backface-visibility: hidden; }
+.restored-journey .journey-writing-stage[data-desk-state='desk'] .long-paper-material {
+  filter: drop-shadow(1px 0 0 #8c9c9e66) drop-shadow(-1px 0 0 #a87c8966) drop-shadow(0 2px 1px #687c7933);
+}
+.restored-journey .journey-writing-stage[data-desk-state='desk'] .journey-paper:has(.journey-desk-paper-trigger:is(:hover, :focus-visible)) .long-paper-material {
+  filter: drop-shadow(1px 0 0 #8c9c9eaa) drop-shadow(-1px 0 0 #a87c89aa) drop-shadow(0 4px 3px #687c7933);
+}
+.restored-journey .journey-writing-stage .journey-desk-paper-trigger { cursor: pointer; border: 0; background: none; }
+.restored-journey .journey-writing-stage .journey-desk-paper-trigger span { font-size: var(--type-caption, 14px); }
+.restored-journey .journey-writing-stage .journey-desk-shade { background: #38352f; }
+/* Visibility follows the paper state, including controls mounted after lifting. */
+.restored-journey .journey-writing-stage[data-desk-state='write'] [data-writing-detail] { visibility: visible; opacity: 1; }
