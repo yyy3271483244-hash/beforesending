@@ -48,9 +48,9 @@ body:has(.restored-journey[data-chapter='opening']) .language-switch { top: calc
 .home-art-scroll { position: absolute; inset: 0; display: grid; place-items: center; }
 .home-art-material { position: absolute; z-index: 0; isolation: isolate; inset: 0; width: 100%; height: 100%; background: #fbf1ea; overflow: hidden; }
 .home-video-placeholder { position: absolute; z-index: 0; inset: 0; background: #fbf1ea; pointer-events: none; }
-.home-art-video { display: block; position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; pointer-events: none; opacity: 0; transition: opacity .12s ease-out; }
-.restored-home[data-home-video-ready='true'] .home-art-video { opacity: 1; }
-.restored-home[data-home-video-ready='true'] .home-video-placeholder { visibility: hidden; }
+.home-art-video { display: block; position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; pointer-events: none; opacity: 0; }
+.restored-home[data-home-entry-ready='false'] .home-brand-scroll { visibility: hidden; }
+.restored-home[data-home-entry-ready='true'] .home-video-placeholder { visibility: hidden; }
 .restored-home .home-brand-scroll { position:absolute; z-index:5; pointer-events:none; }
 .restored-home .home-mail-slot { z-index:6; }
 .home-mail-slot { position: absolute; z-index: 2; }
