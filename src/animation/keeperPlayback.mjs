@@ -4,6 +4,12 @@ export function keeperLoopStart(duration) {
   return Number.isFinite(duration) ? Math.max(0, duration - KEEPER_LOOP_SECONDS) : 0;
 }
 
+export function keeperPlaybackStart({ mode, duration, idleIntroPlayed = false, selectedIntroPlayed = false, selectedIdleLoopStart }) {
+  if (mode === 'idle') return idleIntroPlayed ? keeperLoopStart(duration) : 0;
+  if (mode === 'selected-idle') return selectedIntroPlayed ? selectedIdleLoopStart ?? keeperLoopStart(duration) : 0;
+  return 0;
+}
+
 export function keeperPixels(packed, output, width, height) {
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {

@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { keeperLoopStart, keeperPixels } from '../animation/keeperPlayback.mjs';
+import { keeperLoopStart, keeperPlaybackStart, keeperPixels } from '../animation/keeperPlayback.mjs';
 import { fullFrameStyle } from '../animation/fullFrameStyle.mjs';
 import '../selection-animal-motion.css';
 
@@ -41,7 +41,7 @@ export function SelectionAnimalMedia({ asset, active, selected = false, request,
     const preference = matchMedia('(prefers-reduced-motion: reduce)');
     let mode = latest.current.selected ? 'selected-idle' : 'idle';
     let source = '', frame = null, disposed = false, hasFrame = false;
-    let needsSeek = false, generation = 0, loops = 0, selectedIntroPlayed = false;
+    let needsSeek = false, generation = 0, loops = 0, idleIntroPlayed = false, selectedIntroPlayed = false;
     if (alphaFix) {
       const image = new Image();
       const ready = () => {
@@ -113,7 +113,8 @@ export function SelectionAnimalMedia({ asset, active, selected = false, request,
     function seek() {
       if (!needsSeek || node.readyState < 1) return;
       const loopPoint = loopStart();
-      const start = mode === 'idle' || mode === 'selected-idle' && selectedIntroPlayed ? loopPoint : 0;
+      const start = keeperPlaybackStart({ mode, duration: node.duration, idleIntroPlayed, selectedIntroPlayed,
+        selectedIdleLoopStart: asset.selectedIdleLoopStart });
       element.dataset.loopStart = String(loopPoint);
       needsSeek = false;
       node.currentTime = start;
@@ -124,6 +125,8 @@ export function SelectionAnimalMedia({ asset, active, selected = false, request,
         mode = next; setState(mode); play(); return;
       }
       if (next === mode && !restart) { play(); return; }
+      // A hover/selection completes the greeting instead of replaying it on return.
+      if (mode === 'idle' && (next === 'hover' || next === 'select')) idleIntroPlayed = true;
       pause(); generation++;
       mode = next; setState(mode);
       if (mode === 'selected-idle') selectedIntroPlayed = false;
@@ -164,6 +167,7 @@ export function SelectionAnimalMedia({ asset, active, selected = false, request,
       loops++;
       element.dataset.loopCount = String(loops);
       if (idle()) {
+        if (mode === 'idle') idleIntroPlayed = true;
         selectedIntroPlayed = mode === 'selected-idle';
         needsSeek = true;
         seek();
