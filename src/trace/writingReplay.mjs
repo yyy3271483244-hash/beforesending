@@ -1,5 +1,6 @@
 // Snapshots are the source of truth, including edits later undone by the writer.
 import { graphemeCount } from './graphemes.mjs';
+import { reachesDeletionThreshold } from './deletionRules.mjs';
 
 export function buildWritingReplay(letter) {
   const validTime = value => Number.isFinite(value) && value >= 0;
@@ -70,7 +71,8 @@ export function writingReplayAt(timeline, time) {
   const recentFrames = timeline.frames.slice(0, index + 1);
   const interrupt = recentFrames.findLastIndex(frame => ['insert', 'replace', 'undo', 'redo'].includes(frame.type));
   const recent = recentFrames.slice(interrupt + 1).reverse();
-  const concealed = recent.find(frame => frame.type === 'deleteSequence' && target - frame.time < (frame.duration || 1250));
+  const concealed = recent.find(frame => frame.type === 'deleteSequence' && reachesDeletionThreshold(frame.deleted)
+    && target - frame.time < (frame.duration || 1250));
   const erased = recent.find(frame => frame.type === 'delete' && frame.deleted && !frame.private
     && frame.deletionVisual !== 'backside' && target - frame.time < 190);
   const effect = concealed || erased;

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { buildWritingReplay, normalizeWritingHistory } from './writingReplay.mjs';
 import { emitThreadEvent, THREAD_ACTIONS } from "../animation/threadEvents";
 import { graphemeCount } from './graphemes.mjs';
+import { countTraceCharacters, DELETION_TRACE_THRESHOLD } from './deletionRules.mjs';
 
 export const idFor = (type) => `${type}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 export const pauseLevel = (duration) => duration >= 8000 ? 3 : duration >= 5000 ? 2 : duration >= 3000 ? 1 : 0;
@@ -196,9 +197,6 @@ export function useLetterSession(letter, setLetter, editor) {
     let visualEffect = null;
     let nextEvents = [...data.events, event];
     if (activeDelete) {
-      // Every real delete asks the keeper to unpick immediately. The longer
-      // deletion sequence below still owns the paper-side visual treatment.
-      emitThreadEvent(THREAD_ACTIONS.delete, { ...event, deleted: change.deleted });
       const currentSequence = continues ? sequence : {
         id: idFor('delete-sequence'), direction, text: '', tokenIds: [], rawEventIds: [], count: 0,
         position: change.start, linePosition: point, startedAt: now, triggered: false, visualEventId: null,
@@ -206,13 +204,13 @@ export function useLetterSession(letter, setLetter, editor) {
       currentSequence.text = direction === 'backward' ? change.deleted + currentSequence.text : currentSequence.text + change.deleted;
       currentSequence.tokenIds = direction === 'backward' ? [...deletedIds, ...currentSequence.tokenIds] : [...currentSequence.tokenIds, ...deletedIds];
       currentSequence.rawEventIds.push(event.id);
-      currentSequence.count += graphemeCount(change.deleted);
+      currentSequence.count += countTraceCharacters(change.deleted);
       currentSequence.lastAt = now;
       currentSequence.lastPosition = change.start;
       currentSequence.lastCodeUnits = change.deleted.length;
       currentSequence.caretIndex = index;
       currentSequence.position = Math.min(currentSequence.position, change.start);
-      const crossedThreshold = !currentSequence.triggered && currentSequence.count >= 3;
+      const crossedThreshold = !currentSequence.triggered && currentSequence.count >= DELETION_TRACE_THRESHOLD;
       if (crossedThreshold) {
         currentSequence.triggered = true;
         currentSequence.visualEventId = idFor('delete-sequence-visual');
@@ -220,7 +218,7 @@ export function useLetterSession(letter, setLetter, editor) {
           id: currentSequence.visualEventId, type: 'deleteSequence', mode: 'backside',
           timestamp: now, time: event.time, duration: 1250, position: currentSequence.position,
           deleted: currentSequence.text, sequenceText: currentSequence.text, text: nextText, newText: nextText,
-          characterCount: currentSequence.count, rawEventIds: [...currentSequence.rawEventIds],
+          characterCount: currentSequence.count, deletionThreshold: DELETION_TRACE_THRESHOLD, rawEventIds: [...currentSequence.rawEventIds],
           sequenceStartTimestamp: currentSequence.startedAt, linePosition: currentSequence.linePosition,
           tokenIds: ids, deletedTokenIds: [...currentSequence.tokenIds], textStyle: data.textStyle,
         };
@@ -229,6 +227,7 @@ export function useLetterSession(letter, setLetter, editor) {
           : item);
         nextEvents.push(visualEvent);
         visualEffect = { ...visualEvent, sequenceId: currentSequence.id };
+        emitThreadEvent(THREAD_ACTIONS.delete, visualEffect);
       } else if (currentSequence.triggered) {
         nextEvents = nextEvents.map(item => item.id === currentSequence.visualEventId
           ? { ...item, sequenceText: currentSequence.text, characterCount: currentSequence.count, rawEventIds: [...currentSequence.rawEventIds] }

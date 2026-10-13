@@ -1,0 +1,872 @@
+[
+  {
+    "frames": 106,
+    "width": 960,
+    "height": 960,
+    "duration": 3.533333333333333,
+    "outputDuration": 3.533333333333333,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 106,
+    "emptyFrames": [],
+    "contentBounds": [
+      128,
+      0,
+      873,
+      853
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "closing/lavender",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\寄信页面\\紫色信封合上.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\closing\\lavender.webm",
+    "sourceSha256": "0d1503371f7929f46900e33c719dffb09a6297292b8ed4d4a1a230cd99c1d48d"
+  },
+  {
+    "frames": 89,
+    "width": 960,
+    "height": 960,
+    "duration": 2.966666666666667,
+    "outputDuration": 2.966666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 89,
+    "emptyFrames": [],
+    "contentBounds": [
+      124,
+      0,
+      822,
+      823
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "closing/sage",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\寄信页面\\绿色信封合上.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\closing\\sage.webm",
+    "sourceSha256": "51d98ec0de1f8a8a3c777fd9dfeeb75e0e6edabeea626e6a117879f0a6da2b63"
+  },
+  {
+    "frames": 90,
+    "width": 832,
+    "height": 1108,
+    "duration": 3.0,
+    "outputDuration": 3.0,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 90,
+    "emptyFrames": [],
+    "contentBounds": [
+      7,
+      8,
+      819,
+      1037
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "closing/ivory",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\寄信页面\\米白色信封合上.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\closing\\ivory.webm",
+    "sourceSha256": "ed386b9ee18a76215dc288e7749044c679f30825a0e7840ac1019d1e3fb61d75"
+  },
+  {
+    "frames": 92,
+    "width": 960,
+    "height": 960,
+    "duration": 3.066666666666667,
+    "outputDuration": 3.066666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 92,
+    "emptyFrames": [],
+    "contentBounds": [
+      172,
+      0,
+      863,
+      790
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "closing/rose",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\寄信页面\\粉色信封合上.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\closing\\rose.webm",
+    "sourceSha256": "3e4cb4538ffada972fe7f2e53515941b27f1d82f7d9a385e62da6cc92cf2dc91"
+  },
+  {
+    "frames": 89,
+    "width": 960,
+    "height": 960,
+    "duration": 2.966666666666667,
+    "outputDuration": 2.966666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 89,
+    "emptyFrames": [],
+    "contentBounds": [
+      138,
+      0,
+      960,
+      795
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "closing/oat",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\寄信页面\\卡其色合上.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\closing\\oat.webm",
+    "sourceSha256": "1b86bc4164a3ac0745b2763313b44d8b4eddc16012eada1b106c195b545d106c"
+  },
+  {
+    "frames": 60,
+    "width": 960,
+    "height": 960,
+    "duration": 2.0,
+    "outputDuration": 2.0,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 60,
+    "emptyFrames": [],
+    "contentBounds": [
+      59,
+      113,
+      896,
+      852
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "flips/lavender",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\寄信页面\\米白色信封翻面.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\flips\\lavender.webm",
+    "sourceSha256": "f6f13f72085aac7d6506ca81790241a416b5b3f8b4bd7daa300d6bc30f35719d"
+  },
+  {
+    "frames": 69,
+    "width": 960,
+    "height": 960,
+    "duration": 2.2680902777777776,
+    "outputDuration": 2.268090198571482,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 69,
+    "emptyFrames": [],
+    "contentBounds": [
+      114,
+      231,
+      828,
+      799
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "flips/sage",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\寄信页面\\绿色信封翻面.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\flips\\sage.webm",
+    "sourceSha256": "6910e47d99971dddcc6063cd84e00b769ed9527c6294029883618d9c2c65c094"
+  },
+  {
+    "frames": 63,
+    "width": 960,
+    "height": 960,
+    "duration": 2.086736111111111,
+    "outputDuration": 2.0867361927144534,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 63,
+    "emptyFrames": [],
+    "contentBounds": [
+      131,
+      232,
+      806,
+      784
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "flips/ivory",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\寄信页面\\卡其色翻面.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\flips\\ivory.webm",
+    "sourceSha256": "f8fca0c1a5831fe8f58d23065187a433a9b28f87cd21a2af4ca6bb48f6a0e9c8"
+  },
+  {
+    "frames": 53,
+    "width": 960,
+    "height": 960,
+    "duration": 1.7538368055555555,
+    "outputDuration": 1.7538367974814866,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 53,
+    "emptyFrames": [],
+    "contentBounds": [
+      160,
+      220,
+      802,
+      786
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "flips/rose",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\寄信页面\\粉色翻面.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\flips\\rose.webm",
+    "sourceSha256": "0de7ec914d7a93d0a2ff9fb1dc7ce807ead905b50cf698860e750a1811d68dd4"
+  },
+  {
+    "frames": 121,
+    "width": 854,
+    "height": 480,
+    "duration": 5.041666666666667,
+    "outputDuration": 5.041666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 121,
+    "emptyFrames": [],
+    "contentBounds": [
+      237,
+      20,
+      628,
+      468
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "entrances/write",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\首页视觉\\写信.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\entrances\\write.webm",
+    "sourceSha256": "2c993dab66b581e3b4101e788ea44741b754a5359cc41c2b07a7a3d45e6f29e9"
+  },
+  {
+    "frames": 121,
+    "width": 854,
+    "height": 480,
+    "duration": 5.041666666666667,
+    "outputDuration": 5.041666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 121,
+    "emptyFrames": [],
+    "contentBounds": [
+      199,
+      39,
+      595,
+      451
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "entrances/read",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\首页视觉\\读信.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\entrances\\read.webm",
+    "sourceSha256": "3651a101984e6bd5b61815f5c60e34700a4d719c5307665848fb3ee54f349698"
+  },
+  {
+    "frames": 97,
+    "width": 720,
+    "height": 1280,
+    "duration": 4.016666666666667,
+    "outputDuration": 4.016666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 97,
+    "emptyFrames": [],
+    "contentBounds": [
+      0,
+      382,
+      615,
+      1086
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "writing/cat-companion",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\动物管理员\\猫\\停顿.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\writing\\cat-companion.webm",
+    "sourceSha256": "8b6934cdd3df73bc76c11476d89f76283f157b8d0e89a886068652b71de00261"
+  },
+  {
+    "frames": 121,
+    "width": 640,
+    "height": 640,
+    "duration": 5.041666666666667,
+    "outputDuration": 5.041666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 121,
+    "emptyFrames": [],
+    "contentBounds": [
+      0,
+      46,
+      544,
+      640
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "writing/cat-sewing",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\动物管理员\\猫\\缝纫.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\writing\\cat-sewing.webm",
+    "sourceSha256": "032cc0951315a5dda9d966cd7def8cd0e3b2863a894442ac1e1e099fdd0321bb"
+  },
+  {
+    "frames": 97,
+    "width": 480,
+    "height": 854,
+    "duration": 4.016666666666667,
+    "outputDuration": 4.016666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 97,
+    "emptyFrames": [],
+    "contentBounds": [
+      0,
+      149,
+      448,
+      849
+    ],
+    "bodyBottom": 849,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "selection/cat",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\动物管理员\\猫\\选择.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\selection\\cat.webm",
+    "sourceSha256": "62e0687fb81d2c723da37b08205ccef78ee0f7e8725285eecea9bf66fdcaf2e2"
+  },
+  {
+    "frames": 145,
+    "width": 960,
+    "height": 960,
+    "duration": 6.016666666666667,
+    "outputDuration": 6.016666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 145,
+    "emptyFrames": [],
+    "contentBounds": [
+      88,
+      6,
+      960,
+      872
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "writing/mouse-companion",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\动物管理员\\老鼠\\陪伴.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\writing\\mouse-companion.webm",
+    "sourceSha256": "3b897a0e8d84e99779508b14c6ad9b212f44330f0bfad78d0cecb3f4c2ff622a"
+  },
+  {
+    "frames": 300,
+    "width": 960,
+    "height": 960,
+    "duration": 10.0,
+    "outputDuration": 10.0,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 300,
+    "emptyFrames": [],
+    "contentBounds": [
+      114,
+      101,
+      805,
+      866
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "writing/mouse-sewing",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\动物管理员\\老鼠\\缝线.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\writing\\mouse-sewing.webm",
+    "sourceSha256": "93d4e0176400b83068f09ec59892258a8959470235c832704a6dd9d64b806186"
+  },
+  {
+    "frames": 97,
+    "width": 720,
+    "height": 1280,
+    "duration": 4.016666666666667,
+    "outputDuration": 4.016666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 97,
+    "emptyFrames": [],
+    "contentBounds": [
+      7,
+      6,
+      720,
+      1278
+    ],
+    "bodyBottom": 1004,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "selection/mouse",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\动物管理员\\老鼠\\选择.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\selection\\mouse.webm",
+    "sourceSha256": "d08f14cd2c216e1e1bac5569854845e66d5f11060561046011b3b4e289b4c2b2"
+  },
+  {
+    "frames": 100,
+    "width": 960,
+    "height": 960,
+    "duration": 3.313333333333333,
+    "outputDuration": 3.313333333333333,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 100,
+    "emptyFrames": [],
+    "contentBounds": [
+      272,
+      192,
+      696,
+      882
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "writing/dog-companion",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\动物管理员\\狗\\陪伴.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\writing\\dog-companion.webm",
+    "sourceSha256": "faf7af3056123023b925ccdb093681091e176eb61dddb3843ada5fc89f935837"
+  },
+  {
+    "frames": 192,
+    "width": 960,
+    "height": 960,
+    "duration": 6.4,
+    "outputDuration": 6.4,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 192,
+    "emptyFrames": [],
+    "contentBounds": [
+      0,
+      196,
+      750,
+      856
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "writing/dog-sewing",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\动物管理员\\狗\\缝线.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\writing\\dog-sewing.webm",
+    "sourceSha256": "f13cef8d230bc504d17f08ef3aa64e358134be94be2dbd9313a0bbbfe306abeb"
+  },
+  {
+    "frames": 97,
+    "width": 720,
+    "height": 1280,
+    "duration": 4.016666666666667,
+    "outputDuration": 4.016666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 97,
+    "emptyFrames": [],
+    "contentBounds": [
+      12,
+      19,
+      717,
+      1270
+    ],
+    "bodyBottom": 1190,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "selection/dog",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\动物管理员\\狗\\选择.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\selection\\dog.webm",
+    "sourceSha256": "8ce1a59335cd1b6288e968097ba413b23a7758882ee22785d3a7c8f302ed59b2"
+  },
+  {
+    "frames": 97,
+    "width": 480,
+    "height": 854,
+    "duration": 4.016666666666667,
+    "outputDuration": 4.016666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 97,
+    "emptyFrames": [],
+    "contentBounds": [
+      56,
+      92,
+      462,
+      802
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "writing/rabbit-companion",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\动物管理员\\兔子\\陪伴.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\writing\\rabbit-companion.webm",
+    "sourceSha256": "a33e0728cdd6a86d4ee4959cb5d50599c3fde9a93fcb79d03b97779d258a3dd1"
+  },
+  {
+    "frames": 300,
+    "width": 960,
+    "height": 960,
+    "duration": 10.0,
+    "outputDuration": 10.0,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 300,
+    "emptyFrames": [],
+    "contentBounds": [
+      59,
+      23,
+      880,
+      959
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "writing/rabbit-sewing",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\动物管理员\\兔子\\缝线.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\writing\\rabbit-sewing.webm",
+    "sourceSha256": "5dd8852ffa0d0d28a0219309f81d869a36499b69d353cbc3fbad5dda905cc3cd"
+  },
+  {
+    "frames": 97,
+    "width": 480,
+    "height": 854,
+    "duration": 4.016666666666667,
+    "outputDuration": 4.016666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 97,
+    "emptyFrames": [],
+    "contentBounds": [
+      28,
+      16,
+      474,
+      802
+    ],
+    "bodyBottom": 784,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "selection/rabbit",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\动物管理员\\兔子\\选择.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\selection\\rabbit.webm",
+    "sourceSha256": "0482dd713437238e0a8916a1bd6dccec29f00b26316dca48185e9eb0a0201a75"
+  },
+  {
+    "frames": 97,
+    "width": 854,
+    "height": 480,
+    "duration": 4.041666666666667,
+    "outputDuration": 4.041666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 97,
+    "emptyFrames": [],
+    "contentBounds": [
+      10,
+      20,
+      836,
+      444
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "needle/start",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\写信页\\开始写信.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\needle\\start.webm",
+    "sourceSha256": "945841debcaaec32c4ff5f4f8269ce7b573948673c0f35be20519d21d54f6b25"
+  },
+  {
+    "frames": 97,
+    "width": 854,
+    "height": 480,
+    "duration": 4.041666666666667,
+    "outputDuration": 4.041666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 97,
+    "emptyFrames": [],
+    "contentBounds": [
+      230,
+      110,
+      759,
+      422
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "needle/writing",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\写信页\\从左往右写字.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\needle\\writing.webm",
+    "sourceSha256": "4406ccb50ddecf7667a147b9080d2ed77cb9123e396222267075cccf78f4510d"
+  },
+  {
+    "frames": 121,
+    "width": 854,
+    "height": 480,
+    "duration": 5.041666666666667,
+    "outputDuration": 5.041666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 121,
+    "emptyFrames": [],
+    "contentBounds": [
+      76,
+      107,
+      852,
+      480
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "needle/newline",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\写信页\\换行.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\needle\\newline.webm",
+    "sourceSha256": "85e23681738ac0294c2740ee4f4dbfd9d8c9f0594e35eb890fa545b9641c3ca2"
+  },
+  {
+    "frames": 121,
+    "width": 854,
+    "height": 480,
+    "duration": 5.041666666666667,
+    "outputDuration": 5.041666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 121,
+    "emptyFrames": [],
+    "contentBounds": [
+      236,
+      106,
+      762,
+      424
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "needle/sewing",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\写信页\\缝纸2.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\needle\\sewing.webm",
+    "sourceSha256": "5e7de638eacf65940317715540a1acd542d315d795b58dfd5fbe4935f2f6d26b"
+  },
+  {
+    "frames": 121,
+    "width": 854,
+    "height": 480,
+    "duration": 5.041666666666667,
+    "outputDuration": 5.041666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 121,
+    "emptyFrames": [],
+    "contentBounds": [
+      8,
+      20,
+      854,
+      480
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "needle/finish",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\写信页\\缝线1.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\needle\\finish.webm",
+    "sourceSha256": "5ff4a3c2f6b8a3e350ef91267f0ab5f5cd0f86e7379cf32f23074f32891c1cbf"
+  },
+  {
+    "frames": 121,
+    "width": 480,
+    "height": 854,
+    "duration": 5.041666666666667,
+    "outputDuration": 5.041666666666667,
+    "alphaRange": [
+      0,
+      255
+    ],
+    "distinctFrames": 121,
+    "emptyFrames": [],
+    "contentBounds": [
+      51,
+      286,
+      480,
+      854
+    ],
+    "bodyBottom": 0,
+    "crop": null,
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "name": "needle/thread",
+    "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\写信页\\视频节点 3.mp4",
+    "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\needle\\thread.webm",
+    "sourceSha256": "167649c4ffd79e1b72ec9031f9c9ae06cc0bfcae8597791200fd0d50384b562f"
+  }
+]

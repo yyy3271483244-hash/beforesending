@@ -1,7 +1,7 @@
 import { useLayoutEffect } from "react";
 import { measureCaret } from "../trace/letterSession";
 
-export function useGrowingPaper(editor, scrollport, text, active, replayIndex, scrollMode = 'sheet') {
+export function useGrowingPaper(editor, scrollport, text, active, replayIndex, scrollMode = 'sheet', replaySurface = null) {
   useLayoutEffect(() => {
     const input = editor.current;
     const sheet = scrollport.current;
@@ -16,8 +16,11 @@ export function useGrowingPaper(editor, scrollport, text, active, replayIndex, s
     function resize() {
       // Measure the complete text, including wrapping and unfinished IME input.
       const previousScroll = scrollMode === 'document' ? (scene?.scrollTop ?? window.scrollY) : sheet.scrollTop;
+      const retainedHeight = replaySurface ? input.offsetHeight : 0;
       input.style.height = "auto";
-      input.style.height = `${input.scrollHeight}px`;
+      // Absolute replay text can be longer than the finished draft. Include it
+      // in the paper height and retain that space when the timeline moves back.
+      input.style.height = `${Math.max(input.scrollHeight, replaySurface?.current?.scrollHeight || 0, retainedHeight)}px`;
       input.scrollTop = 0;
       if (scrollMode === 'document') {
         window.dispatchEvent(new Event('before-sending-paper-resize'));
@@ -62,5 +65,5 @@ export function useGrowingPaper(editor, scrollport, text, active, replayIndex, s
       window.removeEventListener("before-sending-languagechange", resize);
       input.removeEventListener('keyup', resize);
     };
-  }, [editor, scrollport, text, active, replayIndex, scrollMode]);
+  }, [editor, scrollport, text, active, replayIndex, scrollMode, replaySurface]);
 }

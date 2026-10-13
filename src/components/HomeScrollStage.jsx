@@ -75,7 +75,7 @@ export function HomeScrollStage({ go, initialAct = 'outside' }) {const { t, loca
       </header>
       {act === 'outside' ? <>
         <div key="exterior" className="entrance-exterior" ref={exterior}>
-          <img src="/assets/entrance/post-office-exterior.png" alt={t("藤蔓环绕的小邮局，中央木门前有一条石板路")} draggable="false" />
+          <img src={`${import.meta.env.BASE_URL}assets/entrance/post-office-exterior.png`} alt={t("藤蔓环绕的小邮局，中央木门前有一条石板路")} draggable="false" />
           <span className="entrance-sign">Before Sending<small>{t("在寄出之前")}</small></span>
           <button className="entrance-door" onClick={enter} disabled={!nearDoor} aria-label={t("推门进去")} />
         </div>
@@ -84,8 +84,8 @@ export function HomeScrollStage({ go, initialAct = 'outside' }) {const { t, loca
         </div>
       </> : <>
         <div key="interior" className="entrance-room" aria-hidden="true">
-          <img className="entrance-room-art" src="/assets/demo-cutouts/reader-room-bg.jpg" alt="" />
-          <img className="entrance-room-postbox" src="/assets/home-stage/mailbox.png" alt="" />
+          <img className="entrance-room-art" src={`${import.meta.env.BASE_URL}assets/demo-cutouts/reader-room-bg.jpg`} alt="" />
+          <img className="entrance-room-postbox" src={`${import.meta.env.BASE_URL}assets/home-stage/mailbox.png`} alt="" />
           <AdministratorCharacter id="cat" className="welcome-cat" activity={response === 'companions' ? 'reading' : 'idle'} />
           <AdministratorCharacter id="mouse" className="welcome-mouse" activity={response === 'keeping' ? 'collecting' : 'idle'} />
           <AdministratorCharacter id="rabbit" className="welcome-rabbit" activity={response === 'thread' ? 'thread' : 'packaging'} />

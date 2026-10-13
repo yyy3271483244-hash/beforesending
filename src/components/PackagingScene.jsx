@@ -49,7 +49,7 @@ export default function PackagingScene({ letter, updateLetter, onComplete, onBac
       <div className="bs-package-progress" aria-label={`装封步骤 ${phase + 1}/4`}><span style={{ width: `${(phase + 1) * 25}%` }} /></div>
       <aside className="bs-package-reference-corner" aria-hidden="true">
         <img src={`${ART}/character-leaving.png`} alt="" />
-        <img src="/assets/ui-reference/postmarks-sheet.jpg" alt="" />
+        <img src={`${import.meta.env.BASE_URL}assets/ui-reference/postmarks-sheet.jpg`} alt="" />
         <span>POST ROOM<br />paper · envelope · stamp</span>
       </aside>
 

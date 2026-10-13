@@ -2,7 +2,7 @@ import { useI18n } from "../i18n/Language";import { useCallback, useEffect, useL
 
 let activeMotion = null;
 
-export function AnimalMedia({ asset, idle, name, actionToken, onActionEnd }) {const { t, locale } = useI18n();
+export function AnimalMedia({ asset, idle, name, actionToken, onActionEnd, preplay = false, suppressFallback = false, tailLoopSeconds = 0 }) {const { t, locale } = useI18n();
   const video = useRef(null),loopVideo = useRef(null),root = useRef(null),finished = useRef(false);
   const fadeTimer = useRef(null), started = useRef(false), frame = useRef(null);
   const callback = useRef(onActionEnd);callback.current = onActionEnd;
@@ -39,12 +39,13 @@ export function AnimalMedia({ asset, idle, name, actionToken, onActionEnd }) {co
       if (video.current?.readyState >= 2 && asset.video && !reduced) play();
       else if (!asset.video || reduced) setReady(asset.src !== idle.src || Boolean(asset.video));
     });
-    const timer = !asset.loopVideo && (asset.video || callback.current) ? setTimeout(finish, asset.video && !reduced ? (asset.duration + 8) * 1000 : 1300) : null;
+    const stillDuration = asset.animatedDuration ? asset.animatedDuration * 1000 : 1300;
+    const timer = !asset.loopVideo && !tailLoopSeconds && (asset.video || callback.current) ? setTimeout(finish, asset.video && !reduced ? (asset.duration + 8) * 1000 : stillDuration) : null;
     return () => {clearTimeout(timer);clearTimeout(fadeTimer.current);cancelAnimationFrame(frame.current);video.current?.pause();loopVideo.current?.pause();if (activeMotion === finish) activeMotion = null;};
-  }, [asset, actionToken, reduced, finish, idle.src]);
+  }, [asset.video, asset.src, asset.poster, asset.loopVideo, asset.duration, asset.animatedDuration, actionToken, reduced, finish, idle.src, tailLoopSeconds]);
   function play() {
     if (finished.current || reduced || started.current || !video.current) return;
-    if (root.current?.checkVisibility && !root.current.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true })) {finish();return;}
+    if (!preplay && root.current?.checkVisibility && !root.current.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true })) {finish();return;}
     if (activeMotion !== finish) activeMotion?.();
     activeMotion = finish;
     started.current = true;
@@ -60,13 +61,19 @@ export function AnimalMedia({ asset, idle, name, actionToken, onActionEnd }) {co
       video.current?.pause();
     }).catch(finish);
   }
+  function finishOrLoopTail() {
+    const node = video.current;
+    if (!tailLoopSeconds || !node || reduced || finished.current) { finish(); return; }
+    node.currentTime = Math.max(0, node.duration - tailLoopSeconds);
+    node.play().catch(finish);
+  }
   useEffect(() => () => {if (activeMotion === finish) activeMotion = null;}, []);
   return <span ref={root} className="animal-media" data-motion={playing && ready ? 'playing' : 'still'}>
-    <img src={settled && asset.holdAfterEnd ? asset.poster : idle.src} alt={t("{0}管理员", name)} draggable="false" style={{ opacity: ready ? 0 : 1 }} />
+    <img src={settled && asset.holdAfterEnd ? asset.poster : idle.src} alt={t("{0}管理员", name)} draggable="false" style={{ opacity: suppressFallback || ready ? 0 : 1 }} />
     {(!asset.video || reduced) && asset.src !== idle.src && <img className="animal-action-image" src={reduced && asset.video ? asset.poster : asset.src} alt="" draggable="false" style={{ opacity: ready ? 1 : 0 }} />}
     {asset.video && !reduced && <>
-      <video ref={video} key={`${asset.video}:${actionToken || 0}`} src={asset.video} poster={asset.poster || asset.src}
-          muted playsInline preload="auto" controls={false} onLoadedData={play} onEnded={asset.loopVideo ? startLoop : finish} onError={finish}
+      <video ref={video} key={`${asset.video}:${actionToken || 0}`} src={asset.video} poster={suppressFallback ? undefined : asset.poster || asset.src}
+          muted playsInline preload="auto" controls={false} onLoadedData={play} onEnded={asset.loopVideo ? startLoop : finishOrLoopTail} onError={finish}
           style={{ opacity: ready && !looping ? 1 : 0, transition: 'opacity 140ms linear' }} aria-hidden="true" />
       {asset.loopVideo && <video ref={loopVideo} src={asset.loopVideo} muted playsInline preload="auto" loop controls={false}
         onError={finish} style={{ opacity: ready && looping ? 1 : 0, transition: 'opacity 140ms linear' }} aria-hidden="true" />}

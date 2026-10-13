@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
-import { X } from 'lucide-react';
+import { ArrowLeft, X } from 'lucide-react';
 import { useI18n } from '../i18n/Language';
 import { chapters, companions, chapterIndex, draftKey, journeyProgressKey, normalizeJourneyProgress, emptyLetter, chapterFromHash, invalidateDelivery } from '../data/journey.mjs';
 import { verticalSections, visualChapter, keeperChapter, availableChapter, isPublicSection, navigationTarget } from '../data/verticalJourney.mjs';
@@ -19,9 +19,13 @@ import { PostOfficeExterior, AnonymousBureau } from './PostOfficeScenes';
 import '../horizontal-journey.css';
 import '../journey-structure.css';
 
+function createFreshLetter() {
+  return { ...emptyLetter, events: [], fragments: [], knots: [], stitch: [], textStyle: { ...emptyLetter.textStyle } };
+}
+
 function loadDraft() {
   try { localStorage.removeItem(draftKey); } catch { /* A fresh in-memory letter still works without storage access. */ }
-  return { ...emptyLetter, events: [], fragments: [], knots: [], stitch: [] };
+  return createFreshLetter();
 }
 
 function loadProgress() {
@@ -36,6 +40,7 @@ export function HorizontalJourney() {
   const [progress, setProgress] = useState(loadProgress);
   const [index, setIndex] = useState(() => navigationTarget(chapterFromHash(location.hash), letter, selectedAdministrator, progress));
   const [workflow, dispatchWorkflow] = useReducer(writingWorkflowReducer, letter, initialWritingWorkflow);
+  const [letterEpoch, setLetterEpoch] = useState(0);
   const [readingBureau, setReadingBureau] = useState(() => index === chapterIndex('bureau'));
   const [keeperReady, setKeeperReady] = useState(() => index >= chapterIndex('write') && index < chapterIndex('bureau'));
   const [busy, setBusy] = useState(false), [notice, setNotice] = useState('');
@@ -51,12 +56,24 @@ export function HorizontalJourney() {
     target = visualChapter(target);
     if (target === chapterIndex('write') && keeperStage.current !== 'confirmed') target = keeperChapter;
     if (target === chapterIndex('write')) {
-      dispatchWorkflow({ type: 'REOPEN' });
-      // Reopening the task invalidates its old completion before returning to the desk.
-      if (snapshot.current.letter.letterConfirmed) flushSync(() => setLetter(current => ({
-        ...current, letterConfirmed: false, replayCompletedAt: null, replayConfirmedAt: null,
-        packedAt: null, sealedAt: null, stampAppliedAt: null, deliveryEmail: '', sentAt: null,
-      })));
+      if (snapshot.current.letter.sentAt) {
+        try { localStorage.removeItem(draftKey); } catch { /* The in-memory reset still works. */ }
+        flushSync(() => {
+          updateLetter(createFreshLetter());
+          dispatchWorkflow({ type: 'RESET' });
+          setLetterEpoch(epoch => epoch + 1);
+          setProgress(current => ({ ...current, waitingVisitedFor: null }));
+          setBusy(false);
+          setNotice('');
+        });
+      } else {
+        dispatchWorkflow({ type: 'REOPEN' });
+        // Keep an unfinished letter when returning to revise it.
+        if (snapshot.current.letter.letterConfirmed) flushSync(() => setLetter(current => ({
+          ...current, letterConfirmed: false, replayCompletedAt: null, replayConfirmedAt: null,
+          packedAt: null, sealedAt: null, stampAppliedAt: null, deliveryEmail: '', sentAt: null,
+        })));
+      }
     }
     // Explicit reading navigation may reveal the public archive; scrolling cannot unlock it.
     if (readingBureau !== (target === chapterIndex('bureau'))) flushSync(() => setReadingBureau(target === chapterIndex('bureau')));
@@ -107,7 +124,7 @@ export function HorizontalJourney() {
   useEffect(() => { try { localStorage.setItem(journeyProgressKey, JSON.stringify(progress)); } catch { /* Navigation still works without persistence. */ } }, [progress]);
   useEffect(() => {
     if (!isLetterConfirmed(letter)) return;
-    if (workflow === 'stamp' && letter.stampAppliedAt) dispatchWorkflow({ type: 'STAMPED', letter });
+    if (workflow === 'stamp' && letter.sentAt) dispatchWorkflow({ type: 'SENT', letter });
     if (workflow === 'recipient' && letter.sentAt) dispatchWorkflow({ type: 'SENT', letter });
   }, [workflow, letter.packedAt, letter.stampAppliedAt, letter.sentAt]);
   useEffect(() => {
@@ -144,7 +161,7 @@ export function HorizontalJourney() {
         <div className="journey-section-content" inert={!unlocked ? true : undefined}>
         {chapter === 0 && <PostOfficeExterior active={active} enter={() => navigate(1)} />}
         {chapter === keeperChapter && <JourneyCompanion active={active} chooseKeeper={chooseAdministrator} write={() => navigate(chapterIndex('write'), 'push', 'quick', true)} read={() => navigate(chapterIndex('bureau'), 'push', 'quick')} disabled={busy} onBusy={setBusy} onStageChange={stage => { keeperStage.current = stage; setKeeperReady(stage === 'confirmed'); }} />}
-        {id === 'write' && <JourneyWriting letter={letter} setLetter={setLetter} workflow={workflow} dispatchWorkflow={dispatchWorkflow} active={active} next={() => {
+        {id === 'write' && <JourneyWriting key={letterEpoch} letter={letter} setLetter={setLetter} workflow={workflow} dispatchWorkflow={dispatchWorkflow} active={active} next={() => {
           if (workflow !== 'confirmed') return;
           const confirmed = { ...letter, letterConfirmed: true, replayConfirmedAt: Date.now() };
           flushSync(() => {
@@ -154,10 +171,13 @@ export function HorizontalJourney() {
           });
           commitNavigation(chapterIndex('stamp'));
         }} onBusy={setBusy} />}
-        {id === 'stamp' && <StampSendScene letter={letter} setLetter={setLetter} active={active} next={() => navigate(chapterIndex('waiting'))} />}
-        {id === 'post' && <><img className="journey-post-bg" data-layer="background" src={journeyScenes.post.background} alt="" /><JourneyPost letter={letter} setLetter={setLetter} active={active} next={() => navigate(chapterIndex('waiting'))} onBusy={setBusy} /></>}
-        {id === 'waiting' && <JourneyWaiting active={active} letter={letter} next={() => navigate(chapterIndex('bureau'))} />}
-        {id === 'bureau' && <AnonymousBureau active={active} sentLetter={letter} />}
+        {id === 'stamp' && <StampSendScene key={letterEpoch} letter={letter} setLetter={setLetter} active={active} onPreviousPage={() => navigate(chapterIndex('write'))} next={() => {
+          setProgress(current => ({ ...current, waitingVisitedFor: letter.sentAt }));
+          navigate(chapterIndex('bureau'));
+        }} />}
+        {id === 'post' && <><img className="journey-post-bg" data-layer="background" src={journeyScenes.post.background} alt="" /><JourneyPost key={letterEpoch} letter={letter} setLetter={setLetter} active={active} next={() => navigate(chapterIndex('waiting'))} onBusy={setBusy} /><button className="journey-previous-page" onClick={() => navigate(chapterIndex('stamp'))}><ArrowLeft size={17} />{en ? 'Previous' : '上一页'}</button></>}
+        {id === 'waiting' && <><JourneyWaiting key={letterEpoch} active={active} letter={letter} next={() => navigate(chapterIndex('bureau'))} /><button className="journey-previous-page" onClick={() => navigate(chapterIndex('post'))}><ArrowLeft size={17} />{en ? 'Previous' : '上一页'}</button></>}
+        {id === 'bureau' && <><AnonymousBureau key={letterEpoch} active={active} sentLetter={letter} /><button className="journey-previous-page" onClick={() => navigate(chapterIndex('waiting'))}><ArrowLeft size={17} />{en ? 'Previous' : '上一页'}</button></>}
         </div>
         </div>
         </>}

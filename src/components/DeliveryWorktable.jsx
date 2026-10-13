@@ -5,10 +5,10 @@ import { EnvelopeImage, RoomHeader, envelopeArt } from "./ArchiveRooms";
 import { idFor } from "../trace/letterSession";
 
 export const stamps = [
-{ id: "night", src: "/assets/art/stamp-night.png", label: "夜间路线" },
-{ id: "window", src: "/assets/art/stamp-window.png", label: "窗边" },
-{ id: "flowers", src: "/assets/art/stamp-flowers.png", label: "花枝" },
-{ id: "distance", src: "/assets/art/stamp-distance.png", label: "两端" }];
+{ id: "night", src: `${import.meta.env.BASE_URL}assets/art/stamp-night.png`, label: "夜间路线" },
+{ id: "window", src: `${import.meta.env.BASE_URL}assets/art/stamp-window.png`, label: "窗边" },
+{ id: "flowers", src: `${import.meta.env.BASE_URL}assets/art/stamp-flowers.png`, label: "花枝" },
+{ id: "distance", src: `${import.meta.env.BASE_URL}assets/art/stamp-distance.png`, label: "两端" }];
 
 
 function ObjectRail({ label, children }) {
@@ -109,7 +109,7 @@ export function DeliveryObjects({ letter, setLetter, go, phase, onSeal, onStampe
     } });
   }
   return <>
-    <img className="drop-scene" src="/assets/administrators/post-office-facade.png" alt="" draggable="false" />
+    <img className="drop-scene" src={`${import.meta.env.BASE_URL}assets/administrators/post-office-facade.png`} alt="" draggable="false" />
     {(prepare || phase === 'packing' || stamping) && <AdministratorCharacter className="packaging-administrator" activity="packaging" />}
     <div className="flow-envelope-placement flow-envelope-back" aria-hidden="true">
       <div className="flow-envelope-lining" />
@@ -149,7 +149,7 @@ export function DeliveryObjects({ letter, setLetter, go, phase, onSeal, onStampe
     </section>
     <div className={`flow-drop-off${near ? " mailbox-ready" : ""}`} aria-label={t("亲手投递")} aria-hidden={!drop} inert={!drop ? true : undefined}>
       <button ref={mailbox} className="flow-mailbox" aria-label={t("投进邮箱")} disabled={!drop || sending || !letter.finalText.trim()} onClick={send}>
-        <img src="/assets/home-stage/mailbox.png" alt="" draggable="false" />
+        <img src={`${import.meta.env.BASE_URL}assets/home-stage/mailbox.png`} alt="" draggable="false" />
       </button>
       <AdministratorCharacter className="drop-administrator" activity={sending ? "carrying" : "waiting"} />
       <p className="drop-note" role="status">{sending ? t("正在寄出") : !letter.finalText.trim() ? t("信纸还是空的。") : t("把这封信交给邮路。")}</p>
@@ -162,7 +162,7 @@ export function PostalWaiting({ letter, setLetter, go }) {const { t, locale } = 
   const arrived = now >= (letter.scheduledDeliveryAt || 0);
   useEffect(() => {const timer = setInterval(() => setNow(Date.now()), 1000);return () => clearInterval(timer);}, []);
   return <main className="postal-waiting scene-frame">
-    <img className="office-depth" src="/assets/demo-cutouts/send-bg.jpg" alt="" />
+    <img className="office-depth" src={`${import.meta.env.BASE_URL}assets/demo-cutouts/send-bg.jpg`} alt="" />
     <RoomHeader title={t("已寄出")} go={go} />
     <div className="postal-route">
       <svg viewBox="0 0 1000 340" aria-hidden="true"><path pathLength="100" d="M65 238 C188 37 316 350 461 181 S677 36 907 109" /></svg>

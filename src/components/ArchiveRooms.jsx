@@ -6,7 +6,7 @@ export { archiveEntries } from "../data/archiveCollection";
 import { AdministratorCharacter } from "./AdministratorSystem";
 import "../archive-rooms.css";
 
-const CABINET = "/assets/demo-cutouts/drawer-bg.jpg";
+const CABINET = `${import.meta.env.BASE_URL}assets/demo-cutouts/drawer-bg.jpg`;
 const WIDTH = 1456;
 const HEIGHT = 816;
 // These boundaries follow the original painted cabinet, including its uneven cells.
@@ -25,9 +25,9 @@ export function RoomHeader({ title, go, current }) {const { t, locale } = useI18
 }
 
 export const envelopeArt = {
-  blue: { src: "/assets/archive-envelopes/blue.png", width: 600, height: 440, crop: "0 0 600 440", label: "雾蓝信封" },
-  ash: { src: "/assets/archive-envelopes/ivory.png", width: 600, height: 440, crop: "0 0 600 440", label: "米白信封" },
-  wine: { src: "/assets/archive-envelopes/pink.png", width: 600, height: 440, crop: "0 0 600 440", label: "浅粉信封" }
+  blue: { src: `${import.meta.env.BASE_URL}assets/archive-envelopes/blue.png`, width: 600, height: 440, crop: "0 0 600 440", label: "雾蓝信封" },
+  ash: { src: `${import.meta.env.BASE_URL}assets/archive-envelopes/ivory.png`, width: 600, height: 440, crop: "0 0 600 440", label: "米白信封" },
+  wine: { src: `${import.meta.env.BASE_URL}assets/archive-envelopes/pink.png`, width: 600, height: 440, crop: "0 0 600 440", label: "浅粉信封" }
 };
 export function EnvelopeImage({ className = "", style, kind = "blue" }) {
   const art = envelopeArt[kind] || envelopeArt.blue;
@@ -222,7 +222,7 @@ export function UnsealRoom({ letter, go, sourceId }) {const { t, locale } = useI
   }
 
   return <main className="table-room unseal-room" ref={root}>
-    <img className="table-backdrop" src="/assets/demo-cutouts/reader-room-bg.jpg" alt="" />
+    <img className="table-backdrop" src={`${import.meta.env.BASE_URL}assets/demo-cutouts/reader-room-bg.jpg`} alt="" />
     <RoomHeader title={t("拆信台")} go={go} />
     <div className="unseal-surface">
       <div className={`unseal-object${opened ? " is-open" : ""}`}>

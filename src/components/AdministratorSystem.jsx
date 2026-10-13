@@ -3,18 +3,19 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { EnvelopeEntrances } from "./EnvelopeEntrances";
 import "../living-letter.css";
-import { getAnimalAsset, getWritingAnimalAsset, keeperSelectionAssets } from "../data/animalAssets";
+import { getAnimalAsset, getWritingAnimalAsset, keeperSelectionAssets, writingMotionAssets } from "../data/animalAssets";
 import { AdministratorContext as Context } from "../data/AdministratorContext";
 import { AnimalMedia } from "./AnimalMedia";
 import { SelectionAnimalMedia } from "./SelectionAnimalMedia";
+import { WritingAnimalMedia } from "./WritingAnimalMedia";
 import "../animals-v2.css";
 
 gsap.registerPlugin(ScrollTrigger);
 export const administrators = {
-  mouse: { name: "老鼠", role: "缝信员", pace: 0.65 },
-  cat: { name: "猫", role: "看信员", pace: 1.05 },
-  rabbit: { name: "兔子", role: "守信员", pace: 0.85 },
-  dog: { name: "小狗", role: "送信员", pace: 0.5 }
+  mouse: { name: "帕塔", role: "缝信员", pace: 0.65 },
+  cat: { name: "莫可", role: "看信员", pace: 1.05 },
+  rabbit: { name: "露米", role: "守信员", pace: 0.85 },
+  dog: { name: "巴诺", role: "送信员", pace: 0.5 }
 };
 
 export function AdministratorProvider({ children }) {
@@ -26,7 +27,7 @@ export function AdministratorProvider({ children }) {
 }
 export function useAdministrator() {return useContext(Context);}
 
-export function AdministratorCharacter({ id, activity = "idle", className = "", style, actionToken, onActionEnd, selectionPlayback, writingCutout = false }) {
+export function AdministratorCharacter({ id, activity = "idle", className = "", style, actionToken, onActionEnd, selectionPlayback, writingCutout = false, preplay = false }) {
   const { t } = useI18n();
   const { selectedAdministrator } = useAdministrator();
   const animal = id || selectedAdministrator;
@@ -35,9 +36,11 @@ export function AdministratorCharacter({ id, activity = "idle", className = "", 
   const idleAsset = writingCutout ? getWritingAnimalAsset(animal, 'idle') : getAnimalAsset(animal, 'idle');
   if (!asset || !definition) return null;
   return <div className={`administrator animal-v2 administrator-${animal} activity-${activity} ${className}`} style={style} data-administrator={animal} data-activity={activity} data-pose={asset.pose}>
-    {selectionPlayback
-      ? <SelectionAnimalMedia asset={keeperSelectionAssets[animal]} active={selectionPlayback.active} request={selectionPlayback.request} name={t(definition.name)} />
-      : <AnimalMedia asset={asset} idle={idleAsset} name={t(definition.name)} actionToken={actionToken} onActionEnd={onActionEnd} />}
+    {writingCutout && writingMotionAssets[animal]
+      ? <WritingAnimalMedia asset={writingMotionAssets[animal]} name={t(definition.name)} activity={activity} actionToken={actionToken} onActionEnd={onActionEnd} />
+      : selectionPlayback
+      ? <SelectionAnimalMedia asset={keeperSelectionAssets[animal]} active={selectionPlayback.active} selected={selectionPlayback.selected} request={selectionPlayback.request} name={t(definition.name)} />
+      : <AnimalMedia asset={asset} idle={idleAsset} name={t(definition.name)} actionToken={actionToken} onActionEnd={onActionEnd} preplay={preplay} suppressFallback={writingCutout} tailLoopSeconds={writingCutout && activity === 'pause' ? 1 : 0} />}
   </div>;
 }
 
@@ -47,7 +50,7 @@ export function AdministratorSelector({ writing, go, embedded = false }) {const 
   const [hover, setHover] = useState(null);
   return <section className={`administrator-room${embedded ? " is-embedded" : ""}`} id="administrators" aria-label={t("选择动物管理员")}>
     <div className="administrator-room-inner scene-frame">
-      <img className="office-depth post-office-backdrop" src="/assets/administrators/post-office-facade.png" alt="" />
+      <img className="office-depth post-office-backdrop" src={`${import.meta.env.BASE_URL}assets/administrators/post-office-facade.png`} alt="" />
       <header className="selector-heading"><p>{t('信件管理员')}</p><h2>{t("谁陪你写这封信？")}</h2></header>
       <div className={`administrator-lineup${chosen ? " has-choice" : ""}`}>
         {Object.entries(administrators).map(([id, animal], index) => <button key={id} className={`administrator-choice${chosen && selectedAdministrator === id ? " is-chosen" : ""}`}
@@ -96,7 +99,7 @@ export function LivingOpening({ writing, go }) {const { t, locale } = useI18n();
 
 export function OfficeRoom({ go }) {const { t, locale } = useI18n();
   return <main className="office-room scene-frame">
-    <img className="office-depth post-office-backdrop" src="/assets/administrators/post-office-facade.png" alt="" />
+    <img className="office-depth post-office-backdrop" src={`${import.meta.env.BASE_URL}assets/administrators/post-office-facade.png`} alt="" />
     <header className="office-heading"><button onClick={() => go("administrators")}>{t("换一位管理员")}</button><h1>Before Sending</h1></header>
     <EnvelopeEntrances go={go} />
     <AdministratorCharacter className="office-administrator" />

@@ -3,6 +3,7 @@ import { RoomHeader } from "./ArchiveRooms";
 import { AdministratorCharacter, LetterAdministrator } from "./AdministratorSystem";
 import { measureCaret, useLetterSession } from "../trace/letterSession";
 import { compactDeletionMarks, compactPauseMarks } from "../trace/visibleMarks";
+import { reachesDeletionThreshold } from '../trace/deletionRules.mjs';
 import { useWritingDesk } from "../animation/useWritingDesk";
 import { useGrowingPaper } from "../animation/useGrowingPaper";
 import { ThreadTail } from "./ThreadTail";
@@ -29,7 +30,7 @@ export function LetterTraces({ letter, surface, interactive = false, onActivity,
   const resetTimer = useRef(null);
   const fragments = useMemo(() => {
     if (!single) return letter.fragments || [];
-    const kept = compactDeletionMarks(letter.fragments || [], letter.finalText);
+    const kept = compactDeletionMarks((letter.fragments || []).filter(fragment => reachesDeletionThreshold(fragment.content)), letter.finalText);
     if (!kept.length) return [];
     if (individual) return kept;
     return [{ id: 'writing-thread', threadId: 'writing-thread', position: letter.finalText.length, resetKey: letter.finalText,
@@ -43,13 +44,6 @@ export function LetterTraces({ letter, surface, interactive = false, onActivity,
     function measure() {
       const next = {};
       entries.forEach((entry) => {next[entry.id] = measureCaret(surface.current, letter.finalText, entry.position);});
-      if (single && pauseMarks && fragments[0]) {
-        const tail = next[fragments[0].id];
-        knots.forEach((knot) => {
-          const pause = next[knot.id];
-          if (Math.abs(pause.x - tail.x) < 30 && Math.abs(pause.y - tail.y) < 40) tail.y = pause.y + 32;
-        });
-      }
       setPositions(next);
     }
     measure();
@@ -96,20 +90,18 @@ export function LetterTraces({ letter, surface, interactive = false, onActivity,
     {entries.map((entry, index) => {
       const point = positions[entry.id] || { x: 0, y: 0, width: surface.current?.clientWidth || 0 };
       const knot = Boolean(entry.duration);
-      const surfaceStyle = surface.current ? getComputedStyle(surface.current) : null;
-      const lineHeight = parseFloat(surfaceStyle?.lineHeight) || parseFloat(surfaceStyle?.fontSize) * 1.9 || 34;
       const nearby = entries.slice(0, index).filter((prior) => {
         const priorPoint = positions[prior.id];
         return priorPoint && Math.abs(priorPoint.x - point.x) < 38 && Math.abs(priorPoint.y - point.y) < 24;
       }).length;
       const traceOffset = single ? Math.min(nearby, 5) : 0;
-      const left = Math.max(0, Math.min(point.width - 45, point.x + traceOffset * 8));
-      if (!knot) return <ThreadTail key={entry.threadId || entry.id} fragment={entry} point={{ ...point, x: left, y: point.y + traceOffset * 12 }} interactive={interactive} onActivity={onActivity} revealHost={revealHost} />;
+      const left = Math.max(0, Math.min(point.width - 45, point.x + traceOffset * 38));
+      if (!knot) return <ThreadTail key={entry.threadId || entry.id} fragment={entry} point={{ ...point, x: left }} interactive={interactive} onActivity={onActivity} revealHost={revealHost} />;
       const loosen = entry.id === active ? amount / 100 : untied.includes(entry.id) ? 1 : 0;
       const label = entry.cut ? t("封闭的线结") : knot ? t("解开停顿线结") : t("拉出这一处线头");
       return <button key={entry.id} type="button" tabIndex={interactive ? 0 : -1}
       className={`anchored-trace${knot ? " is-knot" : " is-backstitch"}${entry.cut ? " is-permanent" : ""}${entry.content?.length === 1 ? " is-tiny" : ""}`}
-      style={{ left, top: point.y + lineHeight + 3 + traceOffset * 12, "--tension": entry.id === active ? amount : 0, pointerEvents: interactive ? "auto" : "none" }} aria-label={label}
+      style={{ left, top: point.y + 12, "--tension": entry.id === active ? amount : 0, pointerEvents: interactive ? "auto" : "none" }} aria-label={label}
       onPointerDown={(event) => begin(event, entry)} onPointerMove={(event) => move(event, entry)} onPointerUp={end} onPointerCancel={end}
       onKeyDown={(event) => {if ([" ", "Enter"].includes(event.key) && !event.repeat) {event.preventDefault();begin(event, entry, true);}}}
       onKeyUp={end} onBlur={() => {if (active === entry.id) end();}}>
@@ -159,7 +151,7 @@ export function LivingWriting({ letter, setLetter, go, embedded = false, initial
 
   return <Surface ref={desk} className={`living-writing writing-desk writing-flow${ready ? " is-writing-ready" : ""}${embedded ? " is-embedded-writing" : ""}`} data-phase={phase} data-writing-ready={ready} aria-label={t("写信台")}>
     <div className="desk-viewport">
-    <img className="desk-scene" src="/assets/writing-desk/desk-empty.png" alt="" draggable="false" />
+    <img className="desk-scene" src={`${import.meta.env.BASE_URL}assets/writing-desk/desk-empty.png`} alt="" draggable="false" />
     <div className="desk-writing-shade" aria-hidden="true" />
     <RoomHeader title={{ desk: t("写信台"), write: t("写信台"), replay: t("回看书写"), prepare: t("寄信准备"), packing: t("封好这封信"), stamping: t("贴上邮票"), drop: t("亲手投递") }[phase]} go={go} current="write" />
     <section ref={paper} className="living-paper" style={{ viewTransitionName: "carried-paper" }} inert={!ready ? true : undefined}>
@@ -206,7 +198,7 @@ export function LivingReading({ letter, go, sourceId, embedded = false }) {const
   const [activity, setActivity] = useState("reading");
   const Surface = embedded ? 'div' : 'main';
   return <Surface className={`living-reading scene-frame${sourceId ? " is-archive-letter" : ""}${embedded ? ' is-flow-reading' : ''}`} data-letter-id={sourceId}>
-    <img className="reading-cabinet-backdrop" src="/assets/demo-cutouts/drawer-bg.jpg" alt="" />
+    <img className="reading-cabinet-backdrop" src={`${import.meta.env.BASE_URL}assets/demo-cutouts/drawer-bg.jpg`} alt="" />
     <RoomHeader title={t("读信台")} go={go} />
     <section className={`living-paper${back ? " is-turned" : ""}`} style={{ viewTransitionName: "carried-paper" }}>
       <PaperTurner back={back} onBackChange={setBack}>
@@ -254,7 +246,7 @@ export function LivingReplay({ letter, go, backTo = "write", sourceId }) {const 
   const deletion = frame?.type === 'deleteSequence' ? { ...frame, mode: 'backside' }
     : frame?.type === 'delete' && frame.deletionVisual === 'unpick' ? { ...frame, mode: 'unpick', duration: 190 } : null;
   return <main className="living-replay scene-frame">
-    <img className="office-depth" src="/assets/demo-cutouts/reader-room-bg.jpg" alt="" />
+    <img className="office-depth" src={`${import.meta.env.BASE_URL}assets/demo-cutouts/reader-room-bg.jpg`} alt="" />
     <RoomHeader title={t("回看书写")} go={go} />
     <section className="living-paper" style={{ viewTransitionName: "carried-paper" }}>
       <div className="letter-front">

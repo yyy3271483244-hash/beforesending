@@ -12,6 +12,9 @@ import "./scene-continuity.css";
 import "./chinese-typography.css";
 import "./stamp-button.css";
 import "./scene-stage.css";
+import { installBackgroundMusic } from "./audio/backgroundMusic.mjs";
+
+installBackgroundMusic();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

@@ -1,0 +1,328 @@
+{
+  "flips": {
+    "lavender": {
+      "width": 960,
+      "height": 960,
+      "frames": 60,
+      "duration": 2.0,
+      "referenceWidth": 862,
+      "referenceHeight": 764,
+      "referenceLeft": 47,
+      "referenceTop": 100
+    },
+    "sage": {
+      "width": 960,
+      "height": 960,
+      "frames": 69,
+      "duration": 2.2680902777777776,
+      "referenceWidth": 738,
+      "referenceHeight": 590,
+      "referenceLeft": 101,
+      "referenceTop": 219
+    },
+    "ivory": {
+      "width": 960,
+      "height": 960,
+      "frames": 63,
+      "duration": 2.086736111111111,
+      "referenceWidth": 698,
+      "referenceHeight": 576,
+      "referenceLeft": 119,
+      "referenceTop": 220
+    },
+    "rose": {
+      "width": 960,
+      "height": 960,
+      "frames": 53,
+      "duration": 1.7538368055555555,
+      "referenceWidth": 666,
+      "referenceHeight": 590,
+      "referenceLeft": 148,
+      "referenceTop": 207
+    }
+  },
+  "entrances": {
+    "write": {
+      "width": 854,
+      "height": 480,
+      "frames": 121,
+      "duration": 5.041666666666667,
+      "referenceWidth": 423,
+      "referenceHeight": 472,
+      "referenceLeft": 219,
+      "referenceTop": 4
+    },
+    "read": {
+      "width": 854,
+      "height": 480,
+      "frames": 121,
+      "duration": 5.041666666666667,
+      "referenceWidth": 442,
+      "referenceHeight": 446,
+      "referenceLeft": 171,
+      "referenceTop": 22
+    }
+  },
+  "selection": {
+    "cat": {
+      "width": 480,
+      "height": 854,
+      "frames": 97,
+      "duration": 4.016666666666667,
+      "feet": [
+        218,
+        845
+      ],
+      "presentation": {
+        "width": 480,
+        "height": 854,
+        "referenceWidth": 644.1658662533938,
+        "referenceHeight": 893.7801394265839,
+        "referenceLeft": -80.90637553682012,
+        "referenceTop": -15.669962649689776
+      }
+    },
+    "mouse": {
+      "width": 720,
+      "height": 1280,
+      "frames": 97,
+      "duration": 4.016666666666667,
+      "feet": [
+        326,
+        1004
+      ],
+      "presentation": {
+        "width": 720,
+        "height": 1280,
+        "referenceWidth": 644.2318013251555,
+        "referenceHeight": 893.8716243386532,
+        "referenceLeft": 33.80953827173622,
+        "referenceTop": 162.73063909556873
+      }
+    },
+    "dog": {
+      "width": 720,
+      "height": 1280,
+      "frames": 97,
+      "duration": 4.016666666666667,
+      "feet": [
+        356,
+        946
+      ],
+      "presentation": {
+        "width": 720,
+        "height": 1280,
+        "referenceWidth": 486.17261590369304,
+        "referenceHeight": 674.5645045663741,
+        "referenceLeft": 110.22621113327658,
+        "referenceTop": 534.1929201539626
+      }
+    },
+    "rabbit": {
+      "width": 480,
+      "height": 854,
+      "frames": 97,
+      "duration": 4.016666666666667,
+      "feet": [
+        268,
+        784
+      ],
+      "presentation": {
+        "width": 480,
+        "height": 854,
+        "referenceWidth": 553.6007567870244,
+        "referenceHeight": 768.1210500419962,
+        "referenceLeft": -4.904324562026585,
+        "referenceTop": 64.15547090955536
+      }
+    }
+  },
+  "writing": {
+    "cat-companion": {
+      "width": 720,
+      "height": 1280,
+      "frames": 97,
+      "duration": 4.016666666666667,
+      "presentation": {
+        "width": 720,
+        "height": 1280,
+        "referenceWidth": 925.7473481195758,
+        "referenceHeight": 925.7473481195758,
+        "referenceLeft": -78.1099324975892,
+        "referenceTop": 235.29411764705884
+      }
+    },
+    "cat-sewing": {
+      "width": 640,
+      "height": 640,
+      "frames": 121,
+      "duration": 5.041666666666667,
+      "presentation": {
+        "width": 640,
+        "height": 640,
+        "referenceWidth": 808.0808080808081,
+        "referenceHeight": 808.0808080808081,
+        "referenceLeft": -83.33333333333334,
+        "referenceTop": -103.53535353535354
+      }
+    },
+    "mouse-companion": {
+      "width": 960,
+      "height": 960,
+      "frames": 145,
+      "duration": 6.016666666666667,
+      "presentation": {
+        "width": 960,
+        "height": 960,
+        "referenceWidth": 804.694048616932,
+        "referenceHeight": 804.694048616932,
+        "referenceLeft": 44.42581726739312,
+        "referenceTop": 81.30762782900251
+      }
+    },
+    "mouse-sewing": {
+      "width": 960,
+      "height": 960,
+      "frames": 300,
+      "duration": 10.0,
+      "presentation": {
+        "width": 960,
+        "height": 960,
+        "referenceWidth": 960.0,
+        "referenceHeight": 960.0,
+        "referenceLeft": 0.0,
+        "referenceTop": 0.0
+      }
+    },
+    "dog-companion": {
+      "width": 960,
+      "height": 960,
+      "frames": 100,
+      "duration": 3.313333333333333,
+      "presentation": {
+        "width": 960,
+        "height": 960,
+        "referenceWidth": 960.0,
+        "referenceHeight": 960.0,
+        "referenceLeft": 0.0,
+        "referenceTop": 0.0
+      }
+    },
+    "dog-sewing": {
+      "width": 960,
+      "height": 960,
+      "frames": 192,
+      "duration": 6.4,
+      "presentation": {
+        "width": 960,
+        "height": 960,
+        "referenceWidth": 915.1572926596759,
+        "referenceHeight": 915.1572926596759,
+        "referenceLeft": 12.392755004766444,
+        "referenceTop": 14.299332697807436
+      }
+    },
+    "rabbit-companion": {
+      "width": 480,
+      "height": 854,
+      "frames": 97,
+      "duration": 4.016666666666667,
+      "presentation": {
+        "width": 480,
+        "height": 854,
+        "referenceWidth": 725.0755287009063,
+        "referenceHeight": 725.0755287009063,
+        "referenceLeft": -48.33836858006042,
+        "referenceTop": 110.27190332326283
+      }
+    },
+    "rabbit-sewing": {
+      "width": 960,
+      "height": 960,
+      "frames": 300,
+      "duration": 10.0,
+      "presentation": {
+        "width": 960,
+        "height": 960,
+        "referenceWidth": 960.0,
+        "referenceHeight": 960.0,
+        "referenceLeft": 0.0,
+        "referenceTop": 0.0
+      }
+    }
+  },
+  "needle": {
+    "start": {
+      "width": 854,
+      "height": 480,
+      "frames": 97,
+      "duration": 4.041666666666667,
+      "spool": {
+        "x": 760.0,
+        "y": 356.0,
+        "width": 132,
+        "height": 160
+      }
+    },
+    "writing": {
+      "width": 854,
+      "height": 480,
+      "frames": 97,
+      "duration": 4.041666666666667,
+      "spool": {
+        "x": 708.0,
+        "y": 366.0,
+        "width": 88,
+        "height": 104
+      }
+    },
+    "newline": {
+      "width": 854,
+      "height": 480,
+      "frames": 121,
+      "duration": 5.041666666666667,
+      "spool": {
+        "x": 790.0,
+        "y": 410.5,
+        "width": 88,
+        "height": 119
+      }
+    },
+    "sewing": {
+      "width": 854,
+      "height": 480,
+      "frames": 121,
+      "duration": 5.041666666666667,
+      "spool": {
+        "x": 712.0,
+        "y": 365.5,
+        "width": 80,
+        "height": 103
+      }
+    },
+    "finish": {
+      "width": 854,
+      "height": 480,
+      "frames": 121,
+      "duration": 5.041666666666667,
+      "spool": {
+        "x": 760.0,
+        "y": 357.0,
+        "width": 136,
+        "height": 166
+      }
+    },
+    "thread": {
+      "width": 480,
+      "height": 854,
+      "frames": 121,
+      "duration": 5.041666666666667,
+      "spool": {
+        "x": 410.0,
+        "y": 742.0,
+        "width": 140,
+        "height": 224
+      }
+    }
+  }
+}

@@ -1,101 +1,203 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { keeperLoopStart, keeperPixels } from '../animation/keeperPlayback.mjs';
+import { fullFrameStyle } from '../animation/fullFrameStyle.mjs';
 import '../selection-animal-motion.css';
 
-let foregroundAction = null;
-
-// Keep the decoded video mounted: idle and the final pose use the same pixels as motion.
-export function SelectionAnimalMedia({ asset, active, request, name }) {
-  const video = useRef(null), cover = useRef(null), cleanupFade = useRef(null);
-  const pending = useRef(null), generation = useRef(0), frameCallback = useRef(null);
+// Only the keeper selector uses this player. Writing-side media remains untouched.
+export function SelectionAnimalMedia({ asset, active, selected = false, request, name }) {
+  const root = useRef(null), video = useRef(null), canvas = useRef(null), controller = useRef(null);
+  const latest = useRef({ active, selected, request }); latest.current = { active, selected, request };
   const handledToken = useRef(0);
-  const latest = useRef({ active, request }); latest.current = { active, request };
   const [ready, setReady] = useState(false), [state, setState] = useState('idle');
-  const [reduced, setReduced] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const renderDivisor = 2 ** Math.max(0, Math.ceil(Math.log2(Math.max(asset.sourceWidth, asset.sourceHeight) / 640)));
+  const renderWidth = asset.sourceWidth / renderDivisor, renderHeight = asset.sourceHeight / renderDivisor;
+  const [frameBox, setFrameBox] = useState({ width:asset.width, height:asset.height, left:0, top:0 });
+  useLayoutEffect(() => {
+    const node = root.current;
+    function fit() {
+      const scale = Math.min(node.clientWidth / asset.width, node.clientHeight / asset.height);
+      setFrameBox({ width:asset.width * scale, height:asset.height * scale,
+        left:(node.clientWidth - asset.width * scale) / 2, top:node.clientHeight - asset.height * scale });
+    }
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [asset.width, asset.height]);
 
-  function clearFrame() {
-    if (frameCallback.current != null) video.current?.cancelVideoFrameCallback?.(frameCallback.current);
-    frameCallback.current = null;
-  }
-  const hold = useCallback(() => {
-    generation.current++;
-    pending.current = null;
-    clearFrame(); clearTimeout(cleanupFade.current);
-    video.current?.pause();
-    if (cover.current) cover.current.style.opacity = '0';
-    if (video.current) video.current.style.opacity = video.current.readyState >= 2 ? '1' : '0';
-    setState('idle');
-    if (foregroundAction === hold) foregroundAction = null;
-  }, []);
+  useEffect(() => {
+    const node = video.current, surface = canvas.current, element = root.current;
+    const width = renderWidth, height = renderHeight;
+    const context = surface.getContext('2d');
+    const packed = document.createElement('canvas');
+    packed.width = width * 2; packed.height = height;
+    const unpack = packed.getContext('2d', { willReadFrequently: true });
+    const pixels = context.createImageData(width, height);
+    const alphaFix = asset.frameAlphaCorrection;
+    const alphaFixCanvas = alphaFix ? document.createElement('canvas') : null;
+    if (alphaFixCanvas) { alphaFixCanvas.width = width; alphaFixCanvas.height = height; }
+    const alphaFixContext = alphaFixCanvas?.getContext('2d', { willReadFrequently: true });
+    let correctedAlpha = null, alphaFixReady = !alphaFix, resumeAfterAlphaFix = false;
+    const preference = matchMedia('(prefers-reduced-motion: reduce)');
+    let mode = latest.current.selected ? 'selected-idle' : 'idle';
+    let source = '', frame = null, disposed = false, hasFrame = false;
+    let needsSeek = false, generation = 0, loops = 0, selectedIntroPlayed = false;
+    if (alphaFix) {
+      const image = new Image();
+      const ready = () => {
+        alphaFixReady = true;
+        if (resumeAfterAlphaFix && !disposed) { resumeAfterAlphaFix = false; play(); }
+      };
+      image.onload = () => {
+        try {
+          alphaFixContext.drawImage(image, 0, 0, width, height);
+          correctedAlpha = alphaFixContext.getImageData(0, 0, width, height).data;
+        } catch { correctedAlpha = null; }
+        ready();
+      };
+      image.onerror = ready;
+      image.src = alphaFix.src;
+    }
 
-  function reveal() {
-    const node = video.current;
-    if (!node || node.readyState < 2 || node.seeking) return;
-    setReady(true); node.style.opacity = '1';
-    const canvas = cover.current;
-    if (canvas?.style.opacity === '1') {
-      canvas.style.transition = 'opacity 240ms ease';
-      canvas.style.opacity = '0';
-      cleanupFade.current = setTimeout(() => canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height), 260);
+    const idle = () => mode === 'idle' || mode === 'selected-idle';
+    const loopStart = () => mode === 'selected-idle'
+      ? asset.selectedIdleLoopStart ?? keeperLoopStart(node.duration)
+      : keeperLoopStart(node.duration);
+    const canPlay = () => latest.current.active && !document.hidden && !preference.matches;
+    function cancelFrame() {
+      if (frame == null) return;
+      if (node.requestVideoFrameCallback) node.cancelVideoFrameCallback(frame);
+      else cancelAnimationFrame(frame);
+      frame = null;
     }
-  }
-  function play(kind) {
-    const node = video.current;
-    if (!node || !latest.current.active || reduced) return;
-    if (foregroundAction !== hold) foregroundAction?.();
-    foregroundAction = hold;
-    if (node.readyState < 2) { pending.current = kind; return; }
-    node.playbackRate = kind === 'hover' ? .8 : 1;
-    // Selecting during hover promotes the same running action, without rewinding it.
-    if (!node.paused && !node.ended) { setState(kind); return; }
-    const run = ++generation.current;
-    pending.current = null;
-    clearTimeout(cleanupFade.current); clearFrame();
-    if (node.ended || node.currentTime >= node.duration - .06) {
-      const canvas = cover.current;
-      canvas.width = node.videoWidth; canvas.height = node.videoHeight;
-      canvas.getContext('2d').drawImage(node, 0, 0);
-      canvas.style.transition = 'none'; canvas.style.opacity = '1';
-      node.style.opacity = '0';
-      node.currentTime = 0;
+    function pause() { cancelFrame(); node.pause(); }
+    function draw() {
+      if (disposed || node.readyState < 2 || node.seeking || needsSeek) return;
+      unpack.drawImage(node, 0, 0, width * 2, height);
+      keeperPixels(unpack.getImageData(0, 0, width * 2, height).data, pixels.data, width, height);
+      if (correctedAlpha && source) {
+        const frameNumber = Math.round(node.currentTime * alphaFix.fps);
+        const selectedIdle = source === asset.selectedIdlePlaybackVideo && source !== asset.playbackVideo;
+        const sourceFrame = selectedIdle && frameNumber >= alphaFix.sourceFrames
+          ? alphaFix.sourceFrames * 2 - 1 - frameNumber
+          : frameNumber;
+        if (sourceFrame === alphaFix.frameIndex) {
+          for (let pixel = 0; pixel < width * height; pixel++) {
+            pixels.data[pixel * 4 + 3] = correctedAlpha[pixel * 4 + 3];
+          }
+        }
+      }
+      // Keep the last frame while seeking, then replace it atomically. Blending
+      // two cutout silhouettes produces double outlines and fades opaque pixels.
+      context.putImageData(pixels, 0, 0);
+      if (!hasFrame) { hasFrame = true; setReady(true); }
     }
-    setState(kind);
-    if (node.requestVideoFrameCallback) frameCallback.current = node.requestVideoFrameCallback(() => {
-      frameCallback.current = null;
-      if (generation.current === run) reveal();
-    });
-    node.play().catch(() => { if (generation.current === run) hold(); });
-  }
-  function loaded() {
-    reveal();
-    if (pending.current) play(pending.current);
-  }
-  useEffect(() => {
-    const query = matchMedia('(prefers-reduced-motion: reduce)');
-    const sync = () => setReduced(query.matches);
-    query.addEventListener('change', sync);
-    return () => query.removeEventListener('change', sync);
-  }, []);
-  useEffect(() => {
-    if (!active || reduced) { handledToken.current = request?.token || handledToken.current; hold(); return; }
-    if (request?.token && request.token !== handledToken.current) {
-      handledToken.current = request.token;
-      play(request.kind);
+    function schedule() {
+      if (frame != null || !canPlay() || disposed) return;
+      const tick = () => { frame = null; draw(); if (!node.paused) schedule(); };
+      frame = node.requestVideoFrameCallback ? node.requestVideoFrameCallback(tick) : requestAnimationFrame(tick);
     }
-  }, [active, request?.token, reduced]);
-  useEffect(() => {
-    const hide = () => { if (document.hidden) hold(); };
-    document.addEventListener('visibilitychange', hide);
+    function play() {
+      if (!canPlay()) { pause(); draw(); return; }
+      if (!alphaFixReady) { resumeAfterAlphaFix = true; return; }
+      node.defaultPlaybackRate = asset.playbackRate ?? 1;
+      node.playbackRate = asset.playbackRate ?? 1;
+      const run = generation;
+      node.play().then(() => {
+        if (disposed || run !== generation) return;
+        if (!canPlay()) pause(); else schedule();
+      }).catch(error => {
+        if (!disposed && run === generation && error.name !== 'AbortError') element.dataset.playbackBlocked = 'true';
+      });
+    }
+    function seek() {
+      if (!needsSeek || node.readyState < 1) return;
+      const loopPoint = loopStart();
+      const start = mode === 'idle' || mode === 'selected-idle' && selectedIntroPlayed ? loopPoint : 0;
+      element.dataset.loopStart = String(loopPoint);
+      needsSeek = false;
+      node.currentTime = start;
+    }
+    function change(next, restart = true) {
+      // Clicking during a hover promotes the ongoing action, not a new first frame.
+      if (next === 'select' && mode === 'hover' && !node.ended) {
+        mode = next; setState(mode); play(); return;
+      }
+      if (next === mode && !restart) { play(); return; }
+      pause(); generation++;
+      mode = next; setState(mode);
+      if (mode === 'selected-idle') selectedIntroPlayed = false;
+      needsSeek = true;
+      const destination = mode === 'selected-idle'
+        ? asset.selectedIdlePlaybackVideo || asset.idlePlaybackVideo || asset.playbackVideo
+        : mode === 'idle'
+          ? asset.idlePlaybackVideo || asset.playbackVideo
+          : asset.playbackVideo;
+      if (source !== destination) {
+        source = destination;
+        node.src = source;
+        // Explicit source selection also recovers after deployment-base/HMR changes.
+        node.load();
+      } else seek();
+      play();
+    }
+    function sync() {
+      const current = latest.current;
+      if (current.request?.token && current.request.token !== handledToken.current && current.active) {
+        handledToken.current = current.request.token;
+        const kind = current.request.kind;
+        if (kind === 'select' || kind === 'hover' && !current.selected) change(kind);
+        else if (kind === 'idle' && !current.selected) change('idle', false);
+      }
+      if (idle() && current.selected !== (mode === 'selected-idle')) change(current.selected ? 'selected-idle' : 'idle', false);
+      if (!canPlay()) pause(); else play();
+    }
+    function metadata() { seek(); }
+    function loaded() { seek(); draw(); play(); }
+    function seeked() { draw(); play(); }
+    function timeupdate() {
+      if (!idle() || !Number.isFinite(node.duration)) return;
+      element.dataset.playbackPhase = node.currentTime >= loopStart() ? 'idle' : 'intro';
+    }
+    function ended() {
+      if (!canPlay()) return;
+      loops++;
+      element.dataset.loopCount = String(loops);
+      if (idle()) {
+        selectedIntroPlayed = mode === 'selected-idle';
+        needsSeek = true;
+        seek();
+        play();
+        return;
+      }
+      change(latest.current.selected ? 'selected-idle' : 'idle');
+    }
+    function failed() { element.dataset.mediaError = 'true'; pause(); }
+    function playing() { delete element.dataset.playbackBlocked; schedule(); }
+    const handlers = { loadedmetadata: metadata, loadeddata: loaded, seeked, timeupdate, ended, error: failed, playing };
+    for (const [event, handler] of Object.entries(handlers)) node.addEventListener(event, handler);
+    preference.addEventListener('change', sync);
+    document.addEventListener('visibilitychange', sync);
+    controller.current = { sync };
+    setReady(false);
+    change(mode);
+    sync();
     return () => {
-      generation.current++; clearFrame(); clearTimeout(cleanupFade.current);
-      video.current?.pause(); document.removeEventListener('visibilitychange', hide);
-      if (foregroundAction === hold) foregroundAction = null;
+      disposed = true; generation++; pause(); controller.current = null;
+      for (const [event, handler] of Object.entries(handlers)) node.removeEventListener(event, handler);
+      preference.removeEventListener('change', sync);
+      document.removeEventListener('visibilitychange', sync);
     };
-  }, []);
+  }, [asset.playbackVideo, asset.idlePlaybackVideo, asset.selectedIdlePlaybackVideo, asset.selectedIdleLoopStart, asset.frameAlphaCorrection, asset.playbackRate, renderWidth, renderHeight]);
 
-  return <span className="selection-animal-media" data-motion={state} data-ready={ready} role="img" aria-label={name}>
-    <video ref={video} src={asset.video} muted playsInline preload="auto" controls={false}
-      onLoadedData={loaded} onSeeked={reveal} onPlaying={() => { if (!video.current?.requestVideoFrameCallback) reveal(); }}
-      onEnded={hold} onError={hold} aria-hidden="true" />
-    <canvas ref={cover} aria-hidden="true" />
+  useEffect(() => { controller.current?.sync(); }, [active, selected, request?.token]);
+
+  return <span ref={root} className="selection-animal-media" data-motion={state} data-ready={ready} role="img" aria-label={name}>
+    <video ref={video} muted playsInline preload="auto" controls={false} aria-hidden="true" />
+    <span className="selection-full-motion-frame" style={{ ...frameBox,
+      transform: `scale(${asset.displayScale ?? 1})`,
+      transformOrigin: `${asset.feet[0] / asset.width * 100}% ${asset.feet[1] / asset.height * 100}%` }}>
+      <canvas ref={canvas} width={renderWidth} height={renderHeight} style={fullFrameStyle(asset.presentation)} aria-hidden="true" />
+    </span>
   </span>;
 }

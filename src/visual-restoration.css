@@ -104,7 +104,7 @@ body:has(.restored-journey[data-chapter='opening']) .language-switch { top: calc
 .restored-journey .journey-sheet-scroll {
   position: relative; left: auto; top: auto; translate: none; margin: 0; align-self: center;
   width: 64%; min-height: var(--paper-rest-height,78svh); height: auto; aspect-ratio: auto;
-  background: none; box-shadow: none; filter: drop-shadow(0 8px 10px #67695112); overflow: visible; visibility: visible; opacity: 1; pointer-events: auto; transform-origin: 50% 0%;
+  background: none; box-shadow: none; filter: drop-shadow(0 3px 5px #665f5524) drop-shadow(0 12px 18px #4f51452e); overflow: visible; visibility: visible; opacity: 1; pointer-events: auto; transform-origin: 50% 0%;
 }
 .restored-journey [data-desk-state='desk'] .journey-paper { height: var(--paper-rest-height); }
 .long-paper-material { position: absolute; z-index: 0; inset: 0; display: flex; flex-direction: column; pointer-events: none; }
@@ -116,9 +116,11 @@ body:has(.restored-journey[data-chapter='opening']) .language-switch { top: calc
 .restored-journey .journey-paper-content { position: relative; z-index: 1; inset: auto; padding: 5% 5.5% 220px; height: auto; overflow: visible; }
 .restored-journey .journey-paper-content .journey-writing-paper { min-height: 0; padding: 0; }
 .restored-journey .journey-writing-paper { position: relative; color: #686c62; }
-.restored-journey .journey-to { margin-bottom: 28px; font-size: var(--type-h3); gap: 16px; }
+.restored-journey .journey-to { margin-bottom: 12px; font-size: var(--type-h3); gap: 16px; }
+.restored-journey .journey-writing-paper > .journey-to { margin-bottom: 12px; }
+.restored-journey .journey-to .letter-salutation { font-size: calc(var(--type-body) * 1.65); font-weight: 500; line-height: 1.2; }
 .restored-journey .journey-to input::placeholder { font-size: var(--type-h3); color: #a2a596; }
-.restored-journey .letter-editing-area textarea { font: var(--type-h3)/1.9 var(--font-body-family); min-height: 120px; height: auto; max-height: none; padding: 0 48px 0 0; overflow: hidden; color: #686c62; }
+.restored-journey .letter-editing-area textarea { font: var(--type-h3)/1.68 var(--font-body-family); min-height: 120px; height: auto; max-height: none; padding: 0 48px 0 0; overflow: hidden; color: #686c62; }
 .restored-journey .letter-editing-area textarea::placeholder { color: #afafa1; font-size: var(--type-body); }
 .paper-bottom-details { position: absolute; z-index: 1; bottom: 30px; left: 5.5%; right: 5.5%; height: 105px; pointer-events: none; }
 .restored-journey .restored-paper-colophon { display: flex; justify-content: flex-end; position: absolute; bottom: 0; left: 0; right: 0; font-size: var(--type-caption); color: #aaa895; pointer-events: none; }

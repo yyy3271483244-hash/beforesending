@@ -1,0 +1,78 @@
+.writing-needle-system {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  overflow: visible;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+.writing-needle-system.is-visible { opacity: 1; visibility: visible; }
+.writing-needle-native-video { position:absolute; display:block; max-width:none; object-fit:contain; pointer-events:none; }
+.writing-needle-system[data-native-playing='true'] > :is(.writing-thread-svg,.writing-spool-image,.writing-needle-carriage) { visibility:hidden; }
+.journey-paper-content .writing-thread-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.writing-thread-line {
+  fill: none;
+  stroke: #d96f73;
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.writing-thread-line.is-echo {
+  stroke: #ba6066;
+  stroke-width: .32;
+  opacity: .36;
+  stroke-dasharray: 11 3 19 2;
+}
+.writing-spool-image {
+  position: absolute;
+  left: var(--spool-x);
+  top: var(--spool-y);
+  width: clamp(60px, 9%, 90px);
+  height: auto;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 2px 2px rgb(89 57 53 / 12%));
+}
+.writing-needle-carriage {
+  position: absolute;
+  left: var(--needle-x);
+  top: var(--needle-y);
+  height: clamp(38px, 3.8vw, 46px);
+  aspect-ratio: 1139 / 1454;
+  transform: translate(4px, -76%) rotate(-4deg);
+  transform-origin: 82% 12%;
+  filter: drop-shadow(0 1px 1px rgb(76 62 56 / 16%));
+  transition: left 240ms cubic-bezier(.22,1,.36,1), top 240ms cubic-bezier(.22,1,.36,1);
+}
+.writing-needle-image { display: block; width: 100%; height: 100%; }
+.writing-needle-eye-anchor { position: absolute; left: 81.5%; top: 13%; width: 1px; height: 1px; }
+.writing-needle-system.is-start .writing-needle-carriage { animation: needle-arrive 900ms cubic-bezier(.22,1,.36,1) both; }
+.writing-needle-system:is(.is-finish,.is-send-return) .writing-needle-carriage { animation: needle-return 900ms cubic-bezier(.64,0,.78,0) both; }
+.writing-needle-system.is-deletion .writing-needle-carriage { animation: needle-unpick 1050ms steps(5,end) both; }
+.writing-needle-system.is-newline .writing-needle-carriage { animation: needle-newline 820ms cubic-bezier(.22,1,.36,1) both; }
+
+@keyframes needle-arrive {
+  from { transform: translate(calc(4px + var(--return-x)), calc(-76% + var(--return-y))) rotate(16deg); }
+  68% { transform: translate(2px, -82%) rotate(-8deg); }
+  to { transform: translate(4px, -76%) rotate(-4deg); }
+}
+@keyframes needle-return {
+  from { transform: translate(4px, -76%) rotate(-4deg); }
+  to { transform: translate(calc(4px + var(--return-x)), calc(-76% + var(--return-y))) rotate(16deg); }
+}
+@keyframes needle-unpick {
+  0%,100% { transform: translate(4px, -76%) rotate(-4deg); }
+  22% { transform: translate(0, -86%) rotate(-12deg); }
+  46% { transform: translate(8px, -62%) rotate(2deg); }
+  70% { transform: translate(1px, -81%) rotate(-10deg); }
+}
+@keyframes needle-newline {
+  0% { transform: translate(4px, -76%) rotate(-4deg); }
+  46% { transform: translate(9px, -98%) rotate(9deg); }
+  100% { transform: translate(4px, -76%) rotate(-4deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .writing-needle-carriage { animation-duration: 1ms !important; transition-duration: 1ms; }
+}

@@ -1,7 +1,7 @@
 .restored-keeper .restored-envelope-choices .entrance-object {
   position: relative; display: block; margin: 0; height: clamp(110px, 21svh, 220px);
-  transform-origin: 50% 70%;
-  transition: transform 320ms cubic-bezier(.22,1,.36,1), filter 320ms ease;
+  transform-origin: 50% 70%; overflow: visible;
+  transition: transform 320ms cubic-bezier(.22,1,.36,1);
 }
 .restored-keeper .restored-envelope-choices .entrance-object img {
   width: 100%; height: 100%; max-height: none; object-fit: contain;
@@ -15,33 +15,27 @@
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none;
   transition: opacity 240ms ease;
 }
+.restored-keeper .restored-envelope-choices .entrance-full-motion {
+  position:absolute; left:50%; top:0; height:100%; width:auto;
+  aspect-ratio:var(--motion-ratio); transform:translateX(-50%); overflow:visible; pointer-events:none;
+}
+.restored-keeper .restored-envelope-choices .entrance-full-motion :is(.entrance-preview-video,.entrance-preview-poster) {
+  inset:auto; left:var(--motion-left); top:var(--motion-top);
+  width:var(--motion-width); height:var(--motion-height); max-width:none; object-fit:fill;
+}
 .restored-keeper .restored-envelope-choices .entrance-object .entrance-preview-video { opacity: 0; }
-.restored-keeper .restored-envelope-choices .entrance-object .entrance-preview-video {
-  -webkit-mask-position: center;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-  mask-position: center;
-  mask-repeat: no-repeat;
-  mask-size: 100% 100%;
-}
-.restored-keeper .restored-envelope-choices .entrance-object .entrance-preview-write {
-  -webkit-mask-image: url('/assets/entrance-envelopes/write-poster.png');
-  mask-image: url('/assets/entrance-envelopes/write-poster.png');
-}
-.restored-keeper .restored-envelope-choices .entrance-object .entrance-preview-read {
-  -webkit-mask-image: url('/assets/entrance-envelopes/read-poster.png');
-  mask-image: url('/assets/entrance-envelopes/read-poster.png');
-}
 .restored-keeper .restored-envelope-choices .entrance-object .entrance-preview-poster { opacity: 1; }
 .restored-keeper .restored-envelope-choices button[data-preview='playing'] .entrance-preview-video { opacity: 1; }
 .restored-keeper .restored-envelope-choices button[data-preview='playing'] .entrance-preview-poster { opacity: 0; }
 .restored-keeper .restored-envelope-choices button[data-preview='returning'] .entrance-preview-video { opacity: 0; }
 .restored-keeper .restored-envelope-choices button[data-preview='returning'] .entrance-preview-poster { opacity: 1; }
-.restored-keeper .restored-envelope-choices button { cursor: pointer; }
+.restored-keeper .restored-envelope-choices { z-index: 5; overflow: visible; }
+.restored-keeper .restored-envelope-choices button { position: relative; z-index: 0; overflow: visible; cursor: pointer; }
 .restored-keeper .restored-envelope-choices button:is(:hover,:focus-visible):not(:disabled) .entrance-object {
   transform: translateY(-8px) rotate(-1deg) scale(1.035);
-  filter: drop-shadow(0 7px 5px rgb(91 69 62 / .10));
+  filter: none;
 }
+.restored-keeper .restored-envelope-choices button:is(:hover,:focus-visible):not(:disabled) { z-index: 2; }
 .restored-keeper .restored-envelope-choices button:nth-child(2):is(:hover,:focus-visible):not(:disabled) .entrance-object {
   transform: translateY(-8px) rotate(1deg) scale(1.035);
 }

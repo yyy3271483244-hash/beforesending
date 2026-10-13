@@ -18,6 +18,7 @@ export function useDeskPaper(stage, paper, trigger, active, onBusy) {
     const details = stage.current.querySelectorAll('[data-writing-detail]');
     document.activeElement?.blur();
     const height = paper.current.offsetHeight;
+    const resting = rest();
     const targetHeight = open ? Math.max(restingHeight(), paper.current.querySelector('.journey-paper-content').offsetHeight) : restingHeight();
     gsap.set(paper.current, { height });
     changePhase(open ? 'lifting' : 'returning');
@@ -30,11 +31,36 @@ export function useDeskPaper(stage, paper, trigger, active, onBusy) {
       }
     } });
     if (open) {
-      timeline.current.to(paper.current, { y: rest().y - 8, rotationX: 48, duration: reduced ? 0 : .16 }, 0)
-        .to(paper.current, { x: 0, y: 0, scale: 1, rotationX: 0, rotationZ: 0, height: targetHeight, duration: reduced ? .01 : .72 }, reduced ? 0 : .16)
-        .to(shade, { opacity: .24, duration: reduced ? .01 : .8 }, 0)
-        .to(companion, { autoAlpha: 0, duration: reduced ? .01 : .3 }, 0)
-        .to(details, { autoAlpha: 1, duration: reduced ? .01 : .16 }, reduced ? 0 : .72);
+      timeline.current
+        .to(paper.current, {
+          y: resting.y - 22,
+          scale: resting.scale * 1.025,
+          rotationX: 49,
+          rotationZ: -.55,
+          duration: reduced ? 0 : .22,
+          ease: 'power1.out',
+        }, 0)
+        .to(paper.current, {
+          x: 0,
+          y: -10,
+          scale: .985,
+          rotationX: 4,
+          rotationZ: .2,
+          height: targetHeight,
+          duration: reduced ? .01 : .68,
+          ease: 'power2.inOut',
+        }, reduced ? 0 : .22)
+        .to(paper.current, {
+          y: 0,
+          scale: 1,
+          rotationX: 0,
+          rotationZ: 0,
+          duration: reduced ? 0 : .18,
+          ease: 'sine.out',
+        }, reduced ? 0 : .90)
+        .to(shade, { opacity: .24, duration: reduced ? .01 : .92, ease: 'sine.inOut' }, .08)
+        .to(companion, { autoAlpha: 0, duration: reduced ? .01 : .38 }, .04)
+        .to(details, { autoAlpha: 1, duration: reduced ? .01 : .30, ease: 'sine.out' }, reduced ? 0 : .70);
     } else {
       const section = stage.current.closest('.journey-section');
       const scroll = { y: section.scrollTop };

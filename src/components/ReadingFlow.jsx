@@ -92,7 +92,7 @@ export function ReadingFlow({ go, initialId, initialReading = false, stitches = 
       {arrival === 'paper-read' && <ArchiveArrival />}
       <div className="reading-flow-header" hidden={phase === 'actionChoice'}><RoomHeader title={phase === 'reading' ? t("读信台") : t("匿名信件处")} go={navigate} current="bureau" /></div>
       <div className="reading-action-scene" inert={phase !== 'actionChoice' ? true : undefined}>
-        <img className="reading-choice-backdrop" src="/assets/administrators/post-office-facade.png" alt="" />
+        <img className="reading-choice-backdrop" src={`${import.meta.env.BASE_URL}assets/administrators/post-office-facade.png`} alt="" />
         <PostOfficeChoices initialState="actionChoice" active={phase === 'actionChoice'} go={(page, id, arrival) => page === 'bureau' ? toScene(1.2) : go(page, id, arrival)} />
       </div>
       <div className="reading-flow-cabinet" inert={phase !== 'archive' ? true : undefined}>

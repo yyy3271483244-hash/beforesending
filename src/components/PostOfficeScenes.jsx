@@ -29,8 +29,8 @@ export function PostOfficeInterior({ active, bureau, write }) {
   }, [active, line, looking]);
   return <div className="post-scene post-interior">
     <div className="post-scene-canvas">
-      <img className="post-scene-background" src={postOfficeAssets.interior} alt={en ? 'A quiet cat resting on a mint-green wooden post office counter' : '猫守着薄荷绿木柜台，身后是信件与花草'} draggable={false} />
-      <button className="counter-cat-hotspot" aria-label={en ? 'Talk to the cat' : '和柜台边的猫说句话'} onClick={() => { setLooking(false); setLine(0); }} />
+      <img className="post-scene-background" src={postOfficeAssets.interior} alt={en ? 'Moko resting on a mint-green wooden post office counter' : '莫可守着薄荷绿木柜台，身后是信件与花草'} draggable={false} />
+      <button className="counter-cat-hotspot" aria-label={en ? 'Talk to Moko' : '和柜台边的莫可说句话'} onClick={() => { setLooking(false); setLine(0); }} />
     </div>
       {!looking && <button ref={dialogue} className="cat-dialogue" onClick={() => setLine(value => Math.min(2, value + 1))} aria-label={en ? 'Continue the conversation' : '继续听猫说话'}>
         <span data-chapter-heading tabIndex={-1}>{languageText(language, lines[line])}</span>{line < 2 && <ArrowRight aria-hidden="true" />}

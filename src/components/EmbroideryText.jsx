@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { splitGraphemes } from '../trace/graphemes.mjs';
 
-export function EmbroideryText({ text = '', style = {}, fresh, tokenIds = [], className = '' }) {
+export function EmbroideryText({ text = '', style = {}, fresh, tokenIds = [], className = '', surfaceRef }) {
   const parts = useMemo(() => splitGraphemes(text), [text]);
-  return <div className={`embroidered-text-layer ${className}`} aria-hidden="true"
+  return <div ref={surfaceRef} className={`embroidered-text-layer ${className}`} aria-hidden="true"
     data-stitch-family={style.family || 'fine'} data-stitch-size={style.size || 'medium'}
     style={{ '--active-thread': style.color || '#8f5968', '--fresh-stitch-duration': `${fresh?.duration || 170}ms` }}>
     {parts.map((part) => {
@@ -16,14 +16,14 @@ export function EmbroideryText({ text = '', style = {}, fresh, tokenIds = [], cl
   </div>;
 }
 
-export function DeletionStitch({ effect, position, color, style = {} }) {
+export function DeletionStitch({ effect, position, color, style = {}, showNeedlework = true }) {
   if (!effect) return null;
   const concealed = effect.mode === 'backside';
   return <div key={effect.sequenceId || effect.id} className={`writing-deletion-visual ${concealed ? 'is-concealing' : 'is-unpicking'}`}
     aria-hidden="true" data-stitch-family={style.family || 'fine'} data-stitch-size={style.size || 'medium'}
     style={{ left: position?.x || 0, top: position?.y || 0, '--active-thread': color || style.color || '#8f5968', '--deletion-duration': `${effect.duration || 190}ms` }}>
     <span className="writing-deletion-words">{effect.deleted}</span>
-    {concealed && <svg className="writing-deletion-needlework" viewBox="0 0 220 64" preserveAspectRatio="none">
+    {concealed && showNeedlework && <svg className="writing-deletion-needlework" viewBox="0 0 220 64" preserveAspectRatio="none">
       <path className="paper-puncture" d="M8 23 Q48 39 88 24" />
       <ellipse className="needle-entry-hole" cx="18" cy="40" rx="3.5" ry="1.8" />
       <ellipse className="needle-exit-hole" cx="194" cy="18" rx="3.5" ry="1.8" />

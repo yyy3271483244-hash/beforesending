@@ -1,10 +1,11 @@
 import { archiveEntries } from './archiveCollection';
 
+const asset = path => `${import.meta.env.BASE_URL}${path}`;
 export const postOfficeAssets = {
-  exterior: '/assets/administrators/home-original.png',
-  building: '/assets/administrators/home-original.png',
-  interior: '/assets/demo-cutouts/reader-room-bg.jpg',
-  bureau: '/assets/demo-cutouts/drawer-bg.jpg',
+  exterior: asset('assets/administrators/home-original.png'),
+  building: asset('assets/administrators/home-original.png'),
+  interior: asset('assets/demo-cutouts/reader-room-bg.jpg'),
+  bureau: asset('assets/demo-cutouts/drawer-bg.jpg'),
 };
 export const categories = [
   ['all', '所有信件', 'All Letters'], ['love', '爱', 'Love'], ['grief', '思念与告别', 'Grief'],

@@ -10,6 +10,7 @@ import '../archive-cabinet.css';
 
 const drawers = makeArchiveDrawers(postalDrawers);
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+const asset = path => `${import.meta.env.BASE_URL}${path}`;
 // Cubic bezier (0.22, 1, 0.36, 1), evaluated without another animation plugin.
 export function archiveEase(progress) {
   let low = 0, high = 1, t = progress;
@@ -58,7 +59,7 @@ export function DrawerItem({ drawer, selected, opening, phase, blocked, dimmed, 
       {letters.map((letter, slot) => <div className="archive-card-slot" key={letter.id} style={{ '--slot': slot }} data-lifted={lifted === letter.id}>
         <div className="archive-card-arrival">
           <button className="archive-card-target" data-letter-id={letter.id} disabled={!ready} onPointerEnter={() => onHover(letter.id)} onPointerLeave={() => onHover(null)} onFocus={() => onHover(letter.id)} onBlur={() => onHover(null)} onClick={event => onRead(letter, event.currentTarget.querySelector('.archive-card-face'))} aria-label={`${en ? 'Read' : '阅读'} ${String(slot + 1).padStart(2, '0')}: ${letter.recipient}`}>
-            <span className="archive-card-face"><img src="/assets/writing-desk/reading-paper.png" alt="" draggable={false} /><small>No. {drawer.number}.{String(slot + 1).padStart(2, '0')}</small></span>
+            <span className="archive-card-face"><img src={asset('assets/writing-desk/reading-paper.png')} alt="" draggable={false} /><small>No. {drawer.number}.{String(slot + 1).padStart(2, '0')}</small></span>
           </button>
         </div>
       </div>)}
@@ -163,7 +164,7 @@ export function AnonymousBureau({ active, sentLetter }) {
       {current ? <><span>{en ? `Drawer ${current.cell + 1}` : `第 ${current.cell + 1} 格`}</span><button disabled={busy} onClick={() => toggle(current.id)}>{en ? 'Close drawer' : '合上抽屉'}</button></> : <div className="bureau-filters" role="group" aria-label={en ? 'Letter categories' : '信件分类'}>{categories.map(([id, zh, english]) => <button key={id} aria-pressed={id === filter} onClick={() => setFilter(id)}>{en ? english : zh}</button>)}<button onClick={() => { const available = drawers.filter(drawer => drawer.kind !== 'empty' && (filter === 'all' || drawer.category === filter)); if (available.length) toggle(available[Math.floor(Math.random() * available.length)].id); }}><Shuffle />{en ? 'Random' : '随机'}</button></div>}
     </footer>
     {reading && <article ref={panel} className="archive-reading-sheet" data-state="extracting" data-letter-id={reading.id} data-side={current.bounds.x < 50 ? 'right' : 'left'} aria-label={en ? 'Open letter' : '展开的信'}>
-      <img className="archive-reading-texture" src="/assets/writing-desk/reading-paper.png" alt="" draggable={false} />
+      <img className="archive-reading-texture" src={asset('assets/writing-desk/reading-paper.png')} alt="" draggable={false} />
       <div className="archive-reading-content"><button className="journey-icon bureau-close" onClick={closeReading} aria-label={en ? 'Put the letter back' : '把信放回'} title={en ? 'Put the letter back' : '把信放回'}><X /></button><small>{en ? 'Anonymous / Sample letter' : '不署名 / 馆藏样信'}</small><h2>{reading.recipient}</h2><div className="archive-letter-text">{reading.finalText}</div><button className="journey-link" onClick={closeReading}><ArrowLeft />{en ? 'Back to the drawer' : '放回抽屉'}</button></div>
     </article>}
     {active && sentLetter?.sentAt && <SentLetterMemory letter={sentLetter} />}

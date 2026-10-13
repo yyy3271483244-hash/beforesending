@@ -29,7 +29,7 @@ export const JourneyEnvelope = forwardRef(function JourneyEnvelope({ letter, ope
     <EnvelopeImage kind={letter.envelopeKind} className="journey-envelope-front" />
     <EnvelopeImage kind={letter.envelopeKind} className="journey-envelope-lid" />
     <span className="journey-envelope-address">{letter.deliveryRecipient || letter.recipient}</span>
-    {stampVisible && <img className="journey-postage" src={letter.sceneStampNumber ? `/assets/stamp-scene/stamp-${letter.sceneStampNumber}.png` : stamp.src} alt="" draggable={false} />}
+    {stampVisible && <img className="journey-postage" src={letter.sceneStampNumber ? `${import.meta.env.BASE_URL}assets/stamp-scene/stamp-${letter.sceneStampNumber}.png` : stamp.src} alt="" draggable={false} />}
     {children}
   </div>;
 });
@@ -119,7 +119,7 @@ export function JourneyPost({ letter, setLetter, active, next, onBusy }) {
     </div>
     <div className="ritual-stage post-stage" data-story-local>
       <button ref={object} className="journey-mail-to-send" disabled={busy || sent} aria-label={en ? 'Drag or deliver this envelope' : '拖动或投递这封信'} data-drag-item {...drag}><JourneyEnvelope letter={letter} stampVisible /></button>
-      <button ref={mailbox} className="journey-mailbox" disabled={busy || sent} onClick={send} aria-label={en ? 'Place in the mailbox' : '投进邮箱'}><img src="/assets/home-stage/mailbox.png" alt="" draggable={false} /></button>
+      <button ref={mailbox} className="journey-mailbox" disabled={busy || sent} onClick={send} aria-label={en ? 'Place in the mailbox' : '投进邮箱'}><img src={`${import.meta.env.BASE_URL}assets/home-stage/mailbox.png`} alt="" draggable={false} /></button>
       {sent && <div className="journey-postmark"><span>{en ? 'ENTRUSTED' : '已交给邮路'}</span><time>{new Date(letter.sentAt).toLocaleDateString(locale === 'en' ? 'en-GB' : 'zh-CN')}</time></div>}
       {active && <AdministratorCharacter activity={busy ? 'sending' : 'waiting'} className="ritual-companion" />}
     </div>

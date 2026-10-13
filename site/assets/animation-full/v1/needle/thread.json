@@ -1,0 +1,638 @@
+{
+  "name": "needle/thread",
+  "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\写信页\\视频节点 3.mp4",
+  "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\needle\\thread.webm",
+  "width": 480,
+  "height": 854,
+  "frames": 121,
+  "fps": 24.0,
+  "duration": 5.041666666666667,
+  "crop": null,
+  "scale": 1,
+  "offset": [
+    0,
+    0
+  ],
+  "frameAudit": [
+    {
+      "threshold": 24,
+      "opaquePixels": 34587,
+      "components": 10
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34628,
+      "components": 11
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34650,
+      "components": 12
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34666,
+      "components": 8
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34694,
+      "components": 9
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34764,
+      "components": 8
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34811,
+      "components": 15
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34822,
+      "components": 7
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34858,
+      "components": 9
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34824,
+      "components": 13
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34829,
+      "components": 9
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34807,
+      "components": 13
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34856,
+      "components": 12
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34838,
+      "components": 10
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34795,
+      "components": 10
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34796,
+      "components": 4
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34778,
+      "components": 10
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34785,
+      "components": 9
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34767,
+      "components": 7
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34791,
+      "components": 9
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34736,
+      "components": 8
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34767,
+      "components": 15
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34720,
+      "components": 9
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34715,
+      "components": 5
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34753,
+      "components": 6
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34741,
+      "components": 14
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34713,
+      "components": 19
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34891,
+      "components": 19
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34926,
+      "components": 16
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34851,
+      "components": 26
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34846,
+      "components": 23
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34933,
+      "components": 21
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34960,
+      "components": 15
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34936,
+      "components": 26
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34916,
+      "components": 15
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34940,
+      "components": 17
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34943,
+      "components": 15
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34926,
+      "components": 10
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34902,
+      "components": 13
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34903,
+      "components": 13
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34904,
+      "components": 15
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34964,
+      "components": 18
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34993,
+      "components": 16
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34884,
+      "components": 14
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34940,
+      "components": 14
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34927,
+      "components": 27
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34906,
+      "components": 19
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34944,
+      "components": 17
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34859,
+      "components": 14
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34884,
+      "components": 21
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34750,
+      "components": 13
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34838,
+      "components": 12
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34821,
+      "components": 9
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34808,
+      "components": 19
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34753,
+      "components": 10
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34817,
+      "components": 13
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34784,
+      "components": 7
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34851,
+      "components": 12
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34847,
+      "components": 16
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34831,
+      "components": 21
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34768,
+      "components": 11
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34836,
+      "components": 14
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34741,
+      "components": 13
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34822,
+      "components": 17
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34830,
+      "components": 17
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34827,
+      "components": 23
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34769,
+      "components": 12
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34791,
+      "components": 16
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34808,
+      "components": 15
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34713,
+      "components": 24
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34800,
+      "components": 19
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34828,
+      "components": 22
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34786,
+      "components": 17
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34757,
+      "components": 23
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34721,
+      "components": 22
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34760,
+      "components": 20
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34818,
+      "components": 19
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34719,
+      "components": 26
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34794,
+      "components": 25
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34814,
+      "components": 22
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34856,
+      "components": 17
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34796,
+      "components": 34
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34759,
+      "components": 18
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34784,
+      "components": 26
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34893,
+      "components": 19
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34885,
+      "components": 24
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34860,
+      "components": 24
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35133,
+      "components": 19
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35124,
+      "components": 18
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34835,
+      "components": 22
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35269,
+      "components": 27
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35265,
+      "components": 27
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34979,
+      "components": 17
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35009,
+      "components": 18
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35096,
+      "components": 14
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34990,
+      "components": 19
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35130,
+      "components": 16
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35114,
+      "components": 23
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34978,
+      "components": 15
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35149,
+      "components": 32
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35061,
+      "components": 27
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35194,
+      "components": 30
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35133,
+      "components": 24
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35199,
+      "components": 20
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35171,
+      "components": 22
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35182,
+      "components": 22
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35164,
+      "components": 21
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35176,
+      "components": 22
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35171,
+      "components": 24
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35182,
+      "components": 20
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35137,
+      "components": 19
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35137,
+      "components": 25
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 35127,
+      "components": 25
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34974,
+      "components": 24
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34989,
+      "components": 13
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34887,
+      "components": 15
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34852,
+      "components": 11
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34808,
+      "components": 11
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34987,
+      "components": 8
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34902,
+      "components": 9
+    },
+    {
+      "threshold": 24,
+      "opaquePixels": 34996,
+      "components": 10
+    }
+  ],
+  "outputDuration": 5.041666666666667,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "distinctFrames": 121,
+  "emptyFrames": [],
+  "contentBounds": [
+    51,
+    286,
+    480,
+    854
+  ],
+  "bodyBottom": 0,
+  "sourceSha256": "167649c4ffd79e1b72ec9031f9c9ae06cc0bfcae8597791200fd0d50384b562f"
+}

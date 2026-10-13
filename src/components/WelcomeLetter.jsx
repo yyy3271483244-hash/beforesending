@@ -79,8 +79,8 @@ export function WelcomeLetter({ onRead, onContinue, onResponse }) {const { t } =
     <h1 className="welcome-greeting" tabIndex={-1} aria-hidden={phase !== 'closed'}>{t("你来啦。")}<br />{t("这里有一封你的信。")}</h1>
     <button ref={envelope} className="welcome-envelope" disabled={phase !== 'closed'} onClick={open} aria-label={t("拆开看看")} aria-hidden={phase === 'reading'}>
       <span className="welcome-envelope-lining" aria-hidden="true" />
-      <img className="welcome-envelope-flap" src="/assets/archive-envelopes/ivory.png" alt="" />
-      <img className="welcome-envelope-front" src="/assets/archive-envelopes/ivory.png" alt="" />
+      <img className="welcome-envelope-flap" src={`${import.meta.env.BASE_URL}assets/archive-envelopes/ivory.png`} alt="" />
+      <img className="welcome-envelope-front" src={`${import.meta.env.BASE_URL}assets/archive-envelopes/ivory.png`} alt="" />
       <span className="welcome-addressee">{t("给刚刚走进来的你")}</span>
       <span className="welcome-knot" aria-hidden="true"><i /><i /></span>
     </button>
@@ -94,7 +94,7 @@ export function WelcomeLetter({ onRead, onContinue, onResponse }) {const { t } =
           <p>{t("你来啦。")}</p>
           <p>{t("先不用急着想，要把信寄给谁。也不必一坐下来，就知道第一句话该怎么写。")}</p>
           <p>{t("有些话，我们已经在心里说过很多遍，却还没有找到一个合适的开头。这里，为这些话留了一张信纸。")}</p>
-          <p data-response="companions">{t("等你坐下，可以请一位管理员陪着你。小狗愿意接过你的信，猫会安静地待在一旁；兔子照看针线，老鼠收好那些暂时不想丢掉的纸条。")}</p>
+          <p data-response="companions">{t("等你坐下，可以请一位管理员陪着你。巴诺愿意接过你的信，莫可会安静地待在一旁；露米照看针线，帕塔收好那些暂时不想丢掉的纸条。")}</p>
           <p data-response="thread">{t("写到一半停下来，没有关系。删去一句，再换一种说法，也没有关系。信纸边上的线头，会把这些迟疑轻轻留下。回头看看，也许就能找到下一句的开头。")}</p>
           <p data-response="keeping">{t("没有写完的信，可以先留在这台设备的草稿里。那些舍不得的句子，也可以沿着痕迹慢慢找回来。不必今天就整理好，更不必今天就寄出。")}</p>
           <p>{t("在一封信抵达别人之前，")}<br />{t("它先陪你，走过了一段路。")}</p>

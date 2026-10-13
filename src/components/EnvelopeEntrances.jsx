@@ -4,16 +4,16 @@ import "../envelope-entrances.css";
 
 const art = {
   read: {
-    body: "/assets/entrance-envelopes/read-body.png",
-    flap: "/assets/entrance-envelopes/read-flap.png",
-    thread: "/assets/entrance-envelopes/read-thread.png"
+    body: `${import.meta.env.BASE_URL}assets/entrance-envelopes/read-body.png`,
+    flap: `${import.meta.env.BASE_URL}assets/entrance-envelopes/read-flap.png`,
+    thread: `${import.meta.env.BASE_URL}assets/entrance-envelopes/read-thread.png`
   },
   write: {
-    body: "/assets/entrance-envelopes/write-body.png",
-    flap: "/assets/entrance-envelopes/write-flap.png",
-    thread: "/assets/entrance-envelopes/write-thread.png",
-    paper: "/assets/entrance-envelopes/write-paper.png",
-    pen: "/assets/entrance-envelopes/write-pen.png"
+    body: `${import.meta.env.BASE_URL}assets/entrance-envelopes/write-body.png`,
+    flap: `${import.meta.env.BASE_URL}assets/entrance-envelopes/write-flap.png`,
+    thread: `${import.meta.env.BASE_URL}assets/entrance-envelopes/write-thread.png`,
+    paper: `${import.meta.env.BASE_URL}assets/entrance-envelopes/write-paper.png`,
+    pen: `${import.meta.env.BASE_URL}assets/entrance-envelopes/write-pen.png`
   }
 };
 

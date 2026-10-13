@@ -1,0 +1,348 @@
+{
+  "name": "flips/ivory",
+  "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\寄信页面\\卡其色翻面.mp4",
+  "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\flips\\ivory.webm",
+  "width": 960,
+  "height": 960,
+  "frames": 63,
+  "fps": 30.190688542047987,
+  "duration": 2.086736111111111,
+  "crop": null,
+  "scale": 1,
+  "offset": [
+    0,
+    0
+  ],
+  "frameAudit": [
+    {
+      "threshold": 9.0,
+      "opaquePixels": 281411,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 281378,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 281379,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 281356,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 281953,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 282287,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 282467,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 282881,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 283062,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 282586,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 281805,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 281271,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 280466,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 278999,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 273598,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 269366,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 266741,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 264058,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 256672,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 234108,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 216841,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 205799,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 194496,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 168741,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101216,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 64854,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 50849,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 38675,
+      "components": 7
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 49565,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 108248,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 138686,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 165005,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 176056,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 187496,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 221278,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 234913,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 246295,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 250982,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 255670,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 268069,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 272637,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 276320,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 277630,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 278956,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 282290,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 283301,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 284046,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 284181,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 284256,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 284174,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 283951,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 283388,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 282575,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 281462,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 280313,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 278667,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 276799,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 274701,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 272184,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 269683,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 266583,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 264750,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 263010,
+      "components": 1
+    }
+  ],
+  "outputDuration": 2.0867361927144534,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "distinctFrames": 63,
+  "emptyFrames": [],
+  "contentBounds": [
+    131,
+    232,
+    806,
+    784
+  ],
+  "sourceSha256": "f8fca0c1a5831fe8f58d23065187a433a9b28f87cd21a2af4ca6bb48f6a0e9c8",
+  "bodyBottom": 0
+}

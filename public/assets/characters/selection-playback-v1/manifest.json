@@ -1,0 +1,37 @@
+{
+  "width": 320,
+  "height": 444,
+  "layout": "color-left-alpha-right",
+  "clips": {
+    "mouse-select": {
+      "source": "public/assets/characters/processed/mouse-select.webm",
+      "sourceSha256": "9f9f48dfd421f37d9e0aa4fd9d71f2af13e57fa60a865505123faed3ecd14d18",
+      "file": "public/assets/characters/selection-playback-v1/mouse-select.mp4",
+      "sha256": "cd0b6939a0a16d8e9e188e81f8fffa61defbd30e26a14a6cf238223099b8d20c"
+    },
+    "cat-select": {
+      "source": "public/assets/characters/selection-restored/cat-select.webm",
+      "sourceSha256": "60b5cca018259e4e7961c457ded3700d34c9f49d733acbecdb22ba0e55eb1e1f",
+      "file": "public/assets/characters/selection-playback-v1/cat-select.mp4",
+      "sha256": "e08b04cfd1f7cf5f87f6be2ce00e08a9ffcdd8275beed18162ba2c72ea4be834"
+    },
+    "rabbit-select": {
+      "source": "public/assets/characters/processed/rabbit-select.webm",
+      "sourceSha256": "89f03e2efd1faa7f6d7dfb91be9c6706d61972b70c1848f18a3f0142ebb6a935",
+      "file": "public/assets/characters/selection-playback-v1/rabbit-select.mp4",
+      "sha256": "84a8498492f57b94cb6f699aea507a50523c72481ca3a4d7b47fcd86653dfc8a"
+    },
+    "dog-select": {
+      "source": "public/assets/characters/selection-restored/dog-select.webm",
+      "sourceSha256": "0f1796c11e3bab8c2d308c82e2665acf1a2def4ea9dcbb47f1db3e917611a63f",
+      "file": "public/assets/characters/selection-playback-v1/dog-select.mp4",
+      "sha256": "155efe952d1b537417c01c023a3f357a80c53a0b0302275a4f8c521f0994ac46"
+    },
+    "mouse-idle": {
+      "source": "public/assets/characters/processed/mouse-sewing.webm",
+      "sourceSha256": "1d7a8db2a60b99949a14a1274e9bb59d3dfa42f8f51d6fd5f7c74e568691a555",
+      "file": "public/assets/characters/selection-playback-v1/mouse-idle.mp4",
+      "sha256": "847ed5248b61ebe9a194c1debe202294ea5bb37b5ddebac0ebfe3c7e6f95d953"
+    }
+  }
+}

@@ -18,7 +18,7 @@ export function StampButton({ label, children, size = 'medium', onClick, disable
   }
   return <button {...props} type="button" className={`stamp-button stamp-button--${size} ${className}`} disabled={disabled} data-pressed={pressed} onClick={activate}>
     <span className="stamp-button-face">
-      <img src="/assets/paper-ticket-button.png" alt="" draggable={false} width="1645" height="488" />
+      <img src={`${import.meta.env.BASE_URL}assets/paper-ticket-button.png`} alt="" draggable={false} width="1645" height="488" />
       <span className="stamp-button-label">{label ?? children}</span>
     </span>
   </button>;

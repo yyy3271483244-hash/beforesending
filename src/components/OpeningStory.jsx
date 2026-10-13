@@ -61,7 +61,7 @@ export default function OpeningStory({ onWrite, onRead }) {
           <small>句 子 形 成 之 前</small>
         </div>
         <img className="ob-banner__characters" src={`${ART}/characters-connected.png`} alt="Before Sending 的两个小人" />
-        <img className="ob-banner__mail" src="/assets/archive-envelopes/blue.png" alt="蓝色信封" />
+        <img className="ob-banner__mail" src={`${import.meta.env.BASE_URL}assets/archive-envelopes/blue.png`} alt="蓝色信封" />
         <span className="ob-banner__star ob-banner__star--one">★</span>
         <span className="ob-banner__star ob-banner__star--two">♥</span>
         <span className="ob-banner__tag">a tiny home for words not sent yet</span>
@@ -145,7 +145,7 @@ export default function OpeningStory({ onWrite, onRead }) {
                 <span className="ob-stage-note ob-stage-note--one">you said: “it’s fine.”</span>
                 <span className="ob-stage-note ob-stage-note--two">draft saved at 01:42 am</span>
                 <img className="ob-scene-characters" src={`${ART}/characters-seated.png`} alt="两个小人坐在同一个房间里" />
-                <img className="ob-scene-letter" src="/assets/archive-envelopes/ivory.png" alt="一封等待被寄出的信" />
+                <img className="ob-scene-letter" src={`${import.meta.env.BASE_URL}assets/archive-envelopes/ivory.png`} alt="一封等待被寄出的信" />
                 <span className="ob-stage-heart">♥</span>
                 <div className="ob-stage-footer"><span>MESSAGE: 01</span><span>REPLY: —</span></div>
               </div>
@@ -173,13 +173,13 @@ export default function OpeningStory({ onWrite, onRead }) {
             <div className="ob-entry-grid">
               <button type="button" className="ob-entry ob-entry--writing" onClick={onWrite}>
                 <img className="ob-entry-character" src={`${ART}/character-writing.png`} alt="一个人坐在桌边写信" />
-                <img className="ob-entry-envelope" src="/assets/archive-envelopes/ivory.png" alt="" />
+                <img className="ob-entry-envelope" src={`${import.meta.env.BASE_URL}assets/archive-envelopes/ivory.png`} alt="" />
                 <span><b>WRITING</b><small>write what stayed unsaid</small></span>
               </button>
               <div className="ob-entry-divider">OR</div>
               <button type="button" className="ob-entry ob-entry--reading" onClick={onRead}>
                 <img className="ob-entry-character" src={`${ART}/characters-separated.png`} alt="两个隔着距离的人" />
-                <img className="ob-entry-envelope" src="/assets/archive-envelopes/blue.png" alt="" />
+                <img className="ob-entry-envelope" src={`${import.meta.env.BASE_URL}assets/archive-envelopes/blue.png`} alt="" />
                 <span><b>READING</b><small>draw a stranger's letter</small></span>
               </button>
             </div>

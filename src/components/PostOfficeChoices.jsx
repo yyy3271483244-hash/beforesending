@@ -6,7 +6,7 @@ import '../post-office-choices.css';
 
 export function PostOfficeRoom({ go, initialState = 'administrator' }) {
   return <main className="post-office-room">
-    <img className="post-office-room-background" src="/assets/administrators/post-office-facade.png" alt="" />
+    <img className="post-office-room-background" src={`${import.meta.env.BASE_URL}assets/administrators/post-office-facade.png`} alt="" />
     <PostOfficeChoices go={go} initialState={initialState} />
   </main>;
 }

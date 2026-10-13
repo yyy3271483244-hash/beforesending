@@ -1,0 +1,518 @@
+{
+  "name": "selection/rabbit",
+  "source": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\demo美术素材\\动物管理员\\兔子\\选择.mp4",
+  "output": "C:\\Users\\32714\\Desktop\\Before-Sending-Demo\\public\\assets\\animation-full\\v1\\selection\\rabbit.webm",
+  "width": 480,
+  "height": 854,
+  "frames": 97,
+  "fps": 24.149377593360995,
+  "duration": 4.016666666666667,
+  "crop": null,
+  "scale": 1,
+  "offset": [
+    0,
+    0
+  ],
+  "frameAudit": [
+    {
+      "threshold": 9.0,
+      "opaquePixels": 104242,
+      "components": 9
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102059,
+      "components": 9
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 103362,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 103444,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 103529,
+      "components": 6
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102232,
+      "components": 7
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102083,
+      "components": 5
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102081,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102144,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102112,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102170,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102216,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102586,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102547,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102919,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 103015,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 104048,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 104051,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 105207,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 105246,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 105557,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 105508,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 105036,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 105065,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 104919,
+      "components": 5
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 105087,
+      "components": 8
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 106377,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 106220,
+      "components": 5
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 106684,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 106450,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 106450,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 106471,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 106507,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 106472,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 105476,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 105466,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 104629,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 104188,
+      "components": 3
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102616,
+      "components": 6
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102392,
+      "components": 7
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101724,
+      "components": 9
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101972,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101917,
+      "components": 5
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101868,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101663,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101763,
+      "components": 6
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101820,
+      "components": 6
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101803,
+      "components": 6
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101843,
+      "components": 5
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101982,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101616,
+      "components": 5
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101608,
+      "components": 5
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101636,
+      "components": 5
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101593,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101311,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101333,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101281,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101420,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101449,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101479,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101601,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101645,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101734,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101763,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101815,
+      "components": 5
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101879,
+      "components": 5
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102151,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102114,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102394,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102391,
+      "components": 5
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101946,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 101942,
+      "components": 4
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102234,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102281,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102565,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102559,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102437,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102450,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102283,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102297,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102264,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102292,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102230,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102250,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102217,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102256,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102210,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102214,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102188,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102228,
+      "components": 2
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102241,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102217,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102210,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102205,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102175,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102171,
+      "components": 1
+    },
+    {
+      "threshold": 9.0,
+      "opaquePixels": 102164,
+      "components": 1
+    }
+  ],
+  "outputDuration": 4.016666666666667,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "distinctFrames": 97,
+  "emptyFrames": [],
+  "contentBounds": [
+    28,
+    16,
+    474,
+    802
+  ],
+  "sourceSha256": "0482dd713437238e0a8916a1bd6dccec29f00b26316dca48185e9eb0a0201a75",
+  "bodyBottom": 784
+}

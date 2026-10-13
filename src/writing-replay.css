@@ -22,7 +22,7 @@
 .writing-replay-events [data-event-type='delete'] { color: #aa7879; }
 .writing-replay-events [data-event-type='pause'] { color: #929b8d; }
 .writing-replay-surface { position: absolute; inset: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; pointer-events: none; }
-.restored-journey .letter-editing-area .writing-replay-surface { font: var(--type-body)/var(--leading-body) var(--font-body-family); padding-right: var(--space-5); }
+.restored-journey .letter-editing-area .writing-replay-surface { font: var(--type-body)/var(--leading-body) var(--font-body-family); padding: 0; }
 .writing-replay-erasure { position: absolute; color: #a78087; text-decoration: line-through; white-space: pre-wrap; pointer-events: none; }
 .writing-replay-fade { opacity: 0; transition: opacity 220ms ease; }
 .writing-replay-editor-hidden { visibility: hidden; }
@@ -41,8 +41,6 @@
 .restored-journey [data-writing-mode='replay'] .journey-writing-actions { visibility: visible; opacity: 1; }
 .restored-journey [data-writing-mode='replay'] .journey-writing-actions { display: flex; align-items: center; justify-content: center; gap: 32px; }
 .restored-journey .journey-writing-actions .replay-send-letter { color: #715260; border-bottom-color: currentColor; }
-.restored-journey [data-writing-mode='replay'] .journey-paper { min-height: max(360px, calc(100svh - var(--global-header-height) - 210px)); }
-.restored-journey [data-writing-mode='replay'] .journey-paper-content { padding-bottom: 140px; }
 .restored-journey .paper-replay-controls,
 .restored-journey .paper-replay-controls button,
 .restored-journey [data-writing-mode='replay'] .journey-writing-actions button { color: #74616a; }

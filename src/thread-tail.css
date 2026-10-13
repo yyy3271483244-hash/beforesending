@@ -1,4 +1,4 @@
-.thread-tail-anchor { position: absolute; width: 44px; height: 44px; pointer-events: none; }
+.thread-tail-anchor { position: absolute; width: 44px; height: 44px; pointer-events: none; translate: 0 -9px; }
 .thread-tail-anchor.is-pulling, .thread-tail-anchor.is-revealed { z-index: 12; }
 .thread-tail-anchor > .anchored-trace { inset: 0; width: 44px; height: 44px; border: 0; padding: 0; background: none; cursor: grab; }
 .thread-tail-anchor.is-pulling > .anchored-trace { cursor: grabbing; }

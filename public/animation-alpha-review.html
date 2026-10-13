@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Before Sending 动画核对</title>
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; background:#f2f3f2; color:#343d39; font:15px/1.5 system-ui,sans-serif; }
+    header { padding:24px 32px; border-bottom:1px solid #cbd2ce; background:#fff; }
+    h1 { margin:0; font-size:24px; font-weight:500; }
+    main { max-width:1280px; padding:24px; margin:auto; }
+    section { margin-bottom:28px; border:1px solid #cbd2ce; background:white; border-radius:4px; overflow:hidden; }
+    .caption { padding:12px 16px; display:flex; align-items:center; flex-wrap:wrap; gap:12px; border-bottom:1px solid #dce1de; }
+    h2 { margin:0 auto 0 0; font-size:17px; font-weight:500; }
+    small { color:#59655e; }
+    .pair { display:grid; grid-template-columns:1fr 1fr; }
+    figure { margin:0; padding:12px; min-width:0; }
+    figure+figure { border-left:1px solid #dce1de; }
+    figcaption { margin-bottom:8px; }
+    .screen { position:relative; height:360px; background:#d8dcda; }
+    .transparent { background-color:#344b4b; background-image:linear-gradient(45deg,#ffffff07 25%,transparent 25%,transparent 75%,#ffffff07 75%),linear-gradient(45deg,#ffffff07 25%,transparent 25%,transparent 75%,#ffffff07 75%); background-size:24px 24px; background-position:0 0,12px 12px; }
+    video { position:absolute; inset:0; display:block; width:100%; height:100%; min-width:0; min-height:0; object-fit:contain; }
+    button { display:grid; place-items:center; width:34px; height:34px; cursor:pointer; border:1px solid #b2bdb7; background:white; border-radius:3px; }
+    button:active { background:#e5ece8; }
+    button svg { width:17px; height:17px; fill:currentColor; }
+    input[type="range"] { width:180px; accent-color:#64756d; }
+    @media(max-width:650px) { main { padding:12px; } .pair { grid-template-columns:1fr; } figure+figure { border-left:0; border-top:1px solid #dce1de; } .screen { height:300px; } }
+  </style>
+</head>
+<body>
+  <header><h1>Before Sending 动画核对</h1></header>
+  <main></main>
+  <script type="module">
+    const base = location.pathname.slice(0,location.pathname.lastIndexOf('/')+1);
+    const folders = { closing:'信纸与封口', flips:'信封翻面', entrances:'写信 / 读信入口', writing:'动物陪伴与缝补', selection:'动物选择', needle:'针线' };
+    const labels = { lavender:'紫色', sage:'绿色', ivory:'米白', rose:'粉色', oat:'卡其', cat:'小猫', mouse:'小鼠', dog:'小狗', rabbit:'小兔', write:'写信', read:'读信', start:'入场', writing:'书写', newline:'换行', sewing:'缝补', finish:'结束', thread:'针与线轴' };
+    const records = await fetch(base+'assets/animation-full/v1/manifest.json').then(response=>response.json());
+    for (const record of records) {
+      const [group,key] = record.name.split('/');
+      const heading = folders[group]+' · '+(labels[key]||key);
+      const section = document.createElement('section');
+      section.dataset.clip = record.name;
+      section.innerHTML = `<div class="caption"><h2>${heading}</h2><small>${record.width} × ${record.height} · ${record.frames} 帧 · ${record.duration.toFixed(3)} 秒</small><button type="button" aria-label="播放 ${record.name}" title="播放"><svg viewBox="0 0 24 24"><path d="M6 3v18l15-9z"/></svg></button></div><div class="pair"><figure><figcaption>原片</figcaption><div class="screen"><video muted playsinline controls preload="metadata" src="${base}assets/animation-full/source/${record.name}.mp4"></video></div></figure><figure><figcaption>透明版</figcaption><div class="screen transparent"><video muted playsinline controls preload="metadata" src="${base}assets/animation-full/v1/${record.name}.webm"></video></div></figure></div>`;
+      const videos = [...section.querySelectorAll('video')];
+      const frames = document.createElement('input');
+      frames.type='range'; frames.min=0; frames.max=record.frames-1; frames.value=0; frames.step=1;
+      frames.setAttribute('aria-label','逐帧 '+record.name);
+      frames.addEventListener('input',()=>{
+        for (const video of videos) { video.pause(); video.currentTime=Number(frames.value)*record.duration/record.frames; }
+      });
+      section.querySelector('.caption').insertBefore(frames,section.querySelector('button'));
+      section.querySelector('button').addEventListener('click',async()=>{
+        await Promise.all(videos.map(video=>{
+          if (video.readyState>=2) return Promise.resolve();
+          return new Promise(resolve=>{
+            video.addEventListener('loadeddata',resolve,{once:true});
+            video.addEventListener('error',resolve,{once:true});
+            video.preload='auto'; video.load();
+          });
+        }));
+        frames.value=0;
+        for (const video of videos) { video.currentTime=0; video.playbackRate=1; video.play().catch(()=>{}); }
+      });
+      document.querySelector('main').append(section);
+    }
+  </script>
+</body>
+</html>

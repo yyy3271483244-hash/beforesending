@@ -10,24 +10,40 @@
 .embroidery-sizes button { width:26px; height:24px; display:grid; place-items:center; }
 .embroidery-undo { width:28px; height:28px; display:grid; place-items:center; }
 .embroidery-undo svg { width:16px; }
+.restored-journey .journey-writing-paper .journey-to { color:var(--active-thread,#8f5968); }
+.restored-journey .journey-writing-paper .journey-to :is(.letter-salutation,input) {
+  font:500 calc(var(--type-body) * 1.65)/1.2 var(--font-body-family);
+  color:inherit;
+}
+.restored-journey .journey-writing-paper .journey-to input {
+  appearance:none; border:0; border-bottom:1px solid #9b8d7870;
+  border-radius:0; outline:none; box-shadow:none; background:transparent;
+  -webkit-text-fill-color:currentColor; caret-color:currentColor; opacity:1;
+  transition:border-color .2s ease;
+}
+.restored-journey .journey-writing-paper .journey-to input:is(:hover,:focus,:focus-visible,:active) {
+  outline:none; box-shadow:none; background:transparent; border-bottom-color:#8d786b;
+}
 .journey-writing-paper textarea { color:var(--active-thread,#8f5968); text-shadow:.25px .2px 0 color-mix(in srgb,var(--active-thread) 65%,white); }
-.journey-writing-paper textarea[data-stitch-size='small'] { font-size:15px; }
-.journey-writing-paper textarea[data-stitch-size='medium'] { font-size:18px; }
-.journey-writing-paper textarea[data-stitch-size='large'] { font-size:22px; }
-.journey-writing-paper textarea[data-stitch-family='vintage'] { font-family:var(--font-cn); letter-spacing:.04em; }
-.journey-writing-paper textarea[data-stitch-family='ornate'] { font-family:var(--font-body-family); font-style:italic; }
 .restored-journey .letter-editing-area { position:relative; }
+/* Native caret and stitched glyphs must share metrics, even when scene CSS
+   loads later and resets the textarea's font or padding. */
+.restored-journey .journey-writing-paper .letter-editing-area :is(textarea,.embroidered-text-layer) {
+  box-sizing:border-box; padding:0 48px 0 0;
+  font:400 18px/1.68 var(--font-body-family);
+  font-kerning:none; font-variant-ligatures:none; letter-spacing:0;
+}
+.restored-journey .journey-writing-paper .letter-editing-area :is(textarea,.embroidered-text-layer)[data-stitch-size='small'] { font-size:15px; }
+.restored-journey .journey-writing-paper .letter-editing-area :is(textarea,.embroidered-text-layer)[data-stitch-size='medium'] { font-size:18px; }
+.restored-journey .journey-writing-paper .letter-editing-area :is(textarea,.embroidered-text-layer)[data-stitch-size='large'] { font-size:22px; }
+.restored-journey .journey-writing-paper .embroidered-character { letter-spacing:inherit; }
 .restored-journey .letter-editing-area .embroidered-text-layer {
   position:absolute; z-index:2; inset:0; width:100%; min-height:120px; box-sizing:border-box;
   padding:0 48px 0 0; white-space:pre-wrap; overflow-wrap:anywhere; pointer-events:none;
-  font:var(--type-h3)/1.9 var(--font-body-family); color:var(--active-thread,#8f5968);
+  font:var(--type-h3)/1.68 var(--font-body-family); color:var(--active-thread,#8f5968);
 }
-.restored-journey .letter-editing-area .embroidered-text-layer[data-stitch-size='small'] { font-size:15px; }
-.restored-journey .letter-editing-area .embroidered-text-layer[data-stitch-size='medium'] { font-size:18px; }
-.restored-journey .letter-editing-area .embroidered-text-layer[data-stitch-size='large'] { font-size:22px; }
-.restored-journey .letter-editing-area .embroidered-text-layer[data-stitch-family='vintage'] { font-family:var(--font-cn); letter-spacing:.04em; }
-.restored-journey .letter-editing-area .embroidered-text-layer[data-stitch-family='ornate'] { font-family:var(--font-body-family); font-style:italic; }
 .embroidered-character {
+  letter-spacing:inherit;
   color:transparent;
   background-image:repeating-linear-gradient(118deg,
     color-mix(in srgb,var(--active-thread,#8f5968) 84%,white) 0 1px,
@@ -96,5 +112,40 @@
 @keyframes needle-through { 0% { transform:translate(0,0) rotate(-12deg); opacity:0; } 12% { opacity:1; } 42% { transform:translate(68px,17px) rotate(10deg); opacity:1; } 57% { transform:translate(94px,8px) rotate(-18deg); opacity:.35; } 73% { transform:translate(136px,-17px) rotate(-27deg); opacity:1; } 100% { transform:translate(184px,-25px) rotate(-27deg); opacity:0; } }
 @keyframes paper-puncture-in { to { opacity:.55; } }
 @media(max-width:700px){.embroidery-toolbar{flex-wrap:wrap}.embroidery-segments{order:3;border:0;padding:0;width:100%}}
-@media(max-width:700px){.restored-journey .letter-editing-area .embroidered-text-layer{padding-right:48px;font-size:var(--type-body);line-height:1.9}}
+@media(max-width:700px){.restored-journey .letter-editing-area .embroidered-text-layer{padding-right:48px;font-size:var(--type-body);line-height:1.68}}
 @media(prefers-reduced-motion:reduce){.active-embroidery-needle,.embroidered-character.is-forming,.writing-deletion-visual,.writing-deletion-needlework *,.stitching-thread-overlay *{animation:none!important}.embroidered-character.is-forming{clip-path:none}.embroidery-colors button{transition:none}}
+
+/* Make stitch-family choices visibly distinct in both the toolbar and the letter. */
+:root { --font-writing-mixed: 'PFanHuTuTi', 'Comico', var(--font-legacy-zh), sans-serif; }
+.embroidery-segments button[data-family='fine'],
+.journey-writing-paper :is(textarea,.embroidered-text-layer)[data-stitch-family='fine'],
+.restored-journey .journey-writing-paper .letter-editing-area :is(textarea,.embroidered-text-layer)[data-stitch-family='fine'],
+.restored-journey .letter-editing-area .embroidered-text-layer[data-stitch-family='fine'],
+.receiver-replay-embroidery[data-stitch-family='fine'],
+.writing-deletion-visual[data-stitch-family='fine'] .writing-deletion-words {
+  font-family:var(--font-writing-mixed),'Microsoft YaHei','PingFang SC',sans-serif;
+  font-weight:400;
+  letter-spacing:0;
+}
+.embroidery-segments button[data-family='vintage'],
+.journey-writing-paper :is(textarea,.embroidered-text-layer)[data-stitch-family='vintage'],
+.restored-journey .journey-writing-paper .letter-editing-area :is(textarea,.embroidered-text-layer)[data-stitch-family='vintage'],
+.restored-journey .letter-editing-area .embroidered-text-layer[data-stitch-family='vintage'],
+.receiver-replay-embroidery[data-stitch-family='vintage'],
+.writing-deletion-visual[data-stitch-family='vintage'] .writing-deletion-words {
+  font-family:var(--font-writing-mixed),'SimSun','Songti SC','Noto Serif SC',serif;
+  font-weight:500;
+  letter-spacing:.07em;
+}
+.embroidery-segments button[data-family='ornate'],
+.journey-writing-paper :is(textarea,.embroidered-text-layer)[data-stitch-family='ornate'],
+.restored-journey .journey-writing-paper .letter-editing-area :is(textarea,.embroidered-text-layer)[data-stitch-family='ornate'],
+.restored-journey .letter-editing-area .embroidered-text-layer[data-stitch-family='ornate'],
+.receiver-replay-embroidery[data-stitch-family='ornate'],
+.writing-deletion-visual[data-stitch-family='ornate'] .writing-deletion-words {
+  font-family:var(--font-writing-mixed),'KaiTi','STKaiti','Kaiti SC',cursive;
+  font-style:italic;
+  letter-spacing:.025em;
+}
+.embroidery-segments button[data-family='fine']{font-weight:300}
+.embroidery-segments button[data-family='vintage']{font-weight:600}

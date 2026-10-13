@@ -1,4 +1,4 @@
-export const ART = "/assets/art";
+export const ART = `${import.meta.env.BASE_URL}assets/art`;
 
 export const writingTools = [
   {
@@ -22,22 +22,22 @@ export const writingTools = [
 ];
 
 export const paperChoices = [
-  { id: "fiber", label: "花瓣纤维纸", note: "手工纤维与碎花会留住墨迹", image: "/assets/ui-reference/paper-flower-fiber.jpg" },
-  { id: "ledger", label: "纸夹素笺", note: "像从私人档案里取下的一页", image: "/assets/ui-reference/paper-clipped.jpg" },
-  { id: "onion", label: "旧式边框信纸", note: "印刷边框包住没有说完的话", image: "/assets/ui-reference/paper-ornament.jpg" },
+  { id: "fiber", label: "花瓣纤维纸", note: "手工纤维与碎花会留住墨迹", image: `${import.meta.env.BASE_URL}assets/ui-reference/paper-flower-fiber.jpg` },
+  { id: "ledger", label: "纸夹素笺", note: "像从私人档案里取下的一页", image: `${import.meta.env.BASE_URL}assets/ui-reference/paper-clipped.jpg` },
+  { id: "onion", label: "旧式边框信纸", note: "印刷边框包住没有说完的话", image: `${import.meta.env.BASE_URL}assets/ui-reference/paper-ornament.jpg` },
 ];
 
 export const envelopeChoices = [
-  { id: "ash", label: "米白信封", image: "/assets/archive-envelopes/ivory.png" },
-  { id: "blue", label: "雾蓝信封", image: "/assets/archive-envelopes/blue.png" },
-  { id: "wine", label: "浅粉信封", image: "/assets/archive-envelopes/pink.png" },
+  { id: "ash", label: "米白信封", image: `${import.meta.env.BASE_URL}assets/archive-envelopes/ivory.png` },
+  { id: "blue", label: "雾蓝信封", image: `${import.meta.env.BASE_URL}assets/archive-envelopes/blue.png` },
+  { id: "wine", label: "浅粉信封", image: `${import.meta.env.BASE_URL}assets/archive-envelopes/pink.png` },
 ];
 
 export const stampChoices = [
-  { id: "distance", label: "森林距离", image: "/assets/ui-reference/stamp-forest.jpg" },
+  { id: "distance", label: "森林距离", image: `${import.meta.env.BASE_URL}assets/ui-reference/stamp-forest.jpg` },
   { id: "window", label: "空椅与窗", image: `${ART}/stamp-window.png` },
   { id: "night", label: "夜间路线", image: `${ART}/stamp-night.png` },
-  { id: "flowers", label: "未寄出的花", image: "/assets/ui-reference/stamp-flower.jpg" },
+  { id: "flowers", label: "未寄出的花", image: `${import.meta.env.BASE_URL}assets/ui-reference/stamp-flower.jpg` },
 ];
 
 export const identityChoices = [

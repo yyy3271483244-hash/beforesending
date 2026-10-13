@@ -3,6 +3,8 @@ import gsap from 'gsap';
 import { useI18n } from '../i18n/Language';
 import { AdministratorCharacter, administrators, useAdministrator } from './AdministratorSystem';
 import { keeperSelectionAssets } from '../data/animalAssets';
+import fullAnimationLayout from '../data/fullAnimationLayout.json';
+import { fullFrameStyle } from '../animation/fullFrameStyle.mjs';
 import '../home-scroll-stage.css';
 import '../pink-envelope-entrances.css';
 
@@ -16,13 +18,21 @@ export function JourneyCompanion({ active, chooseKeeper, write, disabled, read, 
   const entryMotion = useRef(null), entering = useRef(false);
   const [entry, setEntry] = useState(null);
   const chosen = selectedAdministrator || 'dog';
-  const keeperLabels = { mouse: '小鼠', cat: '小猫', rabbit: '小兔', dog: '小狗' };
+  const keeperLabels = {
+    mouse: ['帕塔', 'Pata'], cat: ['莫可', 'Moko'],
+    rabbit: ['露米', 'Lumi'], dog: ['巴诺', 'Banno'],
+  };
   const reduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   const pace = value => reduce() ? 0 : value * .5;
   function enterStage(value) { phase.current = value; setStage(value); onStageChange(value); }
   function hover(id) {
     if (disabled || !active || phase.current !== 'select') return;
     setSelectionMotion(value => ({ id, token: value.token + 1, kind: 'hover' }));
+  }
+  function leave(id) {
+    if (phase.current !== 'select') return;
+    setSelectionMotion(value => value.id === id && value.kind === 'hover'
+      ? { id, token: value.token + 1, kind: 'idle' } : value);
   }
   function previewEnvelope(event) {
     const button = event.currentTarget;
@@ -34,7 +44,7 @@ export function JourneyCompanion({ active, chooseKeeper, write, disabled, read, 
     clearTimeout(button.previewResetTimer);
     button.dataset.preview = 'playing';
     video.currentTime = 0;
-    video.playbackRate = 2;
+    video.playbackRate = 1;
     video.play().catch(() => { button.dataset.preview = 'returning'; });
   }
   function finishPreview(button) {
@@ -147,29 +157,29 @@ export function JourneyCompanion({ active, chooseKeeper, write, disabled, read, 
     if (stage === 'select' && selected.current) root.current.querySelector(`[data-keeper-target="${selected.current}"]`)?.focus({ preventScroll: true });
   }, [stage]);
   return <div ref={root} className="restored-keeper" data-selected-keeper={selectedAdministrator || ''} data-keeper-stage={stage}>
-    <img className="home-post-background" src="/assets/administrators/post-office-facade.png" alt="" draggable={false} />
+    <img className="home-post-background" src={`${import.meta.env.BASE_URL}assets/administrators/post-office-facade.png`} alt="" draggable={false} />
     <div className="home-selection-heading">
       {(stage === 'select' || stage === 'resetting') && <h2 data-chapter-heading tabIndex={-1}>{en ? 'Who will keep you company?' : '谁陪你写这封信？'}</h2>}
     </div>
     <div className="home-animal-lineup">
       {Object.entries(administrators).map(([id, animal], order) => <div className="home-animal-choice" key={id} data-keeper={id} data-reveal-order={order} aria-hidden={stage !== 'select' && stage !== 'resetting' && chosen !== id ? true : undefined}>
         <div className="keeper-arrival"><button className="administrator-choice" data-keeper-target={id} disabled={disabled || stage !== 'select'} aria-pressed={selectedAdministrator === id}
-          onMouseEnter={() => hover(id)} onFocus={() => hover(id)} onClick={() => choose(id)} aria-label={en ? `Choose ${id}` : `选择${keeperLabels[id]}`}>
-          <span className="keeper-portrait"><span className="keeper-contact-shadow" aria-hidden="true" /><span className="keeper-idle"><AdministratorCharacter id={id} activity="select" selectionPlayback={{ active: active && (stage === 'select' || chosen === id), request: selectionMotion.id === id ? selectionMotion : null }} /></span></span>
-          <span>{en ? t(animal.name) : keeperLabels[id]}</span>
+          onMouseEnter={() => hover(id)} onMouseLeave={() => leave(id)} onFocus={() => hover(id)} onBlur={() => leave(id)} onClick={() => choose(id)} aria-label={en ? `Choose ${keeperLabels[id][1]}` : `选择${keeperLabels[id][0]}`}>
+          <span className="keeper-portrait"><span className="keeper-contact-shadow" aria-hidden="true" /><span className="keeper-idle"><AdministratorCharacter id={id} activity="select" selectionPlayback={{ active: active && (stage === 'select' || chosen === id), selected: stage !== 'select' && stage !== 'resetting' && chosen === id, request: selectionMotion.id === id ? selectionMotion : null }} /></span></span>
+          <span>{t(animal.name)}</span>
         </button></div>
       </div>)}
     </div>
     <nav className="restored-envelope-choices" inert={!ready ? true : undefined} aria-hidden={!ready} aria-label={en ? 'Read or write a letter' : '读信与写信入口'}>
       <button onClick={event => enter('write', event)} onPointerEnter={previewEnvelope} onPointerLeave={resetEnvelopePreview} data-entering={entry === 'write'} disabled={!active || disabled || !ready || !!entry} aria-label={en ? 'Write a Letter' : '写信'}>
-        <span className="entrance-object"><video className="entrance-preview-video entrance-preview-write" src="/assets/entrance-envelopes/write-hover.webm" muted playsInline preload="auto" onEnded={finishEnvelopeAnimation} aria-hidden="true" /><img className="entrance-preview-poster" src="/assets/entrance-envelopes/write-poster.png" alt="" draggable={false} /></span>
+          <span className="entrance-object"><span className="entrance-full-motion" style={fullFrameStyle(fullAnimationLayout.entrances.write)}><video className="entrance-preview-video entrance-preview-write" src={`${import.meta.env.BASE_URL}assets/animation-full/v1/entrances/write.webm`} muted playsInline preload="auto" onEnded={finishEnvelopeAnimation} aria-hidden="true" /><img className="entrance-preview-poster" src={`${import.meta.env.BASE_URL}assets/animation-full/v1/entrances/write-first.png`} alt="" draggable={false} /></span></span>
         <span>{en ? 'Write' : '写信'}</span>
       </button>
       <button onClick={event => enter('read', event)} onPointerEnter={previewEnvelope} onPointerLeave={resetEnvelopePreview} data-entering={entry === 'read'} disabled={!active || disabled || !ready || !!entry} aria-label={en ? 'Read a Letter' : '读信'}>
-        <span className="entrance-object"><video className="entrance-preview-video entrance-preview-read" src="/assets/entrance-envelopes/read-hover.webm" muted playsInline preload="auto" onEnded={finishEnvelopeAnimation} aria-hidden="true" /><img className="entrance-preview-poster" src="/assets/entrance-envelopes/read-poster.png" alt="" draggable={false} /></span>
+          <span className="entrance-object"><span className="entrance-full-motion" style={fullFrameStyle(fullAnimationLayout.entrances.read)}><video className="entrance-preview-video entrance-preview-read" src={`${import.meta.env.BASE_URL}assets/animation-full/v1/entrances/read.webm`} muted playsInline preload="auto" onEnded={finishEnvelopeAnimation} aria-hidden="true" /><img className="entrance-preview-poster" src={`${import.meta.env.BASE_URL}assets/animation-full/v1/entrances/read-first.png`} alt="" draggable={false} /></span></span>
         <span>{en ? 'Read' : '读信'}</span>
       </button>
     </nav>
-    {ready && <button className="keeper-reselect" onClick={reset} disabled={disabled}>{en ? 'Choose another keeper' : '换一位陪伴者'}</button>}
+    {ready && <button className="keeper-reselect" onClick={reset} disabled={disabled}><span className="keeper-reselect-label">{en ? 'Choose another keeper' : '换一位陪伴者'}</span></button>}
   </div>;
 }

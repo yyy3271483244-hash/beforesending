@@ -5,7 +5,7 @@ import { useHomeMotion } from '../animation/useHomeMotion';
 import { useMailboxEntry } from '../animation/useMailboxEntry';
 import '../mailbox-entry.css';
 
-const homeVideo = '/assets/home-stage/before-sending-home-hd-v2.mp4';
+const homeVideo = `${import.meta.env.BASE_URL}assets/home-stage/before-sending-home-hd-v2.mp4`;
 
 export function HomeArtwork({ enter, active = true }) {
   const { language } = useI18n();
@@ -37,8 +37,8 @@ export function HomeArtwork({ enter, active = true }) {
       </div>
       <div className="home-brand-scroll" aria-hidden="true">
         <div className="home-brand">
-          <span className="home-title-before"><img src="/assets/branding/before-embroidered.webp" alt="" draggable={false} /></span>
-          <span className="home-title-sending"><img src="/assets/branding/sending-embroidered.webp" alt="" draggable={false} /></span>
+          <span className="home-title-before"><img src={`${import.meta.env.BASE_URL}assets/branding/before-embroidered.webp`} alt="" draggable={false} /></span>
+          <span className="home-title-sending"><img src={`${import.meta.env.BASE_URL}assets/branding/sending-embroidered.webp`} alt="" draggable={false} /></span>
         </div>
       </div>
       <h1 className="home-brand-sr-only">Before Sending</h1>

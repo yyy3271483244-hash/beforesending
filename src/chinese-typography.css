@@ -11,6 +11,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-:root[data-language='zh'] .restored-journey .letter-editing-area :is(textarea, .writing-replay-surface) {
-  line-height: 1.9;
+:root[data-language='zh'] .restored-journey .letter-editing-area textarea {
+  line-height: 1.68;
 }

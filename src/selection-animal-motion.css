@@ -6,5 +6,13 @@
   opacity: 0; pointer-events: none;
 }
 .selection-animal-media > canvas { z-index: 1; }
+.selection-full-motion-frame { position:absolute; display:block; overflow:visible; pointer-events:none; }
+.selection-full-motion-frame > canvas {
+  position:absolute; display:block; left:var(--motion-left); top:var(--motion-top);
+  width:var(--motion-width); height:var(--motion-height); max-width:none; opacity:0;
+  object-fit:fill; pointer-events:none;
+}
+.selection-animal-media[data-ready="true"] .selection-full-motion-frame > canvas { opacity: 1; }
+.restored-keeper .home-animal-choice .administrator-choice .keeper-portrait .administrator:has(.selection-animal-media) { opacity: 1; }
 .restored-keeper .home-animal-choice .administrator-choice:is(:hover,:focus-visible):not(:disabled) .keeper-idle { scale: 1; }
 .restored-keeper .home-animal-choice .administrator-choice:is(:hover,:focus-visible):not(:disabled) .administrator { translate: 0 var(--foot-gap,0px); }
